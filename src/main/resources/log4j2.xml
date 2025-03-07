@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="TemperatureLogFile" fileName="logs/TemperatureSystem.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="GardenAPILogFile" fileName="logs/GardenAPI.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="WateringSystemLogFile" fileName="logs/WateringSystem.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="PesticideSystemLogFile" fileName="logs/PesticideSystem.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="DayLogFile" fileName="logs/DayLogger.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="GardenUIControllerLogFile" fileName="logs/GardenUIController.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+        <LoggerAppender name="LoggerAppender" />
+    </Appenders>
+    <Loggers>
+        <Logger name="TemperatureSystemLogger" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="TemperatureLogFile"/>
+            <AppenderRef ref="LoggerAppender"/>
+        </Logger>
+        <Logger name="WateringSystemLogger" level="info" additivity="false">
+            <AppenderRef ref="WateringSystemLogFile"/>
+            <AppenderRef ref="LoggerAppender"/>
+        </Logger>
+        <Logger name="GardenSimulationAPILogger" level="info" additivity="false">
+            <AppenderRef ref="GardenAPILogFile"/>
+        </Logger>
+        <Logger name="PesticideSystemLogger" level="info" additivity="false">
+            <AppenderRef ref="PesticideSystemLogFile"/>
+        </Logger>
+        <Logger name="DayLogger" level="info" additivity="false">
+            <AppenderRef ref="DayLogFile"/>
+        </Logger>
+        <Logger name="GardenUIControllerLogger" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="GardenUIControllerLogFile"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

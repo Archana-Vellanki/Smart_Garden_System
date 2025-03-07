@@ -1,0 +1,116 @@
+{
+  "trees": [
+    {
+      "name": "Oak",
+      "waterRequirement": 20,
+      "growthRate": "Medium",
+      "currentImage": "smallTree.png",
+      "allImages": ["smallTree.png", "mediumTree.png", "largeOak.png"],
+      "temperatureRequirement": 65,
+      "vulnerableTo": ["Aphids"],
+      "healthSmall": 50,
+      "healthMedium": 100,
+      "healthFull": 150
+    },
+    {
+      "name": "Maple",
+      "waterRequirement": 15,
+      "growthRate": "Medium",
+      "currentImage": "smallTree.png",
+      "allImages": ["smallTree.png", "mediumTree.png", "largeMaple.png"],
+      "temperatureRequirement": 60,
+      "vulnerableTo": ["Aphids"],
+      "healthSmall": 50,
+      "healthMedium": 100,
+      "healthFull": 150
+    },
+    {
+      "name": "Pine",
+      "waterRequirement": 10,
+      "growthRate": "Fast",
+      "currentImage": "smallTree.png",
+      "allImages": ["smallTree.png", "mediumTree.png", "largePine.png"],
+      "temperatureRequirement": 50,
+      "vulnerableTo": ["Locust"],
+      "healthSmall": 70,
+      "healthMedium": 140,
+      "healthFull": 210
+    }
+  ],
+  "vegetables": [
+    {
+      "name": "Tomato",
+      "waterRequirement": 8,
+      "growthRate": "Fast",
+      "currentImage": "smallVegetable.png",
+      "allImages": ["smallVegetable.png", "mediumTomato.png", "largeTomato.png"],
+      "temperatureRequirement": 75,
+      "vulnerableTo": ["Aphids"],
+      "healthSmall": 40,
+      "healthMedium": 60,
+      "healthFull": 90
+    },
+    {
+      "name": "Carrot",
+      "waterRequirement": 70,
+      "growthRate": "Medium",
+      "currentImage": "smallCarrot.png",
+      "allImages": ["smallCarrot.png", "mediumCarrot.png", "largeCarrot.png"],
+      "temperatureRequirement": 60,
+      "vulnerableTo": ["Rat", "Slugs"],
+      "healthSmall": 40,
+      "healthMedium": 50,
+      "healthFull": 65
+    },
+    {
+      "name": "Lettuce",
+      "waterRequirement": 6,
+      "growthRate": "Fast",
+      "currentImage": "smallVegetable.png",
+      "allImages": ["smallVegetable.png", "mediumLettuce.png", "largeLettuce.png"],
+      "temperatureRequirement": 60,
+      "vulnerableTo": ["Rat", "Aphids", "Slugs"],
+      "healthSmall": 40,
+      "healthMedium": 50,
+      "healthFull": 70
+    }
+  ],
+  "flowers": [
+    {
+      "name": "Sunflower",
+      "waterRequirement": 6,
+      "growthRate": "Fast",
+      "currentImage": "smallSunflower.png",
+      "allImages": ["smallSunflower.png", "mediumSunflower.png", "largeSunflower.png"],
+      "temperatureRequirement": 70,
+      "vulnerableTo": ["Crow"],
+      "healthSmall": 25,
+      "healthMedium": 50,
+      "healthFull": 75
+    },
+    {
+      "name": "Rose",
+      "waterRequirement": 7,
+      "growthRate": "Medium",
+      "currentImage": "smallRose.png",
+      "allImages": ["smallRose.png", "mediumRose.png", "largeRose.png"],
+      "temperatureRequirement": 65,
+      "vulnerableTo": ["Aphids"],
+      "healthSmall": 35,
+      "healthMedium": 70,
+      "healthFull": 105
+    },
+    {
+      "name": "Jasmine",
+      "waterRequirement": 5,
+      "growthRate": "Medium",
+      "currentImage": "smallJasmine.png",
+      "allImages": ["smallJasmine.png", "mediumJasmine.png", "largeJasmine.png"],
+      "temperatureRequirement": 65,
+      "vulnerableTo": ["Aphids"],
+      "healthSmall": 30,
+      "healthMedium": 45,
+      "healthFull": 65
+    }
+  ]
+}
