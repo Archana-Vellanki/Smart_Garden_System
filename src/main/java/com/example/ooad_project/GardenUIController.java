@@ -556,10 +556,9 @@ private void handleSprinklerEvent(SprinklerEvent event) {
 
             // Find the ImageView for the plant in the grid and remove it
             gridPane.getChildren().removeIf(node -> {
-                if (GridPane.getRowIndex(node) != null && GridPane.getColumnIndex(node) != null) {
-                    return GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col && node instanceof ImageView;
-                }
-                return false;
+                Integer nodeRow = GridPane.getRowIndex(node);
+                Integer nodeCol = GridPane.getColumnIndex(node);
+                return nodeRow != null && nodeCol != null && nodeRow == row && nodeCol == col;
             });
 
             // Load the new image for the plant

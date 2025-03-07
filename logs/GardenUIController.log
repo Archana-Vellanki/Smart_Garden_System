@@ -1,0 +1,1558 @@
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - Day: 0 Displayed sunny weather
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - Day: 0 Displayed optimal temperature
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - Day: 0 Displayed no parasites status
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'0' Loading plant data from JSON file
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - Sunflower
+2025-03-06 16:39:32 INFO  GardenUIControllerLogger - smallSunflower.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Rose
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallRose.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Jasmine
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallJasmine.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'0' Loading Tree
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Oak
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallTree.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Maple
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallTree.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Pine
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallTree.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'0' Loading Vegetable
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 1
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Tomato
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallVegetable.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 2
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 1
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Carrot
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallCarrot.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 2
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 1
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Lettuce
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - smallVegetable.png
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - 2
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - GardenUIController initialized
+2025-03-06 16:39:33 INFO  GardenUIControllerLogger - Day: 0 Day changed to: 1
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Oak at row 0 and column 1
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Maple at row 0 and column 5
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Pine at row 0 and column 6
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Tomato at row 1 and column 6
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Carrot at row 2 and column 2
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Lettuce at row 1 and column 0
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Sunflower at row 3 and column 1
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Rose at row 4 and column 4
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Jasmine at row 4 and column 6
+2025-03-06 16:39:34 ERROR GardenUIControllerLogger - Failed to place plant: Oak at (5, 6): Index 5 out of bounds for length 5
+2025-03-06 16:39:34 INFO  GardenUIControllerLogger - Day: 1 Adding plant to grid: Tomato at row 3 and column 0
+2025-03-06 16:39:34 ERROR GardenUIControllerLogger - Failed to place plant: Sunflower at (5, 3): Index 5 out of bounds for length 5
+2025-03-06 16:39:43 INFO  GardenUIControllerLogger - Day: 1 Parasite event triggered: Rat
+2025-03-06 16:39:43 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:39:43 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 1 and column 0 from 40 to 36
+2025-03-06 16:39:44 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:39:44 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 2 and column 2 from 40 to 36
+2025-03-06 16:39:49 INFO  GardenUIControllerLogger - Day: 1 Displayed no parasites status
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Parasite event triggered: Aphids
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 0 and column 1 from 50 to 48
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 0 and column 5 from 50 to 48
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 1 and column 0 from 38 to 36
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 1 and column 6 from 40 to 38
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 3 and column 0 from 40 to 38
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 4 and column 4 from 35 to 33
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:39:53 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 4 and column 6 from 30 to 28
+2025-03-06 16:39:59 INFO  GardenUIControllerLogger - Day: 1 Displayed no parasites status
+2025-03-06 16:40:03 INFO  GardenUIControllerLogger - Day: 1 Day changed to: 2
+2025-03-06 16:40:03 INFO  GardenUIControllerLogger - Day: 2 Parasite event triggered: Crow
+2025-03-06 16:40:09 INFO  GardenUIControllerLogger - Day: 2 Displayed no parasites status
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Temperature changed to: 13°F
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 0 and column 1 by 52
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 0 and column 5 by 47
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 0 and column 6 by 37
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 1 and column 0 by 47
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 1 and column 6 by 62
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 2 and column 2 by 47
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 3 and column 0 by 62
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 3 and column 1 by 57
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 4 and column 4 by 52
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 4 and column 6 by 52
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Parasite event triggered: Slugs
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 1 and column 0 from 43 to 39
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:40:13 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 2 and column 2 from 44 to 40
+2025-03-06 16:40:16 INFO  GardenUIControllerLogger - Day: 2 Adding plant to grid: Maple with image: smallTree.png
+2025-03-06 16:40:18 INFO  GardenUIControllerLogger - Day: 2 Displayed optimal temperature
+2025-03-06 16:40:19 INFO  GardenUIControllerLogger - Day: 2 Displayed no parasites status
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Parasite event triggered: Aphids
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 0 and column 1 from 55 to 53
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 0 and column 5 from 55 to 53
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 1 and column 0 from 41 to 39
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 1 and column 6 from 45 to 43
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 3 and column 6 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 3 and column 6 from 50 to 48
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 4 and column 4 from 40 to 38
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:40:23 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 4 and column 6 from 35 to 33
+2025-03-06 16:40:24 INFO  GardenUIControllerLogger - Day: 2 Adding plant to grid: Lettuce with image: smallVegetable.png
+2025-03-06 16:40:29 INFO  GardenUIControllerLogger - Day: 2 Displayed no parasites status
+2025-03-06 16:40:32 INFO  GardenUIControllerLogger - Day: 2 Adding plant to grid: Sunflower with image: smallSunflower.png
+2025-03-06 16:40:33 INFO  GardenUIControllerLogger - Day: 2 Day changed to: 3
+2025-03-06 16:40:33 INFO  GardenUIControllerLogger - Day: 3 Displayed rain event with amount: 34mm
+2025-03-06 16:40:33 INFO  GardenUIControllerLogger - Day: 3 Parasite event triggered: Crow
+2025-03-06 16:40:33 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:40:33 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 3 and column 1 from 38 to 36
+2025-03-06 16:40:38 INFO  GardenUIControllerLogger - Day: 3 Displayed sunny weather
+2025-03-06 16:40:39 INFO  GardenUIControllerLogger - Day: 3 Displayed no parasites status
+2025-03-06 16:40:43 INFO  GardenUIControllerLogger - Day: 3 Parasite event triggered: Rat
+2025-03-06 16:40:43 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:40:43 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 1 and column 0 from 46 to 42
+2025-03-06 16:40:43 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:40:43 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 2 and column 2 from 48 to 44
+2025-03-06 16:40:49 INFO  GardenUIControllerLogger - Day: 3 Displayed no parasites status
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Temperature changed to: 26°F
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 0 and column 1 by 39
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 0 and column 2 by 34
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 0 and column 5 by 34
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 0 and column 6 by 24
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 1 and column 0 by 34
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 1 and column 6 by 49
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 2 and column 2 by 34
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 2 and column 5 by 44
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 3 and column 0 by 49
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 3 and column 1 by 44
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 3 and column 6 by 34
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 4 and column 4 by 39
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 4 and column 6 by 39
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Parasite event triggered: Slugs
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 0 and column 2 from 48 to 44
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 1 and column 0 from 44 to 40
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:40:53 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 2 and column 2 from 46 to 42
+2025-03-06 16:40:58 INFO  GardenUIControllerLogger - Day: 3 Displayed optimal temperature
+2025-03-06 16:40:59 INFO  GardenUIControllerLogger - Day: 3 Displayed no parasites status
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 3 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 3 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 3 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 3 Day changed to: 4
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Parasite event triggered: Aphids
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 0 and column 1 from 66 to 64
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 0 and column 2 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 0 and column 2 from 52 to 50
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 0 and column 5 from 66 to 64
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 1 and column 0 from 48 to 46
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 1 and column 6 from 56 to 54
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 3 and column 0 from 58 to 56
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 3 and column 6 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 3 and column 6 from 61 to 59
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 4 and column 4 from 51 to 49
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 4 and column 6 from 46 to 44
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 4 and column 6 to smallJasmine.png
+2025-03-06 16:41:03 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:41:09 INFO  GardenUIControllerLogger - Day: 4 Displayed no parasites status
+2025-03-06 16:41:13 INFO  GardenUIControllerLogger - Day: 4 Parasite event triggered: Slugs
+2025-03-06 16:41:13 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:41:13 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 0 and column 2 from 51 to 47
+2025-03-06 16:41:13 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 0 and column 2 to smallVegetable.png
+2025-03-06 16:41:13 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:41:13 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 1 and column 0 from 47 to 43
+2025-03-06 16:41:19 INFO  GardenUIControllerLogger - Day: 4 Displayed no parasites status
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Parasite event triggered: Slugs
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 0 and column 2 from 49 to 45
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 2 and column 2 from 52 to 48
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 2 and column 2 to smallCarrot.png
+2025-03-06 16:41:23 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:41:29 INFO  GardenUIControllerLogger - Day: 4 Displayed no parasites status
+2025-03-06 16:41:33 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:41:33 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:41:33 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 16:41:33 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 16:41:33 INFO  GardenUIControllerLogger - Day: 4 Day changed to: 5
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed rain event with amount: 2mm
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Temperature changed to: 15°F
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 1 by 50
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 2 by 45
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 5 by 45
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 6 by 35
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 1 and column 0 by 45
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 1 and column 6 by 60
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 2 and column 2 by 45
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 2 and column 5 by 55
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 3 and column 0 by 60
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 3 and column 1 by 55
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 3 and column 6 by 45
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 4 and column 4 by 50
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 4 and column 6 by 50
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Parasite event triggered: Crow
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 2 and column 5 by 2
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 2 and column 5 from 37 to 35
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:41:34 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 3 and column 1 from 49 to 47
+2025-03-06 16:41:39 INFO  GardenUIControllerLogger - Day: 5 Displayed sunny weather
+2025-03-06 16:41:39 INFO  GardenUIControllerLogger - Day: 5 Displayed optimal temperature
+2025-03-06 16:41:39 INFO  GardenUIControllerLogger - Day: 5 Displayed no parasites status
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Parasite event triggered: Slugs
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 0 and column 2 from 53 to 49
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant image updated at row 0 and column 2 to smallVegetable.png
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 1 and column 0 from 53 to 49
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant image updated at row 1 and column 0 to smallVegetable.png
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:41:43 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 2 and column 2 from 56 to 52
+2025-03-06 16:41:49 INFO  GardenUIControllerLogger - Day: 5 Displayed no parasites status
+2025-03-06 16:41:53 INFO  GardenUIControllerLogger - Day: 5 Parasite event triggered: Slugs
+2025-03-06 16:41:59 INFO  GardenUIControllerLogger - Day: 5 Displayed no parasites status
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 5 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 5 Day changed to: 6
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Parasite event triggered: Rat
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 0 and column 2 from 59 to 55
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 1 and column 0 from 59 to 55
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:42:03 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 2 and column 2 from 62 to 58
+2025-03-06 16:42:09 INFO  GardenUIControllerLogger - Day: 6 Displayed no parasites status
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Temperature changed to: 21°F
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 1 by 44
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 2 by 39
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 5 by 39
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 6 by 29
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 1 and column 0 by 39
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 1 and column 6 by 54
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 2 and column 2 by 39
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 2 and column 5 by 49
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 3 and column 0 by 54
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 3 and column 1 by 49
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 3 and column 6 by 39
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 4 and column 4 by 44
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 4 and column 6 by 44
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Parasite event triggered: Slugs
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 1 and column 0 from 57 to 53
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:42:13 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 2 and column 2 from 60 to 56
+2025-03-06 16:42:19 INFO  GardenUIControllerLogger - Day: 6 Displayed optimal temperature
+2025-03-06 16:42:19 INFO  GardenUIControllerLogger - Day: 6 Displayed no parasites status
+2025-03-06 16:42:23 INFO  GardenUIControllerLogger - Day: 6 Parasite event triggered: Crow
+2025-03-06 16:42:23 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 2 and column 5 by 2
+2025-03-06 16:42:23 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 2 and column 5 from 42 to 40
+2025-03-06 16:42:23 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:42:23 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 3 and column 1 from 54 to 52
+2025-03-06 16:42:29 INFO  GardenUIControllerLogger - Day: 6 Displayed no parasites status
+2025-03-06 16:42:33 INFO  GardenUIControllerLogger - Day: 6 Day changed to: 7
+2025-03-06 16:42:33 INFO  GardenUIControllerLogger - Day: 7 Displayed rain event with amount: 18mm
+2025-03-06 16:42:33 INFO  GardenUIControllerLogger - Day: 7 Parasite event triggered: Crow
+2025-03-06 16:42:33 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 2 and column 5 by 2
+2025-03-06 16:42:33 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 2 and column 5 from 47 to 45
+2025-03-06 16:42:38 INFO  GardenUIControllerLogger - Day: 7 Displayed sunny weather
+2025-03-06 16:42:39 INFO  GardenUIControllerLogger - Day: 7 Displayed no parasites status
+2025-03-06 16:42:43 INFO  GardenUIControllerLogger - Day: 7 Parasite event triggered: Slugs
+2025-03-06 16:42:43 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:42:43 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 1 and column 0 from 61 to 57
+2025-03-06 16:42:43 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:42:43 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 2 and column 2 from 64 to 60
+2025-03-06 16:42:49 INFO  GardenUIControllerLogger - Day: 7 Displayed no parasites status
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Temperature changed to: 15°F
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 1 by 50
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 2 by 45
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 5 by 45
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 6 by 35
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 1 and column 0 by 45
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 1 and column 6 by 60
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 2 and column 2 by 45
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 2 and column 5 by 55
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 3 and column 0 by 60
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 3 and column 1 by 55
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 3 and column 6 by 45
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 4 and column 4 by 50
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 4 and column 6 by 50
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Parasite event triggered: Crow
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 2 and column 5 by 2
+2025-03-06 16:42:53 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 2 and column 5 from 46 to 44
+2025-03-06 16:42:59 INFO  GardenUIControllerLogger - Day: 7 Displayed optimal temperature
+2025-03-06 16:42:59 INFO  GardenUIControllerLogger - Day: 7 Displayed no parasites status
+2025-03-06 16:43:03 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 0 and column 2 to largeLettuce.png
+2025-03-06 16:43:03 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:43:03 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 2 and column 5 to mediumSunflower.png
+2025-03-06 16:43:03 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 16:43:03 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:43:03 INFO  GardenUIControllerLogger - Day: 7 Day changed to: 8
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Parasite event triggered: Rat
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 0 and column 2 from 70 to 66
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 1 and column 0 from 65 to 61
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:43:04 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:43:09 INFO  GardenUIControllerLogger - Day: 8 Displayed no parasites status
+2025-03-06 16:43:13 INFO  GardenUIControllerLogger - Day: 8 Parasite event triggered: Rat
+2025-03-06 16:43:13 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 0 and column 2 to largeLettuce.png
+2025-03-06 16:43:13 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:43:13 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 1 and column 0 from 63 to 59
+2025-03-06 16:43:13 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:43:13 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 2 and column 2 from 63 to 59
+2025-03-06 16:43:19 INFO  GardenUIControllerLogger - Day: 8 Displayed no parasites status
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Parasite event triggered: Crow
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 2 and column 5 by 2
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 2 and column 5 from 51 to 49
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 2 and column 5 to smallSunflower.png
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 2 and column 5 to mediumSunflower.png
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:43:23 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 3 and column 1 from 67 to 65
+2025-03-06 16:43:29 INFO  GardenUIControllerLogger - Day: 8 Displayed no parasites status
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 8 Day changed to: 9
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed rain event with amount: 39mm
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Temperature changed to: 48°F
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 1 by 17
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 2 by 12
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 5 by 12
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 6 by 2
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 1 and column 0 by 12
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 1 and column 6 by 27
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 2 and column 2 by 12
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 2 and column 5 by 22
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 3 and column 0 by 27
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 3 and column 1 by 22
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 3 and column 6 by 12
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 4 and column 4 by 17
+2025-03-06 16:43:33 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 4 and column 6 by 17
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Parasite event triggered: Rat
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 2 from 70 to 66
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:43:34 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:43:38 INFO  GardenUIControllerLogger - Day: 9 Displayed sunny weather
+2025-03-06 16:43:39 INFO  GardenUIControllerLogger - Day: 9 Displayed optimal temperature
+2025-03-06 16:43:39 INFO  GardenUIControllerLogger - Day: 9 Displayed no parasites status
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Parasite event triggered: Aphids
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 2 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 2 from 68 to 66
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 5 from 95 to 93
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 1 and column 0 from 69 to 67
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 1 and column 6 from 85 to 83
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 3 and column 0 from 87 to 85
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 3 and column 6 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 3 and column 6 from 90 to 88
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 4 and column 4 from 80 to 78
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 16:43:43 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:43:49 INFO  GardenUIControllerLogger - Day: 9 Displayed no parasites status
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Parasite event triggered: Aphids
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 1 from 96 to 94
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 2 by 2
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 2 from 67 to 65
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 1 and column 6 from 84 to 82
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 4 and column 4 from 79 to 77
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:43:53 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 4 and column 6 from 64 to 62
+2025-03-06 16:43:59 INFO  GardenUIControllerLogger - Day: 9 Displayed no parasites status
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 0 and column 1 to mediumTree.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 0 and column 2 to largeLettuce.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 0 and column 5 to mediumTree.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:44:03 INFO  GardenUIControllerLogger - Day: 9 Day changed to: 10
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Parasite event triggered: Aphids
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 1 from 101 to 99
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 1 to smallTree.png
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 1 to mediumTree.png
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 2 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 2 from 70 to 68
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 6 from 89 to 87
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 6 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 6 from 96 to 94
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 4 from 84 to 82
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 16:44:04 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:44:09 INFO  GardenUIControllerLogger - Day: 10 Displayed no parasites status
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Temperature changed to: 37°F
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 1 by 28
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 2 by 23
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 5 by 23
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 6 by 13
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 1 and column 0 by 23
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 1 and column 6 by 38
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 2 and column 2 by 23
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 2 and column 5 by 33
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 3 and column 0 by 38
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 3 and column 1 by 33
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 3 and column 6 by 23
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 4 and column 4 by 28
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 4 and column 6 by 28
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Parasite event triggered: Aphids
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 1 from 100 to 98
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 1 to smallTree.png
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 2 to largeLettuce.png
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 0 from 69 to 67
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 6 from 88 to 86
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 0 from 89 to 87
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 6 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 6 from 95 to 93
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 4 from 83 to 81
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:44:13 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 6 from 64 to 62
+2025-03-06 16:44:18 INFO  GardenUIControllerLogger - Day: 10 Displayed optimal temperature
+2025-03-06 16:44:19 INFO  GardenUIControllerLogger - Day: 10 Displayed no parasites status
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Parasite event triggered: Rat
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 2 from 70 to 66
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 0 from 68 to 64
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:44:23 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:44:29 INFO  GardenUIControllerLogger - Day: 10 Displayed no parasites status
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 1 to mediumTree.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 2 to largeLettuce.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 3 and column 6 to mediumTree.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:44:33 INFO  GardenUIControllerLogger - Day: 10 Day changed to: 11
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Displayed rain event with amount: 3mm
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Parasite event triggered: Slugs
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 0 and column 2 by 4
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 0 and column 2 from 70 to 66
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 0 and column 2 to mediumLettuce.png
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:44:34 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:44:39 INFO  GardenUIControllerLogger - Day: 11 Displayed sunny weather
+2025-03-06 16:44:39 INFO  GardenUIControllerLogger - Day: 11 Displayed no parasites status
+2025-03-06 16:45:03 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 0 and column 2 to largeLettuce.png
+2025-03-06 16:45:03 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:45:03 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:45:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 12
+2025-03-06 16:45:33 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 0 and column 6 to mediumTree.png
+2025-03-06 16:45:33 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 2 and column 5 to largeSunflower.png
+2025-03-06 16:45:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 13
+2025-03-06 16:46:03 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 16:46:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 14
+2025-03-06 16:46:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 15
+2025-03-06 16:47:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 16
+2025-03-06 16:47:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 17
+2025-03-06 16:48:03 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 0 and column 5 to largeMaple.png
+2025-03-06 16:48:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 18
+2025-03-06 16:48:33 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 0 and column 1 to largeOak.png
+2025-03-06 16:48:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 19
+2025-03-06 16:49:03 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 3 and column 6 to largeMaple.png
+2025-03-06 16:49:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 20
+2025-03-06 16:49:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 21
+2025-03-06 16:50:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 22
+2025-03-06 16:50:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 23
+2025-03-06 16:51:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 24
+2025-03-06 16:51:33 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 0 and column 6 to largePine.png
+2025-03-06 16:51:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 25
+2025-03-06 16:52:03 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 26
+2025-03-06 16:52:33 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 27
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Day: 0 Displayed sunny weather
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Day: 0 Displayed optimal temperature
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Day: 0 Displayed no parasites status
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'0' Loading plant data from JSON file
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Sunflower
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallSunflower.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Rose
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallRose.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Jasmine
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallJasmine.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'0' Loading Tree
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Oak
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallTree.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Maple
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallTree.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Pine
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallTree.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'0' Loading Vegetable
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 1
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Tomato
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallVegetable.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 2
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 1
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Carrot
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallCarrot.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 2
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 1
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 3
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 4
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 5
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - Lettuce
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - smallVegetable.png
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 6
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - 2
+2025-03-06 16:52:51 INFO  GardenUIControllerLogger - GardenUIController initialized
+2025-03-06 16:52:52 INFO  GardenUIControllerLogger - Day: 0 Day changed to: 1
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Oak at row 0 and column 1
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Maple at row 0 and column 5
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Pine at row 0 and column 6
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Tomato at row 1 and column 6
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Carrot at row 2 and column 2
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Lettuce at row 1 and column 0
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Sunflower at row 3 and column 1
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Rose at row 4 and column 4
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Jasmine at row 4 and column 6
+2025-03-06 16:52:53 ERROR GardenUIControllerLogger - Failed to place plant: Oak at (5, 6): Index 5 out of bounds for length 5
+2025-03-06 16:52:53 INFO  GardenUIControllerLogger - Day: 0 Adding plant to grid: Tomato at row 3 and column 0
+2025-03-06 16:52:53 ERROR GardenUIControllerLogger - Failed to place plant: Sunflower at (5, 3): Index 5 out of bounds for length 5
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Parasite event triggered: Aphids
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 0 and column 1 from 50 to 48
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 0 and column 5 from 50 to 48
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 1 and column 0 from 40 to 38
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 1 and column 6 from 40 to 38
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 3 and column 0 from 40 to 38
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 4 and column 4 from 35 to 33
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:53:02 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 4 and column 6 from 30 to 28
+2025-03-06 16:53:07 INFO  GardenUIControllerLogger - Day: 1 Displayed no parasites status
+2025-03-06 16:53:12 INFO  GardenUIControllerLogger - Day: 1 Parasite event triggered: Crow
+2025-03-06 16:53:12 INFO  GardenUIControllerLogger - Day: 1 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:53:12 INFO  GardenUIControllerLogger - Day: 1 Plant health updated at row 3 and column 1 from 25 to 23
+2025-03-06 16:53:17 INFO  GardenUIControllerLogger - Day: 1 Displayed no parasites status
+2025-03-06 16:53:22 INFO  GardenUIControllerLogger - Day: 1 Day changed to: 2
+2025-03-06 16:53:22 INFO  GardenUIControllerLogger - Day: 2 Parasite event triggered: Rat
+2025-03-06 16:53:22 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:53:22 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 1 and column 0 from 45 to 41
+2025-03-06 16:53:22 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:53:22 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 2 and column 2 from 46 to 42
+2025-03-06 16:53:27 INFO  GardenUIControllerLogger - Day: 2 Displayed no parasites status
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Temperature changed to: 59°F
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 0 and column 1 by 6
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 0 and column 5 by 1
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 2' Displayed Sprinkler activated at row 0 and column 6 with water amount 9
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 1 and column 0 by 1
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 1 and column 6 by 16
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 2 and column 2 by 1
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 3 and column 0 by 16
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 3 and column 1 by 11
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 4 and column 4 by 6
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant heated at row 4 and column 6 by 6
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Parasite event triggered: Locust
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:53:32 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 0 and column 6 from 76 to 68
+2025-03-06 16:53:37 INFO  GardenUIControllerLogger - Day: 2 Displayed optimal temperature
+2025-03-06 16:53:38 INFO  GardenUIControllerLogger - Day: 2 Displayed no parasites status
+2025-03-06 16:53:42 INFO  GardenUIControllerLogger - Day: 2 Parasite event triggered: Slugs
+2025-03-06 16:53:42 INFO  GardenUIControllerLogger - Day: 2 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:53:42 INFO  GardenUIControllerLogger - Day: 2 Plant health updated at row 1 and column 0 from 43 to 39
+2025-03-06 16:53:47 INFO  GardenUIControllerLogger - Day: 2 Displayed no parasites status
+2025-03-06 16:53:52 INFO  GardenUIControllerLogger - Day: 2 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:53:52 INFO  GardenUIControllerLogger - Day: 2 Day changed to: 3
+2025-03-06 16:53:52 INFO  GardenUIControllerLogger - Day: 3 Displayed rain event with amount: 7mm
+2025-03-06 16:53:52 INFO  GardenUIControllerLogger - Day: 3 Parasite event triggered: Locust
+2025-03-06 16:53:52 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:53:52 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 0 and column 6 from 78 to 70
+2025-03-06 16:53:57 INFO  GardenUIControllerLogger - Day: 3 Displayed sunny weather
+2025-03-06 16:53:57 INFO  GardenUIControllerLogger - Day: 3 Displayed no parasites status
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Parasite event triggered: Aphids
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 0 and column 1 from 61 to 59
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 0 and column 5 from 61 to 59
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 1 and column 0 from 47 to 45
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 1 and column 6 from 51 to 49
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 4 and column 4 from 46 to 44
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:54:02 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 4 and column 6 from 41 to 39
+2025-03-06 16:54:07 INFO  GardenUIControllerLogger - Day: 3 Displayed no parasites status
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Temperature changed to: 69°F
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 0 and column 1 with water amount 4
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 0 and column 5 with water amount 9
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 0 and column 6 with water amount 19
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 1 and column 0 with water amount 9
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 1 and column 6 by 6
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 2 and column 2 with water amount 9
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 3 and column 0 by 6
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Displayed plant heated at row 3 and column 1 by 1
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 4 and column 4 with water amount 4
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 3' Displayed Sprinkler activated at row 4 and column 6 with water amount 4
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Parasite event triggered: Crow
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:54:12 INFO  GardenUIControllerLogger - Day: 3 Plant health updated at row 3 and column 1 from 36 to 34
+2025-03-06 16:54:17 INFO  GardenUIControllerLogger - Day: 3 Displayed optimal temperature
+2025-03-06 16:54:17 INFO  GardenUIControllerLogger - Day: 3 Displayed no parasites status
+2025-03-06 16:54:22 INFO  GardenUIControllerLogger - Day: 3 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:54:22 INFO  GardenUIControllerLogger - Day: 3 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:54:22 INFO  GardenUIControllerLogger - Day: 3 Day changed to: 4
+2025-03-06 16:54:22 INFO  GardenUIControllerLogger - Day: 4 Parasite event triggered: Slugs
+2025-03-06 16:54:27 INFO  GardenUIControllerLogger - Day: 4 Displayed no parasites status
+2025-03-06 16:54:32 INFO  GardenUIControllerLogger - Day: 4 Parasite event triggered: Rat
+2025-03-06 16:54:32 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:54:32 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 2 and column 2 from 60 to 56
+2025-03-06 16:54:37 INFO  GardenUIControllerLogger - Day: 4 Displayed no parasites status
+2025-03-06 16:54:42 INFO  GardenUIControllerLogger - Day: 4 Parasite event triggered: Slugs
+2025-03-06 16:54:42 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:54:42 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 1 and column 0 from 56 to 52
+2025-03-06 16:54:42 INFO  GardenUIControllerLogger - Day: 4 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:54:42 INFO  GardenUIControllerLogger - Day: 4 Plant health updated at row 2 and column 2 from 58 to 54
+2025-03-06 16:54:47 INFO  GardenUIControllerLogger - Day: 4 Displayed no parasites status
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 4 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 4 Day changed to: 5
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed rain event with amount: 39mm
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Temperature changed to: 5°F
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 1 by 60
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 5 by 55
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 0 and column 6 by 45
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 1 and column 0 by 55
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 1 and column 6 by 70
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 2 and column 2 by 55
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 3 and column 0 by 70
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 3 and column 1 by 65
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 4 and column 4 by 60
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Displayed plant heated at row 4 and column 6 by 60
+2025-03-06 16:54:52 INFO  GardenUIControllerLogger - Day: 5 Parasite event triggered: Locust
+2025-03-06 16:54:57 INFO  GardenUIControllerLogger - Day: 5 Displayed sunny weather
+2025-03-06 16:54:57 INFO  GardenUIControllerLogger - Day: 5 Displayed optimal temperature
+2025-03-06 16:54:57 INFO  GardenUIControllerLogger - Day: 5 Displayed no parasites status
+2025-03-06 16:55:02 INFO  GardenUIControllerLogger - Day: 5 Parasite event triggered: Rat
+2025-03-06 16:55:02 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:55:02 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 1 and column 0 from 60 to 56
+2025-03-06 16:55:02 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:55:02 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 2 and column 2 from 62 to 58
+2025-03-06 16:55:07 INFO  GardenUIControllerLogger - Day: 5 Displayed no parasites status
+2025-03-06 16:55:12 INFO  GardenUIControllerLogger - Day: 5 Parasite event triggered: Slugs
+2025-03-06 16:55:12 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:55:12 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 1 and column 0 from 58 to 54
+2025-03-06 16:55:12 INFO  GardenUIControllerLogger - Day: 5 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:55:12 INFO  GardenUIControllerLogger - Day: 5 Plant health updated at row 2 and column 2 from 60 to 56
+2025-03-06 16:55:17 INFO  GardenUIControllerLogger - Day: 5 Displayed no parasites status
+2025-03-06 16:55:22 INFO  GardenUIControllerLogger - Day: 5 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 16:55:22 INFO  GardenUIControllerLogger - Day: 5 Day changed to: 6
+2025-03-06 16:55:22 INFO  GardenUIControllerLogger - Day: 6 Parasite event triggered: Locust
+2025-03-06 16:55:22 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:55:22 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 0 and column 6 from 96 to 88
+2025-03-06 16:55:27 INFO  GardenUIControllerLogger - Day: 6 Displayed no parasites status
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Temperature changed to: 23°F
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 1 by 42
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 5 by 37
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 0 and column 6 by 27
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 1 and column 0 by 37
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 1 and column 6 by 52
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 2 and column 2 by 37
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 3 and column 0 by 52
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 3 and column 1 by 47
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 4 and column 4 by 42
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Displayed plant heated at row 4 and column 6 by 42
+2025-03-06 16:55:32 INFO  GardenUIControllerLogger - Day: 6 Parasite event triggered: Crow
+2025-03-06 16:55:37 INFO  GardenUIControllerLogger - Day: 6 Displayed optimal temperature
+2025-03-06 16:55:37 INFO  GardenUIControllerLogger - Day: 6 Displayed no parasites status
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Parasite event triggered: Aphids
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 0 and column 1 from 78 to 76
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 0 and column 5 from 78 to 76
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 1 and column 0 from 62 to 60
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 1 and column 6 from 68 to 66
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 3 and column 0 from 70 to 68
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 4 and column 4 from 63 to 61
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:55:42 INFO  GardenUIControllerLogger - Day: 6 Plant health updated at row 4 and column 6 from 58 to 56
+2025-03-06 16:55:47 INFO  GardenUIControllerLogger - Day: 6 Displayed no parasites status
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 6 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 6 Day changed to: 7
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 7 Displayed rain event with amount: 18mm
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 7 Parasite event triggered: Slugs
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:55:52 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:55:57 INFO  GardenUIControllerLogger - Day: 7 Displayed sunny weather
+2025-03-06 16:55:57 INFO  GardenUIControllerLogger - Day: 7 Displayed no parasites status
+2025-03-06 16:56:02 INFO  GardenUIControllerLogger - Day: 7 Parasite event triggered: Crow
+2025-03-06 16:56:02 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:56:02 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 3 and column 1 from 60 to 58
+2025-03-06 16:56:07 INFO  GardenUIControllerLogger - Day: 7 Displayed no parasites status
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Temperature changed to: 21°F
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 1 by 44
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 5 by 39
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 0 and column 6 by 29
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 1 and column 0 by 39
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 1 and column 6 by 54
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 2 and column 2 by 39
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 3 and column 0 by 54
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 3 and column 1 by 49
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 4 and column 4 by 44
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant heated at row 4 and column 6 by 44
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Parasite event triggered: Rat
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:56:12 INFO  GardenUIControllerLogger - Day: 7 Plant health updated at row 2 and column 2 from 63 to 59
+2025-03-06 16:56:17 INFO  GardenUIControllerLogger - Day: 7 Displayed optimal temperature
+2025-03-06 16:56:17 INFO  GardenUIControllerLogger - Day: 7 Displayed no parasites status
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 7 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 7 Day changed to: 8
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 8 Parasite event triggered: Crow
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:56:22 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 3 and column 1 from 65 to 63
+2025-03-06 16:56:27 INFO  GardenUIControllerLogger - Day: 8 Displayed no parasites status
+2025-03-06 16:56:32 INFO  GardenUIControllerLogger - Day: 8 Parasite event triggered: Locust
+2025-03-06 16:56:32 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:56:32 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 0 and column 6 from 104 to 96
+2025-03-06 16:56:37 INFO  GardenUIControllerLogger - Day: 8 Displayed no parasites status
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Parasite event triggered: Aphids
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 0 and column 1 from 89 to 87
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 0 and column 5 from 89 to 87
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 1 and column 6 from 79 to 77
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 3 and column 0 from 81 to 79
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:56:42 INFO  GardenUIControllerLogger - Day: 8 Plant health updated at row 4 and column 4 from 74 to 72
+2025-03-06 16:56:47 INFO  GardenUIControllerLogger - Day: 8 Displayed no parasites status
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 8 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 8 Day changed to: 9
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed rain event with amount: 18mm
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Temperature changed to: 47°F
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 1 by 18
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 5 by 13
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 0 and column 6 by 3
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 1 and column 0 by 13
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 1 and column 6 by 28
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 2 and column 2 by 13
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 3 and column 0 by 28
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 3 and column 1 by 23
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 4 and column 4 by 18
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant heated at row 4 and column 6 by 18
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Parasite event triggered: Slugs
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:56:52 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:56:57 INFO  GardenUIControllerLogger - Day: 9 Displayed sunny weather
+2025-03-06 16:56:57 INFO  GardenUIControllerLogger - Day: 9 Displayed optimal temperature
+2025-03-06 16:56:57 INFO  GardenUIControllerLogger - Day: 9 Displayed no parasites status
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Parasite event triggered: Aphids
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 1 from 94 to 92
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 5 from 94 to 92
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 1 and column 0 from 68 to 66
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 1 and column 6 from 84 to 82
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 3 and column 0 from 86 to 84
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 4 and column 4 from 79 to 77
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 16:57:02 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:57:07 INFO  GardenUIControllerLogger - Day: 9 Displayed no parasites status
+2025-03-06 16:57:12 INFO  GardenUIControllerLogger - Day: 9 Parasite event triggered: Locust
+2025-03-06 16:57:12 INFO  GardenUIControllerLogger - Day: 9 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:57:12 INFO  GardenUIControllerLogger - Day: 9 Plant health updated at row 0 and column 6 from 106 to 98
+2025-03-06 16:57:17 INFO  GardenUIControllerLogger - Day: 9 Displayed no parasites status
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 9 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 9 Day changed to: 10
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Parasite event triggered: Aphids
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 1 from 99 to 97
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 5 from 99 to 97
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 6 from 89 to 87
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 4 from 84 to 82
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 16:57:22 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:57:27 INFO  GardenUIControllerLogger - Day: 10 Displayed no parasites status
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Temperature changed to: 27°F
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 1 by 38
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 5 by 33
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 0 and column 6 by 23
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 1 and column 0 by 33
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 1 and column 6 by 48
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 2 and column 2 by 33
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 3 and column 0 by 48
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 3 and column 1 by 43
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 4 and column 4 by 38
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant heated at row 4 and column 6 by 38
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Parasite event triggered: Aphids
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 1 from 98 to 96
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 5 from 98 to 96
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 0 from 69 to 67
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 6 from 88 to 86
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 0 from 89 to 87
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 4 from 83 to 81
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:57:32 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 6 from 64 to 62
+2025-03-06 16:57:37 INFO  GardenUIControllerLogger - Day: 10 Displayed optimal temperature
+2025-03-06 16:57:37 INFO  GardenUIControllerLogger - Day: 10 Displayed no parasites status
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Parasite event triggered: Aphids
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 1 from 97 to 95
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 0 and column 5 from 97 to 95
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 0 from 68 to 66
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 1 and column 6 from 87 to 85
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 3 and column 0 from 88 to 86
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 4 from 82 to 80
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:57:42 INFO  GardenUIControllerLogger - Day: 10 Plant health updated at row 4 and column 6 from 63 to 61
+2025-03-06 16:57:47 INFO  GardenUIControllerLogger - Day: 10 Displayed no parasites status
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 1 to mediumTree.png
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 0 and column 5 to mediumTree.png
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 10 Day changed to: 11
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 11 Displayed rain event with amount: 25mm
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 11 Parasite event triggered: Locust
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:57:52 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 0 and column 6 from 114 to 106
+2025-03-06 16:57:57 INFO  GardenUIControllerLogger - Day: 11 Displayed sunny weather
+2025-03-06 16:57:58 INFO  GardenUIControllerLogger - Day: 11 Displayed no parasites status
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Parasite event triggered: Slugs
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:58:02 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:58:07 INFO  GardenUIControllerLogger - Day: 11 Displayed no parasites status
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Temperature changed to: 18°F
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 0 and column 1 by 47
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 0 and column 5 by 42
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 0 and column 6 by 32
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 1 and column 0 by 42
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 1 and column 6 by 57
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 2 and column 2 by 42
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 3 and column 0 by 57
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 3 and column 1 by 52
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 4 and column 4 by 47
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant heated at row 4 and column 6 by 47
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Parasite event triggered: Rat
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 1 and column 0 from 68 to 64
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:58:12 INFO  GardenUIControllerLogger - Day: 11 Plant health updated at row 2 and column 2 from 63 to 59
+2025-03-06 16:58:17 INFO  GardenUIControllerLogger - Day: 11 Displayed optimal temperature
+2025-03-06 16:58:18 INFO  GardenUIControllerLogger - Day: 11 Displayed no parasites status
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 11 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 11 Day changed to: 12
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Parasite event triggered: Aphids
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 0 and column 1 from 108 to 106
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 0 and column 5 from 108 to 106
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:58:22 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 4 and column 4 from 93 to 91
+2025-03-06 16:58:27 INFO  GardenUIControllerLogger - Day: 12 Displayed no parasites status
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Parasite event triggered: Aphids
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 0 and column 1 from 107 to 105
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 0 and column 5 from 107 to 105
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 1 and column 0 from 69 to 67
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 1 and column 6 from 89 to 87
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 4 and column 4 from 92 to 90
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 16:58:32 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:58:37 INFO  GardenUIControllerLogger - Day: 12 Displayed no parasites status
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Parasite event triggered: Aphids
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 0 and column 1 from 106 to 104
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 0 and column 5 from 106 to 104
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 1 and column 0 from 68 to 66
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 1 and column 6 from 88 to 86
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 3 and column 0 from 89 to 87
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant health updated at row 4 and column 4 from 91 to 89
+2025-03-06 16:58:42 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:58:47 INFO  GardenUIControllerLogger - Day: 12 Displayed no parasites status
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 12 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 12 Day changed to: 13
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed rain event with amount: 31mm
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Temperature changed to: 32°F
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 0 and column 1 by 33
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 0 and column 5 by 28
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 0 and column 6 by 18
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 1 and column 0 by 28
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 1 and column 6 by 43
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 2 and column 2 by 28
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 3 and column 0 by 43
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 3 and column 1 by 38
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 4 and column 4 by 33
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant heated at row 4 and column 6 by 33
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Parasite event triggered: Rat
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:58:52 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:58:57 INFO  GardenUIControllerLogger - Day: 13 Displayed sunny weather
+2025-03-06 16:58:57 INFO  GardenUIControllerLogger - Day: 13 Displayed optimal temperature
+2025-03-06 16:58:57 INFO  GardenUIControllerLogger - Day: 13 Displayed no parasites status
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Parasite event triggered: Aphids
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 0 and column 1 from 111 to 109
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 0 and column 5 from 111 to 109
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 4 and column 4 from 96 to 94
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 16:59:02 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 16:59:07 INFO  GardenUIControllerLogger - Day: 13 Displayed no parasites status
+2025-03-06 16:59:12 INFO  GardenUIControllerLogger - Day: 13 Parasite event triggered: Rat
+2025-03-06 16:59:12 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:59:12 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 1 and column 0 from 69 to 65
+2025-03-06 16:59:12 INFO  GardenUIControllerLogger - Day: 13 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:59:12 INFO  GardenUIControllerLogger - Day: 13 Plant health updated at row 2 and column 2 from 63 to 59
+2025-03-06 16:59:17 INFO  GardenUIControllerLogger - Day: 13 Displayed no parasites status
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 13 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 13 Day changed to: 14
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 14 Parasite event triggered: Locust
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 14 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 16:59:22 INFO  GardenUIControllerLogger - Day: 14 Plant health updated at row 0 and column 6 from 128 to 120
+2025-03-06 16:59:27 INFO  GardenUIControllerLogger - Day: 14 Displayed no parasites status
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Temperature changed to: 1°F
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 0 and column 1 by 64
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 0 and column 5 by 59
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 0 and column 6 by 49
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 1 and column 0 by 59
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 1 and column 6 by 74
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 2 and column 2 by 59
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 3 and column 0 by 74
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 3 and column 1 by 69
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 4 and column 4 by 64
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant heated at row 4 and column 6 by 64
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Parasite event triggered: Crow
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 16:59:32 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 16:59:37 INFO  GardenUIControllerLogger - Day: 14 Displayed optimal temperature
+2025-03-06 16:59:37 INFO  GardenUIControllerLogger - Day: 14 Displayed no parasites status
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Parasite event triggered: Rat
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:59:42 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:59:47 INFO  GardenUIControllerLogger - Day: 14 Displayed no parasites status
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 14 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 14 Day changed to: 15
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Displayed rain event with amount: 26mm
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Parasite event triggered: Slugs
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 16:59:52 INFO  GardenUIControllerLogger - Day: 15 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 16:59:57 INFO  GardenUIControllerLogger - Day: 15 Displayed sunny weather
+2025-03-06 16:59:57 INFO  GardenUIControllerLogger - Day: 15 Displayed no parasites status
+2025-03-06 17:00:02 INFO  GardenUIControllerLogger - Day: 15 Parasite event triggered: Rat
+2025-03-06 17:00:02 INFO  GardenUIControllerLogger - Day: 15 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:00:02 INFO  GardenUIControllerLogger - Day: 15 Plant health updated at row 1 and column 0 from 68 to 64
+2025-03-06 17:00:02 INFO  GardenUIControllerLogger - Day: 15 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:00:02 INFO  GardenUIControllerLogger - Day: 15 Plant health updated at row 2 and column 2 from 63 to 59
+2025-03-06 17:00:07 INFO  GardenUIControllerLogger - Day: 15 Displayed no parasites status
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Temperature changed to: 59°F
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 0 and column 1 by 6
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 0 and column 5 by 1
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 15' Displayed Sprinkler activated at row 0 and column 6 with water amount 9
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 1 and column 0 by 1
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 1 and column 6 by 16
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 2 and column 2 by 1
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 3 and column 0 by 16
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 3 and column 1 by 11
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 4 and column 4 by 6
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant heated at row 4 and column 6 by 6
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Parasite event triggered: Locust
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 17:00:12 INFO  GardenUIControllerLogger - Day: 15 Plant health updated at row 0 and column 6 from 130 to 122
+2025-03-06 17:00:17 INFO  GardenUIControllerLogger - Day: 15 Displayed optimal temperature
+2025-03-06 17:00:17 INFO  GardenUIControllerLogger - Day: 15 Displayed no parasites status
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 15 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 15 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 15 Day changed to: 16
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Parasite event triggered: Aphids
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 0 and column 1 from 128 to 126
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 0 and column 5 from 128 to 126
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 4 and column 4 from 105 to 103
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 17:00:22 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 17:00:27 INFO  GardenUIControllerLogger - Day: 16 Displayed no parasites status
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Parasite event triggered: Aphids
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 0 and column 1 from 127 to 125
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 0 and column 5 from 127 to 125
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 1 and column 0 from 69 to 67
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 3 and column 0 from 89 to 87
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 4 and column 4 from 104 to 102
+2025-03-06 17:00:32 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 17:00:37 INFO  GardenUIControllerLogger - Day: 16 Displayed no parasites status
+2025-03-06 17:00:42 INFO  GardenUIControllerLogger - Day: 16 Parasite event triggered: Locust
+2025-03-06 17:00:42 INFO  GardenUIControllerLogger - Day: 16 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 17:00:42 INFO  GardenUIControllerLogger - Day: 16 Plant health updated at row 0 and column 6 from 132 to 124
+2025-03-06 17:00:47 INFO  GardenUIControllerLogger - Day: 16 Displayed no parasites status
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 16 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 16 Day changed to: 17
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed rain event with amount: 20mm
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Temperature changed to: 31°F
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 0 and column 1 by 34
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 0 and column 5 by 29
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 0 and column 6 by 19
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 1 and column 0 by 29
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 1 and column 6 by 44
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 2 and column 2 by 29
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 3 and column 0 by 44
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 3 and column 1 by 39
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 4 and column 4 by 34
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Displayed plant heated at row 4 and column 6 by 34
+2025-03-06 17:00:52 INFO  GardenUIControllerLogger - Day: 17 Parasite event triggered: Crow
+2025-03-06 17:00:57 INFO  GardenUIControllerLogger - Day: 17 Displayed sunny weather
+2025-03-06 17:00:57 INFO  GardenUIControllerLogger - Day: 17 Displayed optimal temperature
+2025-03-06 17:00:58 INFO  GardenUIControllerLogger - Day: 17 Displayed no parasites status
+2025-03-06 17:01:02 INFO  GardenUIControllerLogger - Day: 17 Parasite event triggered: Crow
+2025-03-06 17:01:02 INFO  GardenUIControllerLogger - Day: 17 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:01:02 INFO  GardenUIControllerLogger - Day: 17 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 17:01:02 INFO  GardenUIControllerLogger - Day: 17 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 17:01:07 INFO  GardenUIControllerLogger - Day: 17 Displayed no parasites status
+2025-03-06 17:01:12 INFO  GardenUIControllerLogger - Day: 17 Parasite event triggered: Locust
+2025-03-06 17:01:12 INFO  GardenUIControllerLogger - Day: 17 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 17:01:12 INFO  GardenUIControllerLogger - Day: 17 Plant health updated at row 0 and column 6 from 134 to 126
+2025-03-06 17:01:17 INFO  GardenUIControllerLogger - Day: 17 Displayed no parasites status
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 17 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 17 Day changed to: 18
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Parasite event triggered: Aphids
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 0 and column 1 from 138 to 136
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 0 and column 5 from 138 to 136
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 4 and column 4 from 105 to 103
+2025-03-06 17:01:22 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 17:01:27 INFO  GardenUIControllerLogger - Day: 18 Displayed no parasites status
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Temperature changed to: 69°F
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 0 and column 1 with water amount 4
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 0 and column 5 with water amount 9
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 0 and column 6 with water amount 19
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 1 and column 0 with water amount 9
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Displayed plant heated at row 1 and column 6 by 6
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 2 and column 2 with water amount 9
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Displayed plant heated at row 3 and column 0 by 6
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Displayed plant heated at row 3 and column 1 by 1
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 4 and column 4 with water amount 4
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 18' Displayed Sprinkler activated at row 4 and column 6 with water amount 4
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Parasite event triggered: Rat
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 1 and column 0 from 69 to 65
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 17:01:32 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 17:01:37 INFO  GardenUIControllerLogger - Day: 18 Displayed optimal temperature
+2025-03-06 17:01:37 INFO  GardenUIControllerLogger - Day: 18 Displayed no parasites status
+2025-03-06 17:01:42 INFO  GardenUIControllerLogger - Day: 18 Parasite event triggered: Crow
+2025-03-06 17:01:47 INFO  GardenUIControllerLogger - Day: 18 Displayed no parasites status
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 0 and column 6 to mediumTree.png
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 18 Day changed to: 19
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 19 Displayed rain event with amount: 24mm
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 19 Parasite event triggered: Crow
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 19 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 19 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 17:01:52 INFO  GardenUIControllerLogger - Day: 19 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 17:01:57 INFO  GardenUIControllerLogger - Day: 19 Displayed sunny weather
+2025-03-06 17:01:57 INFO  GardenUIControllerLogger - Day: 19 Displayed no parasites status
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Parasite event triggered: Slugs
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 17:02:02 INFO  GardenUIControllerLogger - Day: 19 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 17:02:07 INFO  GardenUIControllerLogger - Day: 19 Displayed no parasites status
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Temperature changed to: 39°F
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 0 and column 1 by 26
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 0 and column 5 by 21
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 0 and column 6 by 11
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 1 and column 0 by 21
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 1 and column 6 by 36
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 2 and column 2 by 21
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 3 and column 0 by 36
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 3 and column 1 by 31
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 4 and column 4 by 26
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant heated at row 4 and column 6 by 26
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Parasite event triggered: Crow
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:02:12 INFO  GardenUIControllerLogger - Day: 19 Plant health updated at row 3 and column 1 from 74 to 72
+2025-03-06 17:02:17 INFO  GardenUIControllerLogger - Day: 19 Displayed optimal temperature
+2025-03-06 17:02:18 INFO  GardenUIControllerLogger - Day: 19 Displayed no parasites status
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 19 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 19 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 19 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 19 Day changed to: 20
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 20 Parasite event triggered: Crow
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 20 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 20 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 17:02:22 INFO  GardenUIControllerLogger - Day: 20 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 17:02:27 INFO  GardenUIControllerLogger - Day: 20 Displayed no parasites status
+2025-03-06 17:02:32 INFO  GardenUIControllerLogger - Day: 20 Parasite event triggered: Rat
+2025-03-06 17:02:32 INFO  GardenUIControllerLogger - Day: 20 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:02:32 INFO  GardenUIControllerLogger - Day: 20 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 17:02:32 INFO  GardenUIControllerLogger - Day: 20 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:02:37 INFO  GardenUIControllerLogger - Day: 20 Displayed no parasites status
+2025-03-06 17:02:42 INFO  GardenUIControllerLogger - Day: 20 Parasite event triggered: Rat
+2025-03-06 17:02:42 INFO  GardenUIControllerLogger - Day: 20 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:02:42 INFO  GardenUIControllerLogger - Day: 20 Plant health updated at row 1 and column 0 from 68 to 64
+2025-03-06 17:02:47 INFO  GardenUIControllerLogger - Day: 20 Displayed no parasites status
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 20 Plant image updated at row 0 and column 1 to largeOak.png
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 20 Plant image updated at row 0 and column 5 to largeMaple.png
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 20 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 20 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 20 Day changed to: 21
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed rain event with amount: 17mm
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Temperature changed to: 37°F
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 0 and column 1 by 28
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 0 and column 5 by 23
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 0 and column 6 by 13
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 1 and column 0 by 23
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 1 and column 6 by 38
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 2 and column 2 by 23
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 3 and column 0 by 38
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 3 and column 1 by 33
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 4 and column 4 by 28
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant heated at row 4 and column 6 by 28
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Parasite event triggered: Rat
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 17:02:52 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 17:02:57 INFO  GardenUIControllerLogger - Day: 21 Displayed sunny weather
+2025-03-06 17:02:57 INFO  GardenUIControllerLogger - Day: 21 Displayed optimal temperature
+2025-03-06 17:02:57 INFO  GardenUIControllerLogger - Day: 21 Displayed no parasites status
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Parasite event triggered: Aphids
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 0 and column 5 from 150 to 148
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 0 and column 5 to mediumTree.png
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 1 and column 0 from 68 to 66
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 4 and column 4 from 105 to 103
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 17:03:02 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 17:03:07 INFO  GardenUIControllerLogger - Day: 21 Displayed no parasites status
+2025-03-06 17:03:12 INFO  GardenUIControllerLogger - Day: 21 Parasite event triggered: Crow
+2025-03-06 17:03:12 INFO  GardenUIControllerLogger - Day: 21 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:03:12 INFO  GardenUIControllerLogger - Day: 21 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 17:03:12 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 17:03:17 INFO  GardenUIControllerLogger - Day: 21 Displayed no parasites status
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 0 and column 5 to largeMaple.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 21 Day changed to: 22
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 22 Parasite event triggered: Locust
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 17:03:22 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 0 and column 6 from 160 to 152
+2025-03-06 17:03:27 INFO  GardenUIControllerLogger - Day: 22 Displayed no parasites status
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Temperature changed to: 64°F
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant heated at row 0 and column 1 by 1
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 22' Displayed Sprinkler activated at row 0 and column 5 with water amount 4
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 22' Displayed Sprinkler activated at row 0 and column 6 with water amount 14
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 22' Displayed Sprinkler activated at row 1 and column 0 with water amount 4
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant heated at row 1 and column 6 by 11
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 22' Displayed Sprinkler activated at row 2 and column 2 with water amount 4
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant heated at row 3 and column 0 by 11
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant heated at row 3 and column 1 by 6
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant heated at row 4 and column 4 by 1
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant heated at row 4 and column 6 by 1
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Parasite event triggered: Crow
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 17:03:32 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 17:03:37 INFO  GardenUIControllerLogger - Day: 22 Displayed optimal temperature
+2025-03-06 17:03:37 INFO  GardenUIControllerLogger - Day: 22 Displayed no parasites status
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Parasite event triggered: Aphids
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 0 and column 1 from 150 to 148
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 0 and column 1 to mediumTree.png
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 0 and column 5 from 150 to 148
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 0 and column 5 to mediumTree.png
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant health updated at row 4 and column 4 from 105 to 103
+2025-03-06 17:03:42 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 17:03:47 INFO  GardenUIControllerLogger - Day: 22 Displayed no parasites status
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 0 and column 1 to largeOak.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 0 and column 5 to largeMaple.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 22 Day changed to: 23
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed rain event with amount: 36mm
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Parasite event triggered: Aphids
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 0 and column 1 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 0 and column 1 from 150 to 148
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 0 and column 1 to mediumTree.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 0 and column 5 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 0 and column 5 from 150 to 148
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 0 and column 5 to mediumTree.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 1 and column 0 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 1 and column 0 from 70 to 68
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 1 and column 6 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 1 and column 6 from 90 to 88
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 1 and column 6 to mediumTomato.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 3 and column 0 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 3 and column 0 from 90 to 88
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 3 and column 0 to mediumTomato.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 4 and column 4 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 4 and column 4 from 105 to 103
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 4 and column 4 to mediumRose.png
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 4 and column 6 by 2
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 4 and column 6 from 65 to 63
+2025-03-06 17:03:52 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 4 and column 6 to mediumJasmine.png
+2025-03-06 17:03:57 INFO  GardenUIControllerLogger - Day: 23 Displayed sunny weather
+2025-03-06 17:03:57 INFO  GardenUIControllerLogger - Day: 23 Displayed no parasites status
+2025-03-06 17:04:02 INFO  GardenUIControllerLogger - Day: 23 Parasite event triggered: Locust
+2025-03-06 17:04:02 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 17:04:02 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 0 and column 6 from 162 to 154
+2025-03-06 17:04:07 INFO  GardenUIControllerLogger - Day: 23 Displayed no parasites status
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Temperature changed to: 29°F
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 0 and column 1 by 36
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 0 and column 5 by 31
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 0 and column 6 by 21
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 1 and column 0 by 31
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 1 and column 6 by 46
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 2 and column 2 by 31
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 3 and column 0 by 46
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 3 and column 1 by 41
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 4 and column 4 by 36
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant heated at row 4 and column 6 by 36
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Parasite event triggered: Rat
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 1 and column 0 from 69 to 65
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 17:04:12 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 17:04:17 INFO  GardenUIControllerLogger - Day: 23 Displayed optimal temperature
+2025-03-06 17:04:17 INFO  GardenUIControllerLogger - Day: 23 Displayed no parasites status
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 0 and column 1 to largeOak.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 0 and column 5 to largeMaple.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 1 and column 6 to largeTomato.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 3 and column 0 to largeTomato.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 4 and column 4 to largeRose.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Plant image updated at row 4 and column 6 to largeJasmine.png
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 23 Day changed to: 24
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 24 Parasite event triggered: Crow
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 24 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 24 Plant health updated at row 3 and column 1 from 75 to 73
+2025-03-06 17:04:22 INFO  GardenUIControllerLogger - Day: 24 Plant image updated at row 3 and column 1 to mediumSunflower.png
+2025-03-06 17:04:27 INFO  GardenUIControllerLogger - Day: 24 Displayed no parasites status
+2025-03-06 17:04:32 INFO  GardenUIControllerLogger - Day: 24 Parasite event triggered: Crow
+2025-03-06 17:04:32 INFO  GardenUIControllerLogger - Day: 24 Displayed plant damaged at row 3 and column 1 by 2
+2025-03-06 17:04:32 INFO  GardenUIControllerLogger - Day: 24 Plant health updated at row 3 and column 1 from 74 to 72
+2025-03-06 17:04:37 INFO  GardenUIControllerLogger - Day: 24 Displayed no parasites status
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Parasite event triggered: Rat
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 17:04:42 INFO  GardenUIControllerLogger - Day: 24 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 17:04:47 INFO  GardenUIControllerLogger - Day: 24 Displayed no parasites status
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 24 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 24 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 24 Plant image updated at row 3 and column 1 to largeSunflower.png
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 24 Day changed to: 25
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed rain event with amount: 10mm
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Temperature changed to: 59°F
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 0 and column 1 by 6
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 0 and column 5 by 1
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: Label[id=currentDay, styleClass=label]'Day: 25' Displayed Sprinkler activated at row 0 and column 6 with water amount 9
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 1 and column 0 by 1
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 1 and column 6 by 16
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 2 and column 2 by 1
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 3 and column 0 by 16
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 3 and column 1 by 11
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 4 and column 4 by 6
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Displayed plant heated at row 4 and column 6 by 6
+2025-03-06 17:04:52 INFO  GardenUIControllerLogger - Day: 25 Parasite event triggered: Slugs
+2025-03-06 17:04:57 INFO  GardenUIControllerLogger - Day: 25 Displayed sunny weather
+2025-03-06 17:04:57 INFO  GardenUIControllerLogger - Day: 25 Displayed optimal temperature
+2025-03-06 17:04:57 INFO  GardenUIControllerLogger - Day: 25 Displayed no parasites status
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Parasite event triggered: Rat
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Displayed plant damaged at row 1 and column 0 by 4
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Plant health updated at row 1 and column 0 from 70 to 66
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Plant image updated at row 1 and column 0 to mediumLettuce.png
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Displayed plant damaged at row 2 and column 2 by 4
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Plant health updated at row 2 and column 2 from 65 to 61
+2025-03-06 17:05:02 INFO  GardenUIControllerLogger - Day: 25 Plant image updated at row 2 and column 2 to mediumCarrot.png
+2025-03-06 17:05:07 INFO  GardenUIControllerLogger - Day: 25 Displayed no parasites status
+2025-03-06 17:05:12 INFO  GardenUIControllerLogger - Day: 25 Parasite event triggered: Locust
+2025-03-06 17:05:12 INFO  GardenUIControllerLogger - Day: 25 Displayed plant damaged at row 0 and column 6 by 8
+2025-03-06 17:05:12 INFO  GardenUIControllerLogger - Day: 25 Plant health updated at row 0 and column 6 from 170 to 162
+2025-03-06 17:05:17 INFO  GardenUIControllerLogger - Day: 25 Displayed no parasites status
+2025-03-06 17:05:22 INFO  GardenUIControllerLogger - Day: 25 Plant image updated at row 1 and column 0 to largeLettuce.png
+2025-03-06 17:05:22 INFO  GardenUIControllerLogger - Day: 25 Plant image updated at row 2 and column 2 to largeCarrot.png
+2025-03-06 17:05:22 INFO  GardenUIControllerLogger - Day: 25 Day changed to: 26
+2025-03-06 17:05:52 INFO  GardenUIControllerLogger - Day: 25 Day changed to: 27
