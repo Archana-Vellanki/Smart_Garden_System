@@ -1,0 +1,83 @@
+.menu-button {
+    -fx-background-radius: 30px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 3);
+    -fx-focus-traversable: false;
+}
+
+/* Hide standard arrow or make it smaller */
+.menu-button > .arrow-button {
+    -fx-padding: 0;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: transparent;
+}
+
+/* Menu Item Styling */
+.context-menu {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 15px;
+    -fx-padding: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 3);
+}
+
+.menu-item {
+    -fx-background-radius: 10px;
+    -fx-padding: 8px 12px;
+}
+
+.menu-item:hover {
+    -fx-background-color: #e8f5e9;
+}
+
+.menu-item:focused {
+    -fx-background-color: #c8e6c9;
+}
+
+.menu-item .label {
+    -fx-font-size: 14px;
+    -fx-padding: 0 8px;
+}
+
+/* Tooltip styling */
+.tooltip {
+    -fx-background-color: rgba(50, 50, 50, 0.9);
+    -fx-text-fill: white;
+    -fx-background-radius: 6px;
+    -fx-padding: 5px 8px;
+    -fx-font-size: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+/* Tree Parts Styling */
+#treeTrunk, #rightBranch1, #rightBranch2, #leftBranch {
+    -fx-stroke-line-cap: round;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);
+    -fx-cursor: default;
+}
+
+/* Button-specific styling */
+#treeMenuButton {
+    -fx-background-color: #2E8B57;
+}
+
+#treeMenuButton:hover {
+    -fx-background-color: #3CB371;
+}
+
+#flowerMenuButton {
+    -fx-background-color: #FF69B4;
+}
+
+#flowerMenuButton:hover {
+    -fx-background-color: #FF1493;
+}
+
+#vegetableMenuButton {
+    -fx-background-color: #FF8C00;
+}
+
+#vegetableMenuButton:hover {
+    -fx-background-color: #FFA500;
+}
