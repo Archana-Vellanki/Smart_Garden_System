@@ -79,7 +79,7 @@ public class GardenUIController {
 
     int flag = 0;
     int logDay = 0;
-    DayChangeEvent dayChangeEvent;
+    DayUpdateEvent dayChangeEvent;
 
 
     private static class RainDrop {
@@ -837,7 +837,7 @@ public class GardenUIController {
     public void handleDayChangeEvent(DayUpdateEvent event) {
 
         logger.info("Day: " + logDay + " Day changed to: " + event.getDay());
-        dayUpdateEvent = event;
+        dayChangeEvent = event;
         Platform.runLater(() -> {
             logDay = event.getDay();
             currentDay.setText("Day: " + event.getDay());
