@@ -48,7 +48,7 @@ public class PesticideSystem implements Runnable{
                     parasite.affectPlant(plant);
                     logger.info("Day: " + currentDay + " Pesticide system applied {} to {} at position ({}, {})", parasite.getName(), plant.getName(), i, j);
 //                    Heal the plant by half the damage of the parasite
-                    plant.healPlant(parasite.getDamage()/2);
+                    //plant.healPlant(parasite.getDamage()/2);
                 }
             }
         }

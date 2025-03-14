@@ -23,8 +23,13 @@ public class GardenGrid {
     }
 
     private void handlePlantDeath(Plant plant) {
-        EventBus.publish("PlantDeathUIChangeEvent", plant);
-        plantGrid[plant.getRow()][plant.getCol()] = null;
+        if (plant != null) {
+            int row = plant.getRow();
+            int col = plant.getCol();
+            System.out.println("Removing dead plant: " + plant.getName() + " at (" + row + ", " + col + ")");
+            EventBus.publish("PlantDeathUIChangeEvent", plant);
+            plantGrid[row][col] = null;  //Remove the plant from the grid
+        }
     }
 
 

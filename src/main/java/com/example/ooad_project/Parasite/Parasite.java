@@ -26,6 +26,7 @@ public abstract class Parasite {
     public abstract void affectPlant(Plant plant);
 
 
+
     protected void publishDamageEvent(ParasiteDamageEvent event) {
         EventBus.publish("ParasiteDamageEvent", event);
     }

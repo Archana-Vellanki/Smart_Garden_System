@@ -21,7 +21,7 @@ public class DaySystem {
         logger.info("Day System Initialized");
         scheduler = Executors.newScheduledThreadPool(1);
         currentDay = 0;  // Start at Day 0
-        scheduler.scheduleAtFixedRate(this::endOfDayActions, 0, 30, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this::endOfDayActions, 0, 5, TimeUnit.SECONDS);
     }
 
     public static synchronized DaySystem getInstance() {
@@ -50,7 +50,7 @@ public class DaySystem {
                     Plant plant = gardenGrid.getPlant(i, j);
                     if (plant != null) {
                         plant.setIsWatered(false);
-                        plant.healPlant(6);
+                        plant.healPlant(1);
                         plant.setCurrentWater(0);
                     }
                 }

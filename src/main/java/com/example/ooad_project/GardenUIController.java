@@ -101,18 +101,18 @@ public class GardenUIController {
     private final Random random = new Random();
     private GardenGrid gardenGrid;
 
-//    This is the plant manager that will be used to get the plant data
+    //    This is the plant manager that will be used to get the plant data
 //    from the JSON file, used to populate the menu buttons
     private PlantManager plantManager = PlantManager.getInstance();
 
-//    Same as above but for the parasites
+    //    Same as above but for the parasites
     private ParasiteManager parasiteManager = ParasiteManager.getInstance();
 
     public GardenUIController() {
         gardenGrid = GardenGrid.getInstance();
     }
 
-//    This is the method that will print the grid
+    //    This is the method that will print the grid
     @FXML
     public void printGrid(){
         gardenGrid.printGrid();
@@ -138,7 +138,7 @@ public class GardenUIController {
     }
 
 
-//    This is the UI Logger for the GardenUIController
+    //    This is the UI Logger for the GardenUIController
 //    This is used to log events that happen in the UI
     private Logger log4jLogger = LogManager.getLogger("GardenUIControllerLogger");
 
@@ -327,6 +327,23 @@ public class GardenUIController {
 
 
     private void handlePlantDeathUIChangeEvent(Plant plant){
+        Platform.runLater(() -> {
+            int row = plant.getRow();
+            int col = plant.getCol();
+            System.out.println("🪦The dead plant was removed from the garden (" + row + "," + col + ")");
+
+            boolean removed = gridPane.getChildren().removeIf(node -> {
+                Integer nodeRow = GridPane.getRowIndex(node);
+                Integer nodeCol = GridPane.getColumnIndex(node);
+                boolean match = nodeRow != null && nodeCol != null && nodeRow == row && nodeCol == col;
+                //if (match) System.out.println("✅ Removed UI node at (" + row + "," + col + ")");
+                return match;
+            });
+
+            if (!removed) {
+                System.out.println("❌ No UI node found at (" + row + "," + col + ")");
+            }
+        });
 
     }
 
@@ -382,34 +399,34 @@ public class GardenUIController {
         GridPane.setValignment(pane, VPos.CENTER);
     }
 
-//    Function that is called when the parasite damage event is published
-private void handleParasiteDamageEvent(ParasiteDamageEvent event) {
+    //    Function that is called when the parasite damage event is published
+    private void handleParasiteDamageEvent(ParasiteDamageEvent event) {
 
         logger.info("Day: " + logDay + " Displayed plant damaged at row " + event.getRow() + " and column " + event.getCol() + " by " + event.getDamage());
 
-    Platform.runLater(() -> {
-        int row = event.getRow();
-        int col = event.getCol();
-        int damage = event.getDamage();
+        Platform.runLater(() -> {
+            int row = event.getRow();
+            int col = event.getCol();
+            int damage = event.getDamage();
 
-        // Create a label with the damage value prefixed by a minus sign
-        Label damageLabel = new Label("-" + String.valueOf(damage));
-        damageLabel.setTextFill(javafx.scene.paint.Color.RED);
-        damageLabel.setStyle("-fx-font-weight: bold;");
+            // Create a label with the damage value prefixed by a minus sign
+            Label damageLabel = new Label("-" + String.valueOf(damage));
+            damageLabel.setTextFill(javafx.scene.paint.Color.RED);
+            damageLabel.setStyle("-fx-font-weight: bold;");
 
-        // Set the label's position in the grid
-        GridPane.setRowIndex(damageLabel, row);
-        GridPane.setColumnIndex(damageLabel, col);
-        GridPane.setHalignment(damageLabel, HPos.RIGHT);  // Align to right
-        GridPane.setValignment(damageLabel, VPos.TOP);    // Align to top
-        gridPane.getChildren().add(damageLabel);
+            // Set the label's position in the grid
+            GridPane.setRowIndex(damageLabel, row);
+            GridPane.setColumnIndex(damageLabel, col);
+            GridPane.setHalignment(damageLabel, HPos.RIGHT);  // Align to right
+            GridPane.setValignment(damageLabel, VPos.TOP);    // Align to top
+            gridPane.getChildren().add(damageLabel);
 
-        // Remove the label after a pause
-        PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Set duration to 5 seconds
-        pause.setOnFinished(_ -> gridPane.getChildren().remove(damageLabel));
-        pause.play();
-    });
-}
+            // Remove the label after a pause
+            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Set duration to 5 seconds
+            pause.setOnFinished(_ -> gridPane.getChildren().remove(damageLabel));
+            pause.play();
+        });
+    }
 
 
     private void handleTemperatureHeatEvent(TemperatureHeatEvent event) {
@@ -432,7 +449,7 @@ private void handleParasiteDamageEvent(ParasiteDamageEvent event) {
             GridPane.setValignment(heatImageView, VPos.TOP); // Align to top
             gridPane.getChildren().add(heatImageView);
 
-            PauseTransition pause = new PauseTransition(Duration.seconds(5)); // Set duration to 10 seconds
+            PauseTransition pause = new PauseTransition(Duration.seconds(10)); // Set duration to 10 seconds
             pause.setOnFinished(_ -> gridPane.getChildren().remove(heatImageView));
             pause.play();
         });
@@ -467,59 +484,59 @@ private void handleParasiteDamageEvent(ParasiteDamageEvent event) {
             pause.play();
         });
     }
-//  Function that is called when the sprinkler event is published
-private void handleSprinklerEvent(SprinklerEvent event) {
+    //  Function that is called when the sprinkler event is published
+    private void handleSprinklerEvent(SprinklerEvent event) {
 
-    logger.info("Day: " + currentDay + " Displayed Sprinkler activated at row " + event.getRow() + " and column " + event.getCol() + " with water amount " + event.getWaterNeeded());
+        logger.info("Day: " + currentDay + " Displayed Sprinkler activated at row " + event.getRow() + " and column " + event.getCol() + " with water amount " + event.getWaterNeeded());
 
-    Platform.runLater(() -> {
-        int row = event.getRow();
-        int col = event.getCol();
+        Platform.runLater(() -> {
+            int row = event.getRow();
+            int col = event.getCol();
 
-        // Create a group to hold animated droplets
-        Group sprinklerAnimationGroup = new Group();
+            // Create a group to hold animated droplets
+            Group sprinklerAnimationGroup = new Group();
 
-        // Add multiple lines or droplets to simulate water spray
-        int numDroplets = 10; // Number of water droplets
-        double tileWidth = 40; // Width of the grid cell
-        double tileHeight = 40; // Height of the grid cell
+            // Add multiple lines or droplets to simulate water spray
+            int numDroplets = 10; // Number of water droplets
+            double tileWidth = 40; // Width of the grid cell
+            double tileHeight = 40; // Height of the grid cell
 
-        for (int i = 0; i < numDroplets; i++) {
-            // Calculate evenly spaced positions within the tile
-            double positionX = (i % Math.sqrt(numDroplets)) * (tileWidth / Math.sqrt(numDroplets));
-            double positionY = (i / Math.sqrt(numDroplets)) * (tileHeight / Math.sqrt(numDroplets));
+            for (int i = 0; i < numDroplets; i++) {
+                // Calculate evenly spaced positions within the tile
+                double positionX = (i % Math.sqrt(numDroplets)) * (tileWidth / Math.sqrt(numDroplets));
+                double positionY = (i / Math.sqrt(numDroplets)) * (tileHeight / Math.sqrt(numDroplets));
 
-            Circle droplet = new Circle();
-            droplet.setRadius(3); // Radius of the droplet
-            droplet.setFill(Color.BLUE); // Color of the droplet
+                Circle droplet = new Circle();
+                droplet.setRadius(3); // Radius of the droplet
+                droplet.setFill(Color.BLUE); // Color of the droplet
 
-            // Set starting position for the droplet
-            droplet.setCenterX(positionX);
-            droplet.setCenterY(positionY);
+                // Set starting position for the droplet
+                droplet.setCenterX(positionX);
+                droplet.setCenterY(positionY);
 
-            // Create a transition for each droplet
-            TranslateTransition transition = new TranslateTransition();
-            transition.setNode(droplet);
-            transition.setDuration(Duration.seconds(0.9)); // Droplet animation duration
-            transition.setByX(Math.random() * 20 - 2.5); // Small random spread on X-axis
-            transition.setByY(Math.random() * 20);      // Small downward spread on Y-axis
-            transition.setCycleCount(1);
-            // Add to group and start animation
-            sprinklerAnimationGroup.getChildren().add(droplet);
-            transition.play();
-        }
+                // Create a transition for each droplet
+                TranslateTransition transition = new TranslateTransition();
+                transition.setNode(droplet);
+                transition.setDuration(Duration.seconds(0.9)); // Droplet animation duration
+                transition.setByX(Math.random() * 20 - 2.5); // Small random spread on X-axis
+                transition.setByY(Math.random() * 20);      // Small downward spread on Y-axis
+                transition.setCycleCount(1);
+                // Add to group and start animation
+                sprinklerAnimationGroup.getChildren().add(droplet);
+                transition.play();
+            }
 
-        // Add animation group to the grid cell
-        GridPane.setRowIndex(sprinklerAnimationGroup, row);
-        GridPane.setColumnIndex(sprinklerAnimationGroup, col);
-        gridPane.getChildren().add(sprinklerAnimationGroup);
+            // Add animation group to the grid cell
+            GridPane.setRowIndex(sprinklerAnimationGroup, row);
+            GridPane.setColumnIndex(sprinklerAnimationGroup, col);
+            gridPane.getChildren().add(sprinklerAnimationGroup);
 
-        // Remove animation after it completes
-        PauseTransition pause = new PauseTransition(Duration.seconds(3)); // Total duration for animation to persist
-        pause.setOnFinished(_ -> gridPane.getChildren().remove(sprinklerAnimationGroup));
-        pause.play();
-    });
-}
+            // Remove animation after it completes
+            PauseTransition pause = new PauseTransition(Duration.seconds(3)); // Total duration for animation to persist
+            pause.setOnFinished(_ -> gridPane.getChildren().remove(sprinklerAnimationGroup));
+            pause.play();
+        });
+    }
 
     private void initializeLogger() {
 //        LoggerAppender.setController(this);
@@ -664,7 +681,7 @@ private void handleSprinklerEvent(SprinklerEvent event) {
 //        System.out.println("Selected parasite: " + parasite.getName() + " with damage: " + parasite.getDamage());
     }
 
-//
+    //
     @FXML
     public void showPestOnGrid() {}
 

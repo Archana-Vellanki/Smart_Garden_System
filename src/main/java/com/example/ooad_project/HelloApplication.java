@@ -77,7 +77,7 @@ public class HelloApplication extends Application {
         timeline2.setCycleCount(Timeline.INDEFINITE);
         timeline2.play();
 
-        // Schedule parasite every 20 seconds
+        // Schedule parasite every 10 seconds
         Timeline timeline3 = new Timeline(new KeyFrame(Duration.seconds(10), ev -> {
             List<Parasite> parasites = parasiteManager.getParasites();
             if (!parasites.isEmpty()) {
