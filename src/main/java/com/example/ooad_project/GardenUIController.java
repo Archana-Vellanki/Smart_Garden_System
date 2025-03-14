@@ -1,6 +1,6 @@
 package com.example.ooad_project;
 
-import com.example.ooad_project.API.GardenSimulationAPI;
+import com.example.ooad_project.API.SmartGardenAPI;
 import com.example.ooad_project.Events.*;
 import com.example.ooad_project.Parasite.Parasite;
 import com.example.ooad_project.Parasite.ParasiteManager;
@@ -14,7 +14,6 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -39,7 +38,6 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 public class GardenUIController {
 
@@ -80,7 +78,8 @@ public class GardenUIController {
 
     int flag = 0;
     int logDay = 0;
-    DayChangeEvent dayChangeEvent;
+    DayUpdateEvent dayUpdateEvent;
+
     private static class RainDrop {
         double x, y, speed;
 
@@ -95,8 +94,6 @@ public class GardenUIController {
     private Canvas rainCanvas;
     private List<RainDrop> rainDrops;
     private AnimationTimer rainAnimation;
-
-
 
     private final Random random = new Random();
     private GardenGrid gardenGrid;
@@ -129,10 +126,9 @@ public class GardenUIController {
 
     private static final Logger logger = LogManager.getLogger("GardenUIControllerLogger");
 
-
     @FXML
     public void getPLantButtonPressed() {
-        GardenSimulationAPI api = new GardenSimulationAPI();
+        SmartGardenAPI api = new SmartGardenAPI();
 //        api.getPlants();
         api.getState();
     }
@@ -157,8 +153,6 @@ public class GardenUIController {
 //         Load the background image
 //         Load the background image
         Image backgroundImage = new Image(getClass().getResourceAsStream("/images/backgroundImage.jpg"));
-
-
 
         // Create an ImageView
         ImageView imageView = new ImageView(backgroundImage);
@@ -204,26 +198,22 @@ public class GardenUIController {
 
         log4jLogger.info("GardenUIController initialized");
 
-
-
         EventBus.subscribe("RainEvent", event -> changeRainUI((RainEvent) event));
-        EventBus.subscribe("DisplayParasiteEvent", event -> handleDisplayParasiteEvent((DisplayParasiteEvent) event));
-        EventBus.subscribe("PlantImageUpdateEvent", event -> handlePlantImageUpdateEvent((PlantImageUpdateEvent) event));
-        EventBus.subscribe("DayChangeEvent",event -> handleDayChangeEvent((DayChangeEvent) event));
+        EventBus.subscribe("ParasiteDisplayEvent", event -> handleDisplayParasiteEvent((ParasiteDisplayEvent) event));
+        EventBus.subscribe("PlantImageUpdateEvent",
+                event -> handlePlantImageUpdateEvent((PlantImageUpdateEvent) event));
+        EventBus.subscribe("DayUpdateEvent", event -> handleDayChangeEvent((DayUpdateEvent) event));
         EventBus.subscribe("TemperatureEvent", event -> changeTemperatureUI((TemperatureEvent) event));
         EventBus.subscribe("ParasiteEvent", event -> changeParasiteUI((ParasiteEvent) event));
 
 //      Gives you row, col and waterneeded
         EventBus.subscribe("SprinklerEvent", event -> handleSprinklerEvent((SprinklerEvent) event));
 
-
 //        When plant is cooled by x
-        EventBus.subscribe("TemperatureCoolEvent", event -> handleTemperatureCoolEvent((TemperatureCoolEvent) event));
-
+        EventBus.subscribe("CoolTemperatureEvent", event -> handleTemperatureCoolEvent((CoolTemperatureEvent) event));
 
 //      When plant is heated by x
-        EventBus.subscribe("TemperatureHeatEvent", event -> handleTemperatureHeatEvent((TemperatureHeatEvent) event));
-
+        EventBus.subscribe("HeatTemperatureEvent", event -> handleTemperatureHeatEvent((HeatTemperatureEvent) event));
 
 //        When plant is damaged by x
 //        Includes -> row, col, damage
@@ -241,8 +231,6 @@ public class GardenUIController {
     // Start rain animation
     private void startRainAnimation() {
 
-
-        //logger.info("Srivarsha");
         GraphicsContext gc = rainCanvas.getGraphicsContext2D();
 
         // Create initial raindrops
@@ -295,8 +283,6 @@ public class GardenUIController {
         pauseRain.play();
     }
 
-
-
     public void createColoredGrid(GridPane gridPane, int numRows, int numCols) {
         double cellWidth = 80;  // Width of each cell
         double cellHeight = 80; // Height of each cell
@@ -324,7 +310,6 @@ public class GardenUIController {
             }
         }
     }
-
 
     private void handlePlantDeathUIChangeEvent(Plant plant){
         Platform.runLater(() -> {
@@ -428,8 +413,7 @@ public class GardenUIController {
         });
     }
 
-
-    private void handleTemperatureHeatEvent(TemperatureHeatEvent event) {
+    private void handleTemperatureHeatEvent(HeatTemperatureEvent event) {
 
         logger.info("Day: " + logDay + " Displayed plant heated at row " + event.getRow() + " and column " + event.getCol() + " by " + event.getTempDiff());
 
@@ -458,8 +442,7 @@ public class GardenUIController {
 
 //    Function that is called when the temperature cool event is published
 
-    private void handleTemperatureCoolEvent(TemperatureCoolEvent event) {
-
+    private void handleTemperatureCoolEvent(CoolTemperatureEvent event) {
 
         logger.info("Day: " + currentDay + " Displayed plant cooled at row " + event.getRow() + " and column " + event.getCol() + " by " + event.getTempDiff());
 
@@ -546,10 +529,10 @@ public class GardenUIController {
 //        Platform.runLater(() -> logTextArea.appendText(text + "\n"));
 //    }
 
-    public void handleDayChangeEvent(DayChangeEvent event) {
+    public void handleDayChangeEvent(DayUpdateEvent event) {
 
         logger.info("Day: " + logDay + " Day changed to: " + event.getDay());
-        dayChangeEvent = event;
+        dayUpdateEvent = event;
         Platform.runLater(() -> {
             logDay = event.getDay();
             currentDay.setText("Day: " + event.getDay());
@@ -558,7 +541,8 @@ public class GardenUIController {
 
     private void handlePlantImageUpdateEvent(PlantImageUpdateEvent event) {
 
-        logger.info("Day: " + logDay + " Plant image updated at row " + event.getPlant().getRow() + " and column " + event.getPlant().getCol() + " to " + event.getPlant().getCurrentImage());
+        logger.info("Day: " + logDay + " Plant image updated at row " + event.getPlant().getRow() + " and column "
+                + event.getPlant().getCol() + " to " + event.getPlant().getCurrentImage());
 
 //        Be sure to wrap the code in Platform.runLater() to update the UI
 //        This is because the event is being handled in a different thread
@@ -592,8 +576,7 @@ public class GardenUIController {
         });
     }
 
-
-    private void handleDisplayParasiteEvent(DisplayParasiteEvent event) {
+    private void handleDisplayParasiteEvent(ParasiteDisplayEvent event) {
 
         logger.info("Day: " + logDay + " Parasite displayed at row " + event.getRow() + " and column " + event.getColumn() + " with name " + event.getParasite().getName());
 
@@ -614,7 +597,6 @@ public class GardenUIController {
 //        gridPane.add(parasiteImageView, col, row);
 //        System.out.println("Rat placed at row " + row + " and column " + col);
 
-
         // Place the parasite image on the grid in the same cell but with offset
         GridPane.setRowIndex(parasiteImageView, row);
         GridPane.setColumnIndex(parasiteImageView, col);
@@ -622,14 +604,10 @@ public class GardenUIController {
         GridPane.setValignment(parasiteImageView, VPos.BOTTOM); // Align to bottom
         gridPane.getChildren().add(parasiteImageView);
 
-
-
-
         // Create a pause transition of 5 seconds before removing the rat image
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
 
         String imagePestControlName = "/images/pControl.png";
-
 
         pause.setOnFinished(_ -> {
             pestControl(imagePestControlName, row, col);
@@ -740,7 +718,6 @@ public class GardenUIController {
             rainStatusLabel.setText("Sunny");
         });
     }
-
 
     private void changeTemperatureUI(TemperatureEvent event) {
 
@@ -901,7 +878,6 @@ public class GardenUIController {
             vegetableMenuButton.getItems().add(menuItem);
         }
 
-
     }
 
     private CustomMenuItem createImageMenuItem(String name, String imagePath) {
@@ -941,7 +917,6 @@ public class GardenUIController {
 
         Group root = new Group();
         root.getChildren().add(canvas);
-
 
         logger.info("Day: " + logDay + " Adding plant to grid: " + name + " with image: " + imageFile);
 

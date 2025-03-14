@@ -1,6 +1,6 @@
 package com.example.ooad_project;
 
-import com.example.ooad_project.API.GardenSimulationAPI;
+import com.example.ooad_project.API.SmartGardenAPI;
 import com.example.ooad_project.Parasite.Parasite;
 import com.example.ooad_project.SubSystems.PesticideSystem;
 import com.example.ooad_project.SubSystems.TemperatureSystem;
@@ -53,7 +53,7 @@ public class HelloApplication extends Application {
 //    This is for testing the API
 //    I assume Prof is going to do something similar
     private void runAPIScheduledTasks() {
-        GardenSimulationAPI api = new GardenSimulationAPI();
+        SmartGardenAPI api = new SmartGardenAPI();
         api.initializeGarden();
         Random rand = new Random();
 
@@ -62,7 +62,7 @@ public class HelloApplication extends Application {
 
 //        Schedule rain every 15 seconds
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(60), ev -> {
-//            the api.rain is from the GardenSimulationAPI
+//            the api.rain is from the SmartGardenAPI
             api.rain(rand.nextInt(40));
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -71,7 +71,7 @@ public class HelloApplication extends Application {
 
 //        Schedule temperature every 10 seconds
         Timeline timeline2 = new Timeline(new KeyFrame(Duration.seconds(40), ev -> {
-//            the api.temperature is from the GardenSimulationAPI
+//            the api.temperature is from the SmartGardenAPI
             api.temperature(rand.nextInt(70));
         }));
         timeline2.setCycleCount(Timeline.INDEFINITE);

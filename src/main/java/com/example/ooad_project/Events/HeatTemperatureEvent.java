@@ -1,13 +1,14 @@
 package com.example.ooad_project.Events;
 
-public class TemperatureCoolEvent {
+public class HeatTemperatureEvent {
 
     int tempDiff;
     int row;
     int col;
 
 
-    public TemperatureCoolEvent(int row, int col, int tempDiff) {
+
+    public HeatTemperatureEvent(int row, int col, int tempDiff) {
 
         this.row = row;
         this.col = col;
@@ -25,6 +26,4 @@ public class TemperatureCoolEvent {
     public int getTempDiff() {
         return tempDiff;
     }
-
-
 }

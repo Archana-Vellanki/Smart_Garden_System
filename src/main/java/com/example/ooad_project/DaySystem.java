@@ -1,6 +1,6 @@
 package com.example.ooad_project;
 
-import com.example.ooad_project.Events.DayChangeEvent;
+import com.example.ooad_project.Events.DayUpdateEvent;
 import com.example.ooad_project.Plant.Plant;
 import com.example.ooad_project.ThreadUtils.EventBus;
 import org.apache.logging.log4j.LogManager;
@@ -57,7 +57,7 @@ public class DaySystem {
             }
 
             incrementDay();
-            EventBus.publish("DayChangeEvent", new DayChangeEvent(getCurrentDay()));
+            EventBus.publish("DayUpdateEvent", new DayUpdateEvent(getCurrentDay()));
             logger.info("Changed day to: {}", getCurrentDay());
 
         } catch (Exception e) {

@@ -1,6 +1,6 @@
 package com.example.ooad_project.SubSystems;
 
-import com.example.ooad_project.Events.DayChangeEvent;
+import com.example.ooad_project.Events.DayUpdateEvent;
 import com.example.ooad_project.GardenGrid;
 import com.example.ooad_project.Plant.Plant;
 import com.example.ooad_project.ThreadUtils.EventBus;
@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.example.ooad_project.Events.SprinklerEvent;
 
-import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WateringSystem implements Runnable {
@@ -36,13 +35,13 @@ public class WateringSystem implements Runnable {
 //        When a rain event is published, the watering system will handle it
         EventBus.subscribe("RainEvent", event -> handleRain((RainEvent) event));
         EventBus.subscribe("SprinklerActivationEvent", event -> sprinkle());
-        EventBus.subscribe("DayChangeEvent", event -> handleDayChangeEvent((DayChangeEvent) event));
+        EventBus.subscribe("DayUpdateEvent", event -> handleDayChangeEvent((DayUpdateEvent) event));
         //        Get the garden grid instance
 //        This is the grid that holds all the plants
         this.gardenGrid = GardenGrid.getInstance();
     }
 
-    private void handleDayChangeEvent(DayChangeEvent event) {
+    private void handleDayChangeEvent(DayUpdateEvent event) {
         this.currentDay = event.getDay(); // Update currentDay
     }
 

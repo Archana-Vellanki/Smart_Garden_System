@@ -1,12 +1,11 @@
 package com.example.ooad_project.SubSystems;
 
-import com.example.ooad_project.Events.DayChangeEvent;
-import com.example.ooad_project.Events.DisplayParasiteEvent;
+import com.example.ooad_project.Events.DayUpdateEvent;
+import com.example.ooad_project.Events.ParasiteDisplayEvent;
 import com.example.ooad_project.Events.ParasiteEvent;
 import com.example.ooad_project.GardenGrid;
 import com.example.ooad_project.Parasite.Parasite;
 import com.example.ooad_project.Plant.Plant;
-import com.example.ooad_project.Plant.PlantManager;
 import com.example.ooad_project.ThreadUtils.EventBus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,12 +20,12 @@ public class PesticideSystem implements Runnable{
 //        System.out.println("Pesticide System Initialized");
         logger.info("Pesticide System Initialized");
 
-        EventBus.subscribe("DayChangeEvent", event -> handleDayChangeEvent((DayChangeEvent) event));
-//        Subscribe to the ParasiteEvent that will be published by the GardenSimulationAPI
+        EventBus.subscribe("DayUpdateEvent", event -> handleDayChangeEvent((DayUpdateEvent) event));
+//        Subscribe to the ParasiteEvent that will be published by the SmartGardenAPI
         EventBus.subscribe("ParasiteEvent", event -> handlePesticideEvent((ParasiteEvent) event));
     }
 
-    private void handleDayChangeEvent(DayChangeEvent event) {
+    private void handleDayChangeEvent(DayUpdateEvent event) {
         this.currentDay = event.getDay(); // Update currentDay
     }
 
@@ -42,7 +41,7 @@ public class PesticideSystem implements Runnable{
 
 //                    Publish an event to display the parasite on the plant
 //                    This is for the JavaFX GUI
-                    EventBus.publish("Day: " + currentDay + " DisplayParasiteEvent", new DisplayParasiteEvent(parasite, i, j));
+                    EventBus.publish("Day: " + currentDay + " ParasiteDisplayEvent", new ParasiteDisplayEvent(parasite, i, j));
 
 //                    Apply the parasite to the plant
                     parasite.affectPlant(plant);

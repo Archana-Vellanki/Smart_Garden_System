@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class GardenSimulationAPI implements GardenSimulationAPIInterface {
+public class SmartGardenAPI implements SmartGardenAPIInterface {
     private static final Logger logger = LogManager.getLogger("GardenSimulationAPILogger");
     private ParasiteManager parasiteManager = ParasiteManager.getInstance();
 

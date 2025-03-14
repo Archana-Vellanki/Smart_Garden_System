@@ -15,14 +15,14 @@ public class TemperatureSystem implements Runnable{
 
     public TemperatureSystem() {
 //        Subscribe to the TemperatureEvent
-//        Published from GardenSimulationAPI
+//        Published from SmartGardenAPI
         this.gardenGrid = GardenGrid.getInstance();
         logger.info("Temperature System Initialized");
-        EventBus.subscribe("DayChangeEvent", event -> handleDayChangeEvent((DayChangeEvent) event));
+        EventBus.subscribe("DayUpdateEvent", event -> handleDayChangeEvent((DayUpdateEvent) event));
         EventBus.subscribe("TemperatureEvent", event -> handleTemperatureEvent((TemperatureEvent) event));
     }
 
-    private void handleDayChangeEvent(DayChangeEvent event) {
+    private void handleDayChangeEvent(DayUpdateEvent event) {
         this.currentDay = event.getDay(); // Update currentDay
     }
 
@@ -36,12 +36,12 @@ public class TemperatureSystem implements Runnable{
                 if (plant != null) {
                     int tempDiff = currentTemperature - plant.getTemperatureRequirement();
                     if (tempDiff > 0) {
-                        EventBus.publish("Day: " + currentDay + " TemperatureCoolEvent", new TemperatureCoolEvent(plant.getRow(), plant.getCol(), Math.abs(tempDiff)));
+                        EventBus.publish("Day: " + currentDay + " CoolTemperatureEvent", new CoolTemperatureEvent(plant.getRow(), plant.getCol(), Math.abs(tempDiff)));
                         logger.info("Day: " + currentDay + " Temperature system cooled {} at position ({}, {}) by {} degrees F.", plant.getName(), i, j, Math.abs(tempDiff));
                         EventBus.publish("SprinklerEvent", new SprinklerEvent(plant.getRow(), plant.getCol(), tempDiff));
                         logger.info("Day: " + currentDay + " Sprinklers started at position ({}, {}) to cool down the plant.", i, j);
                     } else if (tempDiff < 0) {
-                        EventBus.publish("TemperatureHeatEvent", new TemperatureHeatEvent(plant.getRow(), plant.getCol(), Math.abs(tempDiff)));
+                        EventBus.publish("HeatTemperatureEvent", new HeatTemperatureEvent(plant.getRow(), plant.getCol(), Math.abs(tempDiff)));
                         logger.info("Day: " + currentDay + " Temperature system heated {} at position ({}, {}) by {} degrees F.", plant.getName(), i, j, Math.abs(tempDiff));
                     } else {
                         logger.info("Day: " + currentDay + " {} at position ({}, {}) is at optimal temperature.", plant.getName(), i, j);

@@ -2,7 +2,7 @@ package com.example.ooad_project.API;
 
 import java.util.Map;
 
-public interface GardenSimulationAPIInterface {
+public interface SmartGardenAPIInterface {
     void initializeGarden();
     Map<String, Object> getPlants();
     void rain(int amount);
