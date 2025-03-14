@@ -12,13 +12,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Polygon?>
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ooad_project.GardenUIController">
     <!-- Main UI Layout -->
-    <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1187.0">
+    <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1187.0">
         <children>
             <!-- VBox for centering the GridPane -->
-            <VBox alignment="CENTER" prefHeight="641.0" prefWidth="1187.0" spacing="10" >
-                <HBox alignment="CENTER" spacing="10">
+            <VBox alignment="CENTER" prefHeight="641.0" prefWidth="1187.0" spacing="10" AnchorPane.topAnchor="30.0">
+                <HBox alignment="CENTER" spacing="20">
                     <GridPane fx:id="gridPane" gridLinesVisible="true"
                               style=" -fx-background-color: rgba(144, 238, 144, 0.5);">
                         <!-- Column and Row constraints will be added dynamically in the controller -->
@@ -27,25 +29,24 @@
             </VBox>
 
             <!-- VBox for the day label at the top left -->
-            <VBox alignment="CENTER" spacing="10"
-                  AnchorPane.topAnchor="10.0"
-                  AnchorPane.leftAnchor="0.0"
-                  AnchorPane.rightAnchor="0.0">
+            <StackPane alignment="CENTER"
+                       AnchorPane.bottomAnchor="60.0"
+                       AnchorPane.leftAnchor="150.0"
+                       AnchorPane.rightAnchor="0.0">
 
-                <HBox alignment="CENTER" spacing="10">
-                    <Label fx:id="currentDay" text="Day: 0"
-                           style="
-                 -fx-background-color: rgba(255,255,255,0.7);
-                 -fx-padding: 8 12;
-                 -fx-border-radius: 10;
-                 -fx-background-radius: 10;
-                 -fx-font-size: 18;
-                 -fx-text-fill: #333;
-                 -fx-font-weight: bold;
-                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 2, 2);
-               " />
-                </HBox>
-            </VBox>
+                <!-- Triangle shape as background -->
+                <Polygon fill="#D54496"
+                         points="0,80, 100,0, 200,80"
+                         style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 2, 2);">
+                </Polygon>
+
+                <!-- Day label positioned on top of the triangle -->
+                <Label fx:id="currentDay" text="Day: 0"
+                       style="-fx-font-size: 18;
+                  -fx-text-fill: white;
+                  -fx-font-weight: bold;">
+                </Label>
+            </StackPane>
 
 
 
@@ -68,32 +69,58 @@
                         prefWidth="60.0"
                         style="-fx-background-radius: 30px; -fx-background-color: #FF8C00; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 0;"/>
 
-            <VBox layoutY="20.0" spacing="5" AnchorPane.leftAnchor="20.0">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WEATHER">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
+            <VBox layoutY="35.0" spacing="5" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="280.0">
+                <!-- Weather Title with enhanced effects -->
+
+                <Text strokeType="OUTSIDE" strokeWidth="1.0" text="Weather" style="-fx-fill: #ff4500; /* Orange text */
+         -fx-font-size: 20px;
+
+         -fx-font-family: 'Arial Black', Gadget, sans-serif;
+         -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 4, 0, 0, 1);">
                 </Text>
-                <Label fx:id="rainStatusLabel" text="Sunny" style="-fx-font-family: serif; -fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: green;"/>
+                    <StackPane>
+                    <!-- Background with rounded corners and gradient -->
+                    <Rectangle arcWidth="10.0" arcHeight="10.0" width="150.0" height="30.0" AnchorPane.leftAnchor="100.0"
+                               style="-fx-fill: linear-gradient(to bottom, rgba(255,255,220,0.85), rgba(255,240,180,0.85));
+                         -fx-stroke: #FFA500;
+                         -fx-stroke-width: 2;
+                         -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 2);" />
+
+
+                    <Label fx:id="rainStatusLabel" text="Sunny"
+                           style="-fx-font-family: 'Verdana', sans-serif;
+                      -fx-font-size: 18px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #006400; /* Dark green */
+                      -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.8), 1, 0, 0, 0) /* Subtle text glow */" />
+                </StackPane>
+                <!-- Create a background container for the entire weather section -->
+
+
+                    <!-- Weather Label with more appealing style -->
+
+
             </VBox>
 
-            <VBox layoutY="230.0" spacing="5" AnchorPane.leftAnchor="20.0">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TEMPERATURE">
+            <VBox layoutY="350.0" spacing="5" AnchorPane.leftAnchor="50.0"  AnchorPane.bottomAnchor="180.0">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature" style="-fx-fill: #9F2B68; /* DodgerBlue text */
+             -fx-font-size: 20px;
+             -fx-font-weight: bold;" >
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Text>
-                <Label fx:id="temperatureStatusLabel" text="Optimal" style="-fx-font-family: serif; -fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: green;"/>
+                <Label fx:id="temperatureStatusLabel" text="Optimal" style="-fx-font-family: serif; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #770737;"/>
             </VBox>
 
-            <VBox layoutY="500.0" spacing="5" AnchorPane.leftAnchor="20.0">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PARASITE">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Text>
-                <Label fx:id="parasiteStatusLabel" text="No Parasites" style="-fx-font-family: serif; -fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: green;"/>
-            </VBox>
+<!--            <VBox layoutY="500.0" spacing="5" AnchorPane.leftAnchor="20.0">-->
+<!--                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PARASITE">-->
+<!--                    <font>-->
+<!--                        <Font name="System Bold" size="20.0" />-->
+<!--                    </font>-->
+<!--                </Text>-->
+<!--                <Label fx:id="parasiteStatusLabel" text="No Parasites" style="-fx-font-family: serif; -fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: green;"/>-->
+<!--            </VBox>-->
         </children>
     </AnchorPane>
 </StackPane>

@@ -10,17 +10,15 @@ import com.example.ooad_project.Plant.Children.Tree;
 import com.example.ooad_project.Plant.Children.Vegetable;
 import com.example.ooad_project.Plant.PlantManager;
 import com.example.ooad_project.ThreadUtils.EventBus;
-import javafx.animation.AnimationTimer;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.*;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
 import javafx.scene.control.*;
@@ -29,13 +27,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.animation.PauseTransition;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import javafx.animation.FadeTransition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +47,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GardenUIController {
 
-    @FXML
-    private Button sidButton;
+
 
     @FXML
     private Label currentDay;
@@ -59,9 +57,6 @@ public class GardenUIController {
 
 //    @FXML
 //    private Button pestTestButton;
-
-    @FXML
-    private Label getPLantButton;
 
     @FXML
     private Label rainStatusLabel;
@@ -87,6 +82,7 @@ public class GardenUIController {
     int logDay = 0;
     DayChangeEvent dayChangeEvent;
 
+
     private static class RainDrop {
         double x, y, speed;
 
@@ -102,7 +98,6 @@ public class GardenUIController {
     private List<RainDrop> rainDrops;
     private AnimationTimer rainAnimation;
     private ImageView sunImageView; // Add this as a class field
-    private Circle sunOrbitPath; // For visualizing the orbit path (optional)
     private AnimationTimer sunAnimationTimer; // For controlling sun animation
     private Group cloudGroup; // For holding multiple cloud images
     private double sunAngle = 0;
@@ -126,6 +121,10 @@ public class GardenUIController {
     private PlantManager plantManager = PlantManager.getInstance();
     @FXML
     private HBox menuBar;
+    private HBox parasiteStatusContainer;
+    private TranslateTransition parasiteStatusAnimation;
+
+    private PathTransition parasitePathTransition;
 
 
     //    Same as above but for the parasites
@@ -135,17 +134,7 @@ public class GardenUIController {
         gardenGrid = GardenGrid.getInstance();
     }
 
-    //    This is the method that will print the grid
-    @FXML
-    public void printGrid() {
-        gardenGrid.printGrid();
-    }
 
-    @FXML
-    public void sidButtonPressed() {
-        System.out.println("SID Button Pressed");
-        plantManager.getVegetables().forEach(flower -> System.out.println(flower.getCurrentImage()));
-    }
 
 //    @FXML
 //    private TextArea logTextArea;
@@ -153,12 +142,7 @@ public class GardenUIController {
     private static final Logger logger = LogManager.getLogger("GardenUIControllerLogger");
 
 
-    @FXML
-    public void getPLantButtonPressed() {
-        GardenSimulationAPI api = new GardenSimulationAPI();
-//        api.getPlants();
-        api.getState();
-    }
+
 
 
     //    This is the UI Logger for the GardenUIController
@@ -175,6 +159,9 @@ public class GardenUIController {
         showOptimalTemperature();
 
         showNoParasites();
+        // Place this after showNoParasites()
+      //  Platform.runLater(this::animateParasiteStatus);
+      //  setupParasiteAnimation();
         // Remove the unwanted Veg label in top left
         Platform.runLater(() -> {
             // This is a drastic approach but should work to remove any top-left labels
@@ -213,12 +200,12 @@ public class GardenUIController {
         flowerMenuButton.setPickOnBounds(true);
         flowerMenuButton.setFocusTraversable(true);
         flowerMenuButton.setMouseTransparent(false);
-        //   flowerMenuButton.setPickOnBounds(true);
+        //   flowerMenuButton.setPickOnBounds(true);/home/hp/Downloads/back2.png
 
 
 //         Load the background image
 //         Load the background image
-        Image backgroundImage = new Image(getClass().getResourceAsStream("/images/def.png"));
+        Image backgroundImage = new Image(getClass().getResourceAsStream("/images/rrr.png"));
 
 
         // Create an ImageView
@@ -301,7 +288,9 @@ public class GardenUIController {
         EventBus.subscribe("PlantHealthUpdateEvent", event -> handlePlantHealthUpdateEvent((PlantHealthUpdateEvent) event));
 
         EventBus.subscribe("PlantDeathUIChangeEvent", event -> handlePlantDeathUIChangeEvent((Plant) event));
-
+        PauseTransition delay = new PauseTransition(Duration.millis(500));
+        delay.setOnFinished(e -> initializeParasiteStatusWithGround());
+        delay.play();
     }
 
     // Start rain animation
@@ -382,11 +371,28 @@ public class GardenUIController {
 //    }
 
 
-    private void handlePlantDeathUIChangeEvent(Plant plant) {
+    private void handlePlantDeathUIChangeEvent(Plant plant){
+        Platform.runLater(() -> {
+            int row = plant.getRow();
+            int col = plant.getCol();
+            System.out.println("🪦The dead plant was removed from the garden (" + row + "," + col + ")");
+
+            boolean removed = gridPane.getChildren().removeIf(node -> {
+                Integer nodeRow = GridPane.getRowIndex(node);
+                Integer nodeCol = GridPane.getColumnIndex(node);
+                boolean match = nodeRow != null && nodeCol != null && nodeRow == row && nodeCol == col;
+                //if (match) System.out.println("✅ Removed UI node at (" + row + "," + col + ")");
+                return match;
+            });
+
+            if (!removed) {
+                System.out.println("❌ No UI node found at (" + row + "," + col + ")");
+            }
+        });
 
     }
 
-    private void handlePlantHealthUpdateEvent(PlantHealthUpdateEvent event) {
+    private void handlePlantHealthUpdateEvent(PlantHealthUpdateEvent event){
         logger.info("Day: " + logDay + " Plant health updated at row " + event.getRow() + " and column " + event.getCol() + " from " + event.getOldHealth() + " to " + event.getNewHealth());
 //        System.out.println("Plant health updated at row " + event.getRow() + " and column " + event.getCol() + " from " + event.getOldHealth() + " to " + event.getNewHealth());
     }
@@ -463,61 +469,153 @@ public class GardenUIController {
     }
 
     // Alternative direct approach to remove the Veg label by CSS ID
+    // Replace your existing label removal methods with these fixed versions
+
     private void removeVegLabelById() {
         Platform.runLater(() -> {
             // Look for any element with the ID 'vegLabel' or similar
-            for (Node node : anchorPane.getChildrenUnmodifiable()) {
+            List<Node> nodesToRemove = new ArrayList<>();
+
+            for (Node node : anchorPane.getChildren()) {
                 if (node.getId() != null &&
                         (node.getId().contains("veg") || node.getId().contains("Veg"))) {
                     node.setVisible(false); // Hide it
-                    ((Parent)node.getParent()).getChildrenUnmodifiable().remove(node); // Try to remove it
+                    nodesToRemove.add(node); // Mark for removal
                 }
             }
+
+            // Remove all marked nodes
+            anchorPane.getChildren().removeAll(nodesToRemove);
 
             // Another approach is to overlay a white rectangle on top of it
             Rectangle coverRect = new Rectangle(0, 0, 50, 50);
             coverRect.setFill(javafx.scene.paint.Color.WHITE);
-            coverRect.setOpacity(1.0);
+            coverRect.setOpacity(0);  // Setting to 0 to make it invisible
             anchorPane.getChildren().add(coverRect);
         });
     }
+
     private void removeFlowerLabelById() {
         Platform.runLater(() -> {
-            // Look for any element with the ID 'vegLabel' or similar
-            for (Node node : anchorPane.getChildrenUnmodifiable()) {
+            // Look for any element with the ID 'flowerLabel' or similar
+            List<Node> nodesToRemove = new ArrayList<>();
+
+            for (Node node : anchorPane.getChildren()) {
                 if (node.getId() != null &&
                         (node.getId().contains("flower") || node.getId().contains("Flower"))) {
                     node.setVisible(false); // Hide it
-                    ((Parent)node.getParent()).getChildrenUnmodifiable().remove(node); // Try to remove it
+                    nodesToRemove.add(node); // Mark for removal
                 }
             }
+
+            // Remove all marked nodes
+            anchorPane.getChildren().removeAll(nodesToRemove);
 
             // Another approach is to overlay a white rectangle on top of it
             Rectangle coverRect = new Rectangle(0, 0, 50, 50);
             coverRect.setFill(javafx.scene.paint.Color.WHITE);
-            coverRect.setOpacity(1.0);
+            coverRect.setOpacity(0);  // Setting to 0 to make it invisible
             anchorPane.getChildren().add(coverRect);
         });
     }
+
     private void removeTreeLabelById() {
         Platform.runLater(() -> {
-            // Look for any element with the ID 'vegLabel' or similar
-            for (Node node : anchorPane.getChildrenUnmodifiable()) {
+            // Look for any element with the ID 'treeLabel' or similar
+            List<Node> nodesToRemove = new ArrayList<>();
+
+            for (Node node : anchorPane.getChildren()) {
                 if (node.getId() != null &&
                         (node.getId().contains("tree") || node.getId().contains("Tree"))) {
                     node.setVisible(false); // Hide it
-                    ((Parent)node.getParent()).getChildrenUnmodifiable().remove(node); // Try to remove it
+                    nodesToRemove.add(node); // Mark for removal
                 }
             }
+
+            // Remove all marked nodes
+            anchorPane.getChildren().removeAll(nodesToRemove);
 
             // Another approach is to overlay a white rectangle on top of it
             Rectangle coverRect = new Rectangle(0, 0, 50, 50);
             coverRect.setFill(javafx.scene.paint.Color.WHITE);
-            coverRect.setOpacity(1.0);
+            coverRect.setOpacity(0);  // Setting to 0 to make it invisible
             anchorPane.getChildren().add(coverRect);
         });
     }
 
+    // Also, fix the removeTopLeftVeg method
+    private void removeTopLeftVeg() {
+        Platform.runLater(() -> {
+            // Find all labels or HBoxes in the top-left corner
+            List<Node> nodesToRemove = new ArrayList<>();
+
+            for (Node node : anchorPane.getChildren()) {
+                // Check for direct labels
+                if (node instanceof Label) {
+                    Label label = (Label) node;
+                    // Check if it contains "Veg" text and is in the top-left corner
+                    if ("Veg".equals(label.getText()) &&
+                            node.getLayoutX() < 50 && node.getLayoutY() < 50) {
+                        node.setVisible(false);
+                        nodesToRemove.add(node);
+                        log4jLogger.info("Found and removed top-left Veg label");
+                    }
+                }
+
+                // Check for nodes in VBox
+                if (node instanceof VBox && node.getLayoutY() < 100) {
+                    VBox vbox = (VBox) node;
+                    List<Node> vboxNodesToRemove = new ArrayList<>();
+
+                    for (Node child : vbox.getChildren()) {
+                        if (child instanceof Label && "Veg".equals(((Label) child).getText())) {
+                            child.setVisible(false);
+                            vboxNodesToRemove.add(child);
+                            log4jLogger.info("Removed Veg label from VBox");
+                        }
+                        if (child instanceof Text && "Veg".equals(((Text) child).getText())) {
+                            child.setVisible(false);
+                            vboxNodesToRemove.add(child);
+                            log4jLogger.info("Removed Veg text from VBox");
+                        }
+                    }
+
+                    vbox.getChildren().removeAll(vboxNodesToRemove);
+                }
+
+                // Check for nodes in HBox
+                if (node instanceof HBox && node.getLayoutY() < 100) {
+                    HBox hbox = (HBox) node;
+                    List<Node> hboxNodesToRemove = new ArrayList<>();
+
+                    for (Node child : hbox.getChildren()) {
+                        if (child instanceof Label && "Veg".equals(((Label) child).getText())) {
+                            child.setVisible(false);
+                            hboxNodesToRemove.add(child);
+                            log4jLogger.info("Removed Veg label from HBox");
+                        }
+                    }
+
+                    hbox.getChildren().removeAll(hboxNodesToRemove);
+                }
+            }
+
+            // Also check for directly added Veg text
+            for (Node node : anchorPane.getChildren()) {
+                if (node instanceof Text) {
+                    Text text = (Text) node;
+                    if ("Veg".equals(text.getText()) || "WEATHER".equals(text.getText())) {
+                        if (node.getLayoutX() < 50 && node.getLayoutY() < 50) {
+                            nodesToRemove.add(node);
+                        }
+                    }
+                }
+            }
+
+            // Remove all nodes marked for removal
+            anchorPane.getChildren().removeAll(nodesToRemove);
+        });
+    }
 
     //    Function that is called when the parasite damage event is published
     private void handleParasiteDamageEvent(ParasiteDamageEvent event) {
@@ -554,7 +652,7 @@ public class GardenUIController {
 
             // Ensure damage label is on top of all other children in the stack pane
             StackPane.setAlignment(damageLabel, Pos.CENTER);
-          //  StackPane.setZOrder(damageLabel, Integer.MAX_VALUE);
+            //  StackPane.setZOrder(damageLabel, Integer.MAX_VALUE);
 
             // Add drop shadow for better contrast
             javafx.scene.effect.DropShadow dropShadow = new javafx.scene.effect.DropShadow();
@@ -866,9 +964,6 @@ public class GardenUIController {
     }
 
     //
-    @FXML
-    public void showPestOnGrid() {
-    }
 
 
 //    private void changeRainUI(RainEvent event) {
@@ -989,46 +1084,48 @@ public class GardenUIController {
     private void addVerticalTextToTrunk() {
         Platform.runLater(() -> {
             try {
-                // Create a Group to hold our vertical text
-                Group textGroup = new Group();
+                // Create a VBox to stack the letters vertically
+                VBox textVBox = new VBox(5); // 5 pixels spacing between letters
+                textVBox.setAlignment(Pos.CENTER);
 
-                // Text will display "ADD ME" vertically
-                Text addMeText = new Text("ADD ME");
+                // Create individual letters
+                String[] letters = {"A", "d", "d"};
 
-                // Set the text styling
-                addMeText.setFill(javafx.scene.paint.Color.WHITE);
-                addMeText.setStroke(javafx.scene.paint.Color.rgb(70, 40, 20, 0.9)); // Brown stroke
-                addMeText.setStrokeWidth(1.5);
-                addMeText.setFont(javafx.scene.text.Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 24));
+                for (String letter : letters) {
+                    Text letterText = new Text(letter);
 
-                // Create a drop shadow effect for better visibility
-                javafx.scene.effect.DropShadow shadow = new javafx.scene.effect.DropShadow();
-                shadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.7));
-                shadow.setRadius(3);
-                shadow.setOffsetX(2);
-                shadow.setOffsetY(2);
-                addMeText.setEffect(shadow);
+                    // Style each letter
+                    letterText.setFill(javafx.scene.paint.Color.WHITE);
+                    letterText.setStroke(javafx.scene.paint.Color.rgb(70, 40, 20, 0.9)); // Brown stroke
+                    letterText.setStrokeWidth(1.5);
+                    letterText.setFont(javafx.scene.text.Font.font("Arial", javafx.scene.text.FontWeight.BOLD, 20));
 
-                // Rotate the text 90 degrees to make it vertical (down the trunk)
-                addMeText.getTransforms().add(new javafx.scene.transform.Rotate(90, 0, 0));
+                    // Add shadow for better visibility
+                    javafx.scene.effect.DropShadow shadow = new javafx.scene.effect.DropShadow();
+                    shadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.7));
+                    shadow.setRadius(3);
+                    shadow.setOffsetX(2);
+                    shadow.setOffsetY(2);
+                    letterText.setEffect(shadow);
 
-                // Add the text to the group
-                textGroup.getChildren().add(addMeText);
+                    // Add letter to the VBox
+                    textVBox.getChildren().add(letterText);
+                }
 
                 // Position the text on the trunk
                 // Note: Adjust these coordinates to match your trunk's position
-                double trunkX = anchorPane.getWidth() - 80; // Position on the right side like in your screenshot
-                double trunkY = 300; // Middle of the trunk height
+                double trunkX = anchorPane.getWidth() - 63; // Position on the right side like in your screenshot
+                double trunkY = 250; // Upper part of the trunk
 
-                textGroup.setLayoutX(trunkX);
-                textGroup.setLayoutY(trunkY);
+                textVBox.setLayoutX(trunkX);
+                textVBox.setLayoutY(trunkY);
 
-                // Add the text group to the scene
-                anchorPane.getChildren().add(textGroup);
+                // Add the VBox to the 8
+                anchorPane.getChildren().add(textVBox);
 
-                // Add a hovering animation to draw attention
+                // Add a subtle pulsing animation to draw attention
                 javafx.animation.ScaleTransition scaleTransition = new javafx.animation.ScaleTransition(
-                        Duration.millis(1500), textGroup);
+                        Duration.millis(1500), textVBox);
                 scaleTransition.setFromX(1.0);
                 scaleTransition.setFromY(1.0);
                 scaleTransition.setToX(1.1);
@@ -1037,31 +1134,42 @@ public class GardenUIController {
                 scaleTransition.setAutoReverse(true);
                 scaleTransition.play();
 
-                // Make the text clickable - when clicked it can show the menu
-                textGroup.setOnMouseClicked(event -> {
+                // Make the text clickable
+                textVBox.setOnMouseClicked(event -> {
                     // You can add code here to show your plant selection menu
-                    // For example, if you have a method to show your menu:
-                    // showPlantSelectionMenu();
                     logger.info("ADD ME text clicked, could show plant selection menu here");
                 });
 
-                // Add hover effect
-                textGroup.setOnMouseEntered(event -> {
-                    textGroup.setCursor(javafx.scene.Cursor.HAND);
-                    addMeText.setFill(javafx.scene.paint.Color.YELLOW);
+                // Add hover effect to change letter colors on hover
+                textVBox.setOnMouseEntered(event -> {
+                    textVBox.setCursor(javafx.scene.Cursor.HAND);
+
+                    // Change all letters to yellow on hover
+                    for (Node node : textVBox.getChildren()) {
+                        if (node instanceof Text) {
+                            ((Text) node).setFill(javafx.scene.paint.Color.YELLOW);
+                        }
+                    }
                 });
 
-                textGroup.setOnMouseExited(event -> {
-                    textGroup.setCursor(javafx.scene.Cursor.DEFAULT);
-                    addMeText.setFill(javafx.scene.paint.Color.WHITE);
+                textVBox.setOnMouseExited(event -> {
+                    textVBox.setCursor(javafx.scene.Cursor.DEFAULT);
+
+                    // Change back to white when not hovering
+                    for (Node node : textVBox.getChildren()) {
+                        if (node instanceof Text) {
+                            ((Text) node).setFill(javafx.scene.paint.Color.WHITE);
+                        }
+                    }
                 });
 
             } catch (Exception e) {
-                logger.error("Error adding vertical text to trunk: " + e.getMessage());
+                logger.error("Error adding vertical stacked text to trunk: " + e.getMessage());
                 e.printStackTrace();
             }
         });
     }
+
     private void showSunnyWeather() {
         // Stop rain if it's active
         if (flag == 1) {
@@ -1108,16 +1216,16 @@ public class GardenUIController {
             // Set the label text with smaller yellow font
             rainStatusLabel.setGraphic(null); // Remove any existing graphics
             rainStatusLabel.setText("Sunny");
-            rainStatusLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #FFD700; -fx-font-weight: bold;");
+            rainStatusLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: #a81c07; -fx-font-weight: bold;");
         });
     }
 
     // New method to start sun animation
     private void startSunAnimation() {
         // Define sun orbit radius and center position
-        final double orbitRadius = 30;
+        final double orbitRadius = 50;
         final double centerX = 130; // Center of orbit
-        final double centerY = 110; // Center of orbit
+        final double centerY = 150; // Center of orbit
 
         // Visualize the orbit path (optional - comment out if you don't want to see it)
     /*
@@ -1160,7 +1268,6 @@ public class GardenUIController {
 
     // Update changeRainUI method
     private void changeRainUI(RainEvent event) {
-        // Start rain animation
         startRainAnimation();
 
         logger.info("Day: " + logDay + " Displayed rain event with amount: " + event.getAmount() + "mm");
@@ -1188,7 +1295,7 @@ public class GardenUIController {
             // Set the text with the rain amount in small blue font
             rainStatusLabel.setGraphic(null); // Remove any existing graphics
             rainStatusLabel.setText(event.getAmount() + "mm");
-            rainStatusLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #1E90FF; -fx-font-weight: bold;");
+            rainStatusLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: #4B9CD3; -fx-font-weight: bold;");
 
             // Create a pause transition
             PauseTransition pause = new PauseTransition(Duration.seconds(5));
@@ -1295,29 +1402,81 @@ public class GardenUIController {
 
 
     private void changeTemperatureUI(TemperatureEvent event) {
-
         logger.info("Day: " + logDay + " Temperature changed to: " + event.getAmount() + "°F");
 
         Platform.runLater(() -> {
-            // Update UI to reflect the temperature change
+            // Create a VBox to hold the temperature elements
+            VBox tempBox = new VBox(10);
+            tempBox.setAlignment(Pos.CENTER);
+
+            int temp = event.getAmount();
+            javafx.scene.paint.Color bgColor, borderColor, textColor;
+            String imageName;
+
+            // Set colors and image based on temperature
+            if (temp <= 50) {
+                // Cold temperature
+                bgColor = javafx.scene.paint.Color.rgb(210, 230, 255, 0.85);  // Light blue
+                borderColor = javafx.scene.paint.Color.rgb(70, 130, 180, 0.7);  // Steel blue
+                textColor = javafx.scene.paint.Color.rgb(0, 0, 139);  // Dark blue
+                imageName = "coldTemperature.png";
+            } else if (temp >= 60) {
+                // Hot temperature
+                bgColor = javafx.scene.paint.Color.rgb(255, 222, 222, 0.85);  // Light red
+                borderColor = javafx.scene.paint.Color.rgb(220, 20, 60, 0.7);  // Crimson
+                textColor = javafx.scene.paint.Color.rgb(139, 0, 0);  // Dark red
+                imageName = "hotTemperature.png";
+            } else {
+                // Optimal temperature
+                bgColor = javafx.scene.paint.Color.rgb(220, 255, 220, 0.85);  // Light green
+                borderColor = javafx.scene.paint.Color.rgb(50, 205, 50, 0.7);  // Lime green
+                textColor = javafx.scene.paint.Color.rgb(0, 100, 0);  // Dark green
+                imageName = "normalTemperature.png";
+            }
+
+            // Add a background with rounded corners
+            tempBox.setBackground(new Background(new BackgroundFill(
+                    bgColor,
+                    new CornerRadii(15),
+                    Insets.EMPTY
+            )));
+
+            // Add a border
+            tempBox.setBorder(new Border(new BorderStroke(
+                    borderColor,
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(15),
+                    new BorderWidths(2)
+            )));
+
+            // Add padding
+            tempBox.setPadding(new Insets(10));
 
             // Create an ImageView for the temperature icon
-            String image = "normalTemperature.png";
-            int fitHeight = 150;
-            int fitWidth = 50;
-            if (event.getAmount() <= 50) {
-                image = "coldTemperature.png";
-            } else if (event.getAmount() >= 60) {
-                image = "hotTemperature.png";
-            }
-            Image tempImage = new Image(getClass().getResourceAsStream("/images/Temperature/" + image));
+            Image tempImage = new Image(getClass().getResourceAsStream("/images/Temperature/" + imageName));
             ImageView tempImageView = new ImageView(tempImage);
-            tempImageView.setFitHeight(fitHeight);
-            tempImageView.setFitWidth(fitWidth);
-            tempImageView.setLayoutX(300.0);
-            // Set the text with the temperature amount
-            temperatureStatusLabel.setGraphic(tempImageView);
-            temperatureStatusLabel.setText(event.getAmount() + "°F");
+            tempImageView.setFitHeight(80);
+            tempImageView.setFitWidth(20);
+
+            // Create a label for temperature text
+            Label tempLabel = new Label(temp + "°F");
+            tempLabel.setFont(new Font("System Bold", 18));
+            tempLabel.setTextFill(textColor);
+
+            // Add the components to the VBox
+            tempBox.getChildren().addAll(tempImageView, tempLabel);
+
+            // Add a drop shadow to the whole temperature display
+            javafx.scene.effect.DropShadow dropShadow = new javafx.scene.effect.DropShadow();
+            dropShadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.3));
+            dropShadow.setRadius(10);
+            dropShadow.setOffsetX(0);
+            dropShadow.setOffsetY(5);
+            tempBox.setEffect(dropShadow);
+
+            // Set the VBox as the graphic
+            temperatureStatusLabel.setGraphic(tempBox);
+            temperatureStatusLabel.setText("");  // Clear the text since we're using the graphic
 
             // Create a pause transition of 5 seconds
             PauseTransition pause = new PauseTransition(Duration.seconds(5));
@@ -1330,86 +1489,141 @@ public class GardenUIController {
     }
 
     private void showOptimalTemperature() {
-
-        logger.info("Day: " + logDay + " Displayed optimal temperature");
+        logger.info("Day: " + logDay +" Displayed optimal temperature");
 
         Platform.runLater(() -> {
+            // Create a VBox to hold the temperature elements
+            VBox tempBox = new VBox(10);
+            tempBox.setAlignment(Pos.CENTER);
+
+            // Add a background with rounded corners - green for optimal
+            tempBox.setBackground(new Background(new BackgroundFill(
+                    javafx.scene.paint.Color.rgb(220, 255, 220, 0.85),  // Light green with transparency
+                    new CornerRadii(15),
+                    Insets.EMPTY
+            )));
+
+            // Add a border
+            tempBox.setBorder(new Border(new BorderStroke(
+                    javafx.scene.paint.Color.rgb(50, 205, 50, 0.7),  // Lime green border
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(15),
+                    new BorderWidths(2)
+            )));
+
+            // Add padding
+            tempBox.setPadding(new Insets(10));
+
             // Create an ImageView for the optimal temperature icon
             Image optimalImage = new Image(getClass().getResourceAsStream("/images/Temperature/normalTemperature.png"));
             ImageView optimalImageView = new ImageView(optimalImage);
-            optimalImageView.setFitHeight(150);
-            optimalImageView.setFitWidth(50);
-            optimalImageView.setLayoutX(100);
-            // Set the text with the optimal status
-            temperatureStatusLabel.setGraphic(optimalImageView);
-            temperatureStatusLabel.setText("Optimal");
+            optimalImageView.setFitHeight(100);
+            optimalImageView.setFitWidth(30);
+
+            // Create a label for "Optimal" text
+            Label optimalLabel = new Label("Optimal");
+            optimalLabel.setFont(new Font("System Bold", 22));
+            optimalLabel.setTextFill(javafx.scene.paint.Color.rgb(0, 100, 0));  // Dark green text
+
+            // Add the components to the VBox
+            tempBox.getChildren().addAll(optimalImageView, optimalLabel);
+
+            // Add a drop shadow to the whole temperature display
+            javafx.scene.effect.DropShadow dropShadow = new javafx.scene.effect.DropShadow();
+            dropShadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.3));
+            dropShadow.setRadius(10);
+            dropShadow.setOffsetX(0);
+            dropShadow.setOffsetY(5);
+            tempBox.setEffect(dropShadow);
+
+            // Set the VBox as the graphic
+            temperatureStatusLabel.setGraphic(tempBox);
+            temperatureStatusLabel.setText("");  // Clear the text since we're using the graphic
         });
     }
 
     private void changeParasiteUI(ParasiteEvent event) {
-
         logger.info("Day: " + logDay + " Parasite event triggered: " + event.getParasite().getName());
 
         Platform.runLater(() -> {
-            // Update UI to reflect parasite event
-//            System.out.println("Changing UI to reflect parasite event");
+            try {
+                // Determine which image to use
+                String parasiteImagePath = "/images/Parasites/noParasite.png";
 
-            // Create an ImageView for the sad icon
-            Image parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+                if (Objects.equals(event.getParasite().getName(), "Slugs")) {
+                    parasiteImagePath = "/images/Parasites/slugDetected.png";
+                } else if (Objects.equals(event.getParasite().getName(), "Crow")) {
+                    parasiteImagePath = "/images/Parasites/crowDetected.png";
+                } else if (Objects.equals(event.getParasite().getName(), "Locust")) {
+                    parasiteImagePath = "/images/Parasites/locustDetected.png";
+                } else if (Objects.equals(event.getParasite().getName(), "Aphids")) {
+                    parasiteImagePath = "/images/Parasites/aphidsDetected.png";
+                } else if (Objects.equals(event.getParasite().getName(), "Rat")) {
+                    parasiteImagePath = "/images/Parasites/ratDetected.png";
+                } else if (Objects.equals(event.getParasite().getName(), "Parasite")) {
+                    parasiteImagePath = "/images/Parasites/parasiteDetected.png";
+                }
 
-            if (Objects.equals(event.getParasite().getName(), "Slugs")) {
-                parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/slugDetected.png"));
-            } else if (Objects.equals(event.getParasite().getName(), "Crow")) {
-                parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/crowDetected.png"));
-            } else if (Objects.equals(event.getParasite().getName(), "Locust")) {
-                parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/locustDetected.png"));
-            } else if (Objects.equals(event.getParasite().getName(), "Aphids")) {
-                parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/aphidsDetected.png"));
-            } else if (Objects.equals(event.getParasite().getName(), "Rat")) {
-                parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/ratDetected.png"));
-            } else if (Objects.equals(event.getParasite().getName(), "Parasite")) {
-                parasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/parasiteDetected.png"));
+                // Find or create the status label
+                if (parasiteStatusLabel == null) {
+                    createParasiteStatusWithPathAnimation();
+                }
+
+                if (parasiteStatusLabel != null) {
+                    // Load the parasite image
+                    Image parasiteImage = new Image(getClass().getResourceAsStream(parasiteImagePath));
+                    ImageView iconView = new ImageView(parasiteImage);
+                    iconView.setFitHeight(24);
+                    iconView.setFitWidth(24);
+
+                    // Update the label
+                    parasiteStatusLabel.setText(event.getParasite().getName() + " detected");
+                    parasiteStatusLabel.setGraphic(iconView);
+                    parasiteStatusLabel.setTextFill(Color.rgb(180, 0, 0));
+
+                    // Update style for alert state
+                    parasiteStatusLabel.setBackground(new Background(new BackgroundFill(
+                            Color.rgb(255, 240, 240, 0.9),
+                            new CornerRadii(20),
+                            Insets.EMPTY
+                    )));
+
+                    parasiteStatusLabel.setBorder(new Border(new BorderStroke(
+                            Color.rgb(230, 0, 0, 0.7),
+                            BorderStrokeStyle.SOLID,
+                            new CornerRadii(20),
+                            new BorderWidths(2)
+                    )));
+
+                    // Add pulsing animation
+                    ScaleTransition pulse = new ScaleTransition(Duration.millis(300), parasiteStatusLabel);
+                    pulse.setFromX(1.0);
+                    pulse.setFromY(1.0);
+                    pulse.setToX(1.1);
+                    pulse.setToY(1.1);
+                    pulse.setCycleCount(6);
+                    pulse.setAutoReverse(true);
+                    pulse.play();
+
+                    logger.info("Successfully updated parasite status to '" + event.getParasite().getName() + " detected'");
+                } else {
+                    logger.error("Failed to find or create parasite status label");
+                }
+
+                // Schedule reset to "No Parasites" after 5 seconds
+                PauseTransition pause = new PauseTransition(Duration.seconds(5));
+                pause.setOnFinished(e -> showNoParasites());
+                pause.play();
+
+            } catch (Exception e) {
+                logger.error("Error updating parasite status: " + e.getMessage());
+                e.printStackTrace();
             }
-
-            ImageView sadImageView = new ImageView(parasiteImage);
-            sadImageView.setFitHeight(60);
-            sadImageView.setFitWidth(60);
-            // Set the text with the parasite name
-            parasiteStatusLabel.setGraphic(sadImageView);
-            parasiteStatusLabel.setText(event.getParasite().getName() + " detected");
-
-            // Create a pause transition of 5 seconds
-            PauseTransition pause = new PauseTransition(Duration.seconds(5));
-            pause.setOnFinished(e -> {
-                // Update UI to reflect no parasites after the event ends
-                showNoParasites();
-//                System.out.println("Parasite event ended, updating UI to show no parasites.");
-            });
-            pause.play();
         });
     }
-//    private void setupTreeMenu() {
-//        // Add tooltips to menu buttons
-//        Tooltip.install(treeMenuButton, new Tooltip("Add Trees to your garden"));
-//        Tooltip.install(flowerMenuButton, new Tooltip("Add Flowers to your garden"));
-//        Tooltip.install(vegetableMenuButton, new Tooltip("Add Vegetables to your garden"));
-//
-//        // Set the popup direction for each menu button
-//        treeMenuButton.setPopupSide(Side.RIGHT);
-//        flowerMenuButton.setPopupSide(Side.LEFT);
-//        vegetableMenuButton.setPopupSide(Side.BOTTOM);
-//
-//        // Apply additional styling
-//        String baseMenuButtonStyle = "-fx-background-radius: 30px; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 0;";
-//        treeMenuButton.setStyle(baseMenuButtonStyle + "-fx-background-color: #2E8B57;");
-//        flowerMenuButton.setStyle(baseMenuButtonStyle + "-fx-background-color: #FF69B4;");
-//        vegetableMenuButton.setStyle(baseMenuButtonStyle + "-fx-background-color: #FF8C00;");
-//
-//        // Make arrows smaller or hidden
-//        treeMenuButton.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-//        flowerMenuButton.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-//        vegetableMenuButton.setContentDisplay(javafx.scene.control.ContentDisplay.CENTER);
-//    }
+
+
+
 
     private void setupMenuEventHandlers() {
         // Add hover animations for menu buttons
@@ -1511,23 +1725,232 @@ public class GardenUIController {
 //        return menuItem;
 //    }
 
+    // Update method for showing no parasites
+    // Update the existing showNoParasites method to use path transition
     private void showNoParasites() {
-
         logger.info("Day: " + logDay + " Displayed no parasites status");
 
         Platform.runLater(() -> {
-            // Create an ImageView for the happy icon
-            Image happyImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
-            ImageView happyImageView = new ImageView(happyImage);
-            happyImageView.setFitHeight(60);
-            happyImageView.setFitWidth(60);
+            try {
+                // Find existing parasite status label
+                if (parasiteStatusLabel != null) {
+                    // Create an ImageView for the happy icon
+                    Image happyImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+                    ImageView happyImageView = new ImageView(happyImage);
+                    happyImageView.setFitHeight(24);
+                    happyImageView.setFitWidth(24);
 
-            // Set the text with the no parasites status
-            parasiteStatusLabel.setGraphic(happyImageView);
-            parasiteStatusLabel.setText("No Parasites");
+                    // Update the Label directly
+                    parasiteStatusLabel.setText("No Parasites");
+                    parasiteStatusLabel.setGraphic(happyImageView);
+                    parasiteStatusLabel.setTextFill(Color.rgb(0, 120, 0));
+
+                    // Reset style
+                    parasiteStatusLabel.setBackground(new Background(new BackgroundFill(
+                            Color.rgb(255, 255, 255, 0.85),
+                            new CornerRadii(20),
+                            Insets.EMPTY
+                    )));
+
+                    parasiteStatusLabel.setBorder(new Border(new BorderStroke(
+                            Color.rgb(0, 150, 0, 0.7),
+                            BorderStrokeStyle.SOLID,
+                            new CornerRadii(20),
+                            new BorderWidths(2)
+                    )));
+
+                    logger.info("Successfully updated existing parasite status to 'No Parasites'");
+
+                    // Make sure animation is running
+                    if (parasitePathTransition != null &&
+                            parasitePathTransition.getStatus() != Animation.Status.RUNNING) {
+                        parasitePathTransition.play();
+                        logger.info("Restarted parasite status animation");
+                    }
+                } else {
+                    logger.warn("Could not find parasite status label in the scene, creating new one");
+                    // Create a new one
+                    createParasiteStatusWithPathAnimation();
+                }
+            } catch (Exception e) {
+                logger.error("Error updating parasite status to 'No Parasites': " + e.getMessage());
+                e.printStackTrace();
+
+                // Create a new label as fallback
+                createParasiteStatusWithPathAnimation();
+            }
+        });
+    }
+    private void createSimpleMovingParasiteStatus() {
+        Platform.runLater(() -> {
+            try {
+                logger.info("Creating simple moving parasite status");
+
+                // Get window dimensions
+                double anchorWidth = anchorPane.getWidth();
+                double anchorHeight = anchorPane.getHeight();
+
+                // Use default values if dimensions aren't available yet
+                if (anchorWidth <= 0) anchorWidth = 1000;
+                if (anchorHeight <= 0) anchorHeight = 700;
+
+                // Create a simple status label
+                Label statusLabel = new Label("No Parasites");
+
+                // Add icon
+                Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+                ImageView parasiteImageView = new ImageView(noParasiteImage);
+                parasiteImageView.setFitHeight(24);
+                parasiteImageView.setFitWidth(24);
+                statusLabel.setGraphic(parasiteImageView);
+
+                // Style the label
+                statusLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
+                statusLabel.setTextFill(Color.rgb(0, 120, 0));
+                statusLabel.setContentDisplay(ContentDisplay.LEFT);
+                statusLabel.setPadding(new Insets(5, 15, 5, 15));
+
+                // Add background with rounded corners
+                statusLabel.setBackground(new Background(new BackgroundFill(
+                        Color.rgb(255, 255, 255, 0.85),
+                        new CornerRadii(20),
+                        Insets.EMPTY
+                )));
+
+                // Add border
+                statusLabel.setBorder(new Border(new BorderStroke(
+                        Color.rgb(0, 150, 0, 0.7),
+                        BorderStrokeStyle.SOLID,
+                        new CornerRadii(20),
+                        new BorderWidths(2)
+                )));
+
+                // Add shadow for visual appeal
+                statusLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
+
+                // Position at the bottom of the screen, just above the ground
+                double groundHeight = 80; // Approximate height of ground
+                statusLabel.setLayoutY(anchorHeight - groundHeight - 30);
+
+                // Add to the scene
+                anchorPane.getChildren().add(statusLabel);
+
+                // Store reference to this label
+                parasiteStatusLabel = statusLabel;
+
+                // Create a simple horizontal animation
+                TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(15), statusLabel);
+                translateTransition.setFromX(anchorWidth); // Start from right edge
+                translateTransition.setToX(-statusLabel.prefWidth(-1) - 50); // Move to just off the left edge
+                translateTransition.setCycleCount(Animation.INDEFINITE); // Repeat indefinitely
+                translateTransition.setInterpolator(Interpolator.LINEAR); // Constant speed
+
+                // Store reference to animation
+                parasiteStatusAnimation = translateTransition;
+
+                // Start the animation
+                translateTransition.play();
+
+                logger.info("Simple moving parasite status created successfully");
+            } catch (Exception e) {
+                logger.error("Error creating simple moving parasite status: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
+    }
+    private void fixParasiteStatus() {
+        Platform.runLater(() -> {
+            try {
+                logger.info("Attempting to fix parasite status display");
+
+                // Get window dimensions
+                double anchorWidth = anchorPane.getWidth();
+                double anchorHeight = anchorPane.getHeight();
+
+                // Use default values if dimensions aren't available
+                if (anchorWidth <= 0) anchorWidth = 1000;
+                if (anchorHeight <= 0) anchorHeight = 700;
+
+                // Create a simple status label
+                Label statusValueLabel = new Label("No Parasites");
+
+                // Add initial image
+                Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+                ImageView parasiteImageView = new ImageView(noParasiteImage);
+                parasiteImageView.setFitHeight(24);
+                parasiteImageView.setFitWidth(24);
+                statusValueLabel.setGraphic(parasiteImageView);
+
+                // Style the label
+                statusValueLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
+                statusValueLabel.setTextFill(Color.rgb(0, 120, 0));
+                statusValueLabel.setContentDisplay(ContentDisplay.LEFT);
+                statusValueLabel.setPadding(new Insets(5, 15, 5, 15));
+
+                // Add background with rounded corners
+                statusValueLabel.setBackground(new Background(new BackgroundFill(
+                        Color.rgb(255, 255, 255, 0.85),
+                        new CornerRadii(20),
+                        Insets.EMPTY
+                )));
+
+                // Add border
+                statusValueLabel.setBorder(new Border(new BorderStroke(
+                        Color.rgb(0, 150, 0, 0.7),
+                        BorderStrokeStyle.SOLID,
+                        new CornerRadii(20),
+                        new BorderWidths(2)
+                )));
+
+                // Add shadow for visual appeal
+                statusValueLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
+
+                // Position initially at the right side, just above ground
+                statusValueLabel.setLayoutX(anchorWidth - 200);
+                statusValueLabel.setLayoutY(anchorHeight - 120);
+
+                // Add to the scene
+                anchorPane.getChildren().add(statusValueLabel);
+
+                // Store direct reference to this label
+                parasiteStatusLabel = statusValueLabel;
+
+                // Create a simple horizontal animation
+                Timeline timeline = new Timeline();
+
+                // Start from right edge
+                KeyFrame start = new KeyFrame(Duration.ZERO,
+                        new KeyValue(statusValueLabel.layoutXProperty(), anchorWidth));
+
+                // Move to left edge
+                KeyFrame end = new KeyFrame(Duration.seconds(20),
+                        new KeyValue(statusValueLabel.layoutXProperty(), -statusValueLabel.prefWidth(-1)));
+
+                // Add keyframes to timeline
+                timeline.getKeyFrames().addAll(start, end);
+
+                // Set up the timeline to automatically reverse and repeat
+                timeline.setAutoReverse(true);
+                timeline.setCycleCount(Timeline.INDEFINITE);
+
+                // Start the animation
+                timeline.play();
+
+                logger.info("Simple parasite status display created successfully");
+            } catch (Exception e) {
+                logger.error("Error creating simple parasite status: " + e.getMessage());
+                e.printStackTrace();
+            }
         });
     }
 
+    // Add this method call at the end of your initialize() method
+    private void callFixAtStartup() {
+        // Add a delay to ensure other components are initialized first
+        PauseTransition delay = new PauseTransition(Duration.seconds(1));
+        delay.setOnFinished(e -> fixParasiteStatus());
+        delay.play();
+    }
     //    This is the method that will populate the menu buttons with the plant data
 //    private void loadPlantsData() {
 //        for (Tree tree : plantManager.getTrees()) {
@@ -1698,39 +2121,7 @@ public class GardenUIController {
         }.start();
     }
 
-    private void createTreeImage() {
-        try {
-            // Create a tree trunk image
-            ImageView treeImageView = new ImageView();
 
-            // You can either:
-            // 1. Use an existing image if you have one:
-            // Image treeImage = new Image(getClass().getResourceAsStream("/images/tree_trunk.png"));
-
-            // 2. Or create one programmatically (recommended for more control):
-            Image treeImage = createTreeTrunkImage();
-
-            treeImageView.setImage(treeImage);
-            treeImageView.setFitWidth(80);
-            treeImageView.setFitHeight(200);
-
-            // Position the tree trunk
-            treeImageView.setLayoutX(treePlaceholder.getLayoutX() - 40);
-            treeImageView.setLayoutY(treePlaceholder.getLayoutY() - 60);
-
-            // Add to the scene
-            anchorPane.getChildren().add(treeImageView);
-
-            // Make sure the tree is behind the menu buttons
-            treeImageView.toBack();
-
-            // Draw branches
-            drawTreeBranches();
-
-        } catch (Exception e) {
-            log4jLogger.error("Failed to create tree image: " + e.getMessage());
-        }
-    }
 
     private Image createTreeTrunkImage() {
         // Create a simple tree trunk with branches using JavaFX canvas
@@ -1738,7 +2129,7 @@ public class GardenUIController {
         javafx.scene.canvas.GraphicsContext gc = canvas.getGraphicsContext2D();
 
         // Draw trunk
-        gc.setFill(javafx.scene.paint.Color.web("#8B4513"));
+        gc.setFill(javafx.scene.paint.Color.web("#48240a"));
         gc.fillRect(40, 50, 30, 180);
 
         // Draw some texture/detail on trunk
@@ -1837,7 +2228,7 @@ public class GardenUIController {
         try {
             // Get anchor dimensions - FIXED VARIABLE INITIALIZATION ERROR
             double anchorWidth = anchorPane.getWidth() > 0 ? anchorPane.getWidth() : 1187.0;
-            double anchorHeight = anchorPane.getHeight() > 0 ? anchorPane.getHeight() : 641.0;
+            double anchorHeight = anchorPane.getHeight() > 0 ? anchorPane.getHeight() : 780.0;
 
             // Position the tree on the right side of the screen
             double trunkX = anchorWidth - 80; // Moved a bit more to the right
@@ -1860,12 +2251,18 @@ public class GardenUIController {
             );
 
             // Create gradient for trunk
-            javafx.scene.paint.LinearGradient trunkGradient = new javafx.scene.paint.LinearGradient(
-                    0, 0, 1, 1, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
-                    new javafx.scene.paint.Stop(0, javafx.scene.paint.Color.web("#8B4513")),
-                    new javafx.scene.paint.Stop(0.5, javafx.scene.paint.Color.web("#A0522D")),
-                    new javafx.scene.paint.Stop(1, javafx.scene.paint.Color.web("#8B4513"))
+            LinearGradient trunkGradient = new LinearGradient(
+                    0, 0,  // startX, startY (top)
+                    0, 1,  // endX, endY   (bottom)
+                    true,  // proportional to shape size
+                    CycleMethod.NO_CYCLE,
+                    new Stop(0.0, Color.web("#5F3813")) , // Light purple
+                    new Stop(0.5, Color.web("#D2B48C")), // Light brown
+                    new Stop(1.0, Color.web("#5F3813")) // Dark brown
+
             );
+
+
             trunk.setFill(trunkGradient);
 
             // Add a border to the trunk
@@ -1881,7 +2278,7 @@ public class GardenUIController {
             double circleX = trunkX - 150;
             double spacing = 160; // Increased spacing between buttons (was 140)
 
-            Circle treeCircle = createEnhancedCircleButton("#4CAF50");
+            Circle treeCircle = createEnhancedCircleButton("#265628");
             Circle flowerCircle = createEnhancedCircleButton("#FF69B4");
             Circle vegCircle = createEnhancedCircleButton("#FF8C00");
 
@@ -1952,8 +2349,10 @@ public class GardenUIController {
             // Gradient for ground
             javafx.scene.paint.LinearGradient groundGradient = new javafx.scene.paint.LinearGradient(
                     0, 0, 0, 1, true, javafx.scene.paint.CycleMethod.NO_CYCLE,
-                    new javafx.scene.paint.Stop(0, javafx.scene.paint.Color.web("#7CFC00")),
-                    new javafx.scene.paint.Stop(1, javafx.scene.paint.Color.web("#2E8B57"))
+                    new javafx.scene.paint.Stop(0, javafx.scene.paint.Color.web("#C68E17")),     // Golden brown at top
+                    new javafx.scene.paint.Stop(0.4, javafx.scene.paint.Color.web("#A0522D")),   // Sienna (medium brown)
+                    new javafx.scene.paint.Stop(0.7, javafx.scene.paint.Color.web("#8B4513")),   // Saddle brown (darker)
+                    new javafx.scene.paint.Stop(1, javafx.scene.paint.Color.web("#654321"))   // Deep brownish-orange at bottom
             );
             ground.setFill(groundGradient);
             ground.setStroke(javafx.scene.paint.Color.web("#228B22"));
@@ -2524,7 +2923,7 @@ public class GardenUIController {
         return menuItem;
     }
 
-//    private void createColoredGrid(GridPane gridPane, int numRows, int numCols) {
+    //    private void createColoredGrid(GridPane gridPane, int numRows, int numCols) {
 //        double cellWidth = 80;  // Width of each cell
 //        double cellHeight = 80; // Height of each cell
 //
@@ -2555,170 +2954,1852 @@ public class GardenUIController {
 //        gridPane.setHgap(3); // Horizontal gap
 //        gridPane.setVgap(3); // Vertical gap
 //    }
-private void createSimpleGradientGrid(GridPane gridPane, int numRows, int numCols) {
-    // Colors without any quotes issues
-    javafx.scene.paint.Color[] colors = {
-            javafx.scene.paint.Color.web("#e8f5e9"),  // Very light green
-            javafx.scene.paint.Color.web("#c8e6c9"),  // Light green
-            javafx.scene.paint.Color.web("#a5d6a7"),  // Medium light green
-            javafx.scene.paint.Color.web("#81c784")   // Medium green
-    };
+    private void createSimpleGradientGrid(GridPane gridPane, int numRows, int numCols) {
+        // Enhanced color palette for better visibility against the background
+        javafx.scene.paint.Color[] colors = {
+                javafx.scene.paint.Color.web("#e8f5e9", 0.75),  // Very light green with transparency
+                javafx.scene.paint.Color.web("#c8e6c9", 0.75),  // Light green with transparency
+                javafx.scene.paint.Color.web("#a5d6a7", 0.75),  // Medium light green with transparency
+                javafx.scene.paint.Color.web("#81c784", 0.75)   // Medium green with transparency
+        };
 
-    for (int row = 0; row < numRows; row++) {
-        for (int col = 0; col < numCols; col++) {
-            int colorIndex = (row + col) % colors.length;
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numCols; col++) {
+                int colorIndex = (row + col) % colors.length;
 
-            StackPane cell = new StackPane();
-            cell.setPrefSize(80, 80);
+                StackPane cell = new StackPane();
+                cell.setPrefSize(80, 80);
 
-            // Create a background color with rounded corners
-            javafx.scene.layout.BackgroundFill backgroundFill = new javafx.scene.layout.BackgroundFill(
-                    colors[colorIndex],
-                    new CornerRadii(6),
-                    Insets.EMPTY
+                // Create a more vibrant background color with rounded corners
+                javafx.scene.layout.BackgroundFill backgroundFill = new javafx.scene.layout.BackgroundFill(
+                        colors[colorIndex],
+                        new CornerRadii(10),  // More rounded corners
+                        Insets.EMPTY
+                );
+
+                // Apply the background
+                cell.setBackground(new Background(backgroundFill));
+
+                // Add a more prominent border
+                cell.setBorder(new Border(new BorderStroke(
+                        javafx.scene.paint.Color.rgb(56, 142, 60, 0.5),  // Darker green border
+                        BorderStrokeStyle.SOLID,
+                        new CornerRadii(10),
+                        new BorderWidths(2)  // Thicker border
+                )));
+
+                // Add a more prominent drop shadow effect
+                javafx.scene.effect.DropShadow dropShadow = new javafx.scene.effect.DropShadow();
+                dropShadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.25));  // More visible shadow
+                dropShadow.setRadius(4);  // Larger radius
+                dropShadow.setOffsetX(0);
+                dropShadow.setOffsetY(2);
+                cell.setEffect(dropShadow);
+
+                gridPane.add(cell, col, row);
+            }
+        }
+
+        gridPane.setHgap(4);  // Slightly larger gap
+        gridPane.setVgap(4);
+        gridPane.setPadding(new Insets(8, 8, 8, 8));  // More padding
+
+        // Apply enhanced styling to the grid
+        gridPane.setBackground(new Background(new BackgroundFill(
+                javafx.scene.paint.Color.rgb(240, 255, 240, 0.6),  // Light green tint with transparency
+                new CornerRadii(15),  // More rounded corners
+                Insets.EMPTY
+        )));
+
+        gridPane.setBorder(new Border(new BorderStroke(
+                javafx.scene.paint.Color.rgb(56, 142, 60, 0.7),  // Darker, more visible border
+                BorderStrokeStyle.SOLID,
+                new CornerRadii(15),
+                new BorderWidths(3)  // Thicker border
+        )));
+
+        // More prominent outer glow/shadow for the entire grid
+        javafx.scene.effect.DropShadow gridShadow = new javafx.scene.effect.DropShadow();
+        gridShadow.setColor(javafx.scene.paint.Color.rgb(0, 100, 0, 0.3));  // Green-tinted shadow
+        gridShadow.setRadius(12);
+        gridShadow.setOffsetX(0);
+        gridShadow.setOffsetY(3);
+        gridPane.setEffect(gridShadow);
+    }
+    // Add this method to remove the orange Veg label from top left
+private void animateParasiteStatus() {
+    // Hide original static parasite display if it exists
+    Platform.runLater(() -> {
+        try {
+            // Find and hide the original parasite VBox
+            for (Node node : anchorPane.getChildren()) {
+                if (node instanceof VBox) {
+                    VBox vbox = (VBox) node;
+                    for (Node child : vbox.getChildren()) {
+                        if (child instanceof Text && "PARASITE".equals(((Text) child).getText())) {
+                            vbox.setVisible(false);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Get window dimensions
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+
+            // Use default values if dimensions aren't available yet
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // Create a taller ground/hill area
+            double groundHeight = 80; // Increased height
+
+            // Create the main ground as a path to allow for hill shape
+            Path groundPath = new Path();
+
+            // Starting point - bottom left
+            MoveTo start = new MoveTo(0, anchorHeight);
+            groundPath.getElements().add(start);
+
+            // Bottom edge - straight line to right side
+            LineTo bottomRight = new LineTo(anchorWidth, anchorHeight);
+            groundPath.getElements().add(bottomRight);
+
+            // Right edge - straight line up
+            LineTo rightEdge = new LineTo(anchorWidth, anchorHeight - groundHeight);
+            groundPath.getElements().add(rightEdge);
+
+            // Create hill contour with quadratic curves
+            // First hill peak (small)
+            QuadCurveTo hill1 = new QuadCurveTo();
+            hill1.setControlX(anchorWidth * 0.8);
+            hill1.setControlY(anchorHeight - groundHeight - 15);
+            hill1.setX(anchorWidth * 0.7);
+            hill1.setY(anchorHeight - groundHeight);
+            groundPath.getElements().add(hill1);
+
+            // Valley between hills
+            QuadCurveTo valley = new QuadCurveTo();
+            valley.setControlX(anchorWidth * 0.6);
+            valley.setControlY(anchorHeight - groundHeight + 5);
+            valley.setX(anchorWidth * 0.5);
+            valley.setY(anchorHeight - groundHeight);
+            groundPath.getElements().add(valley);
+
+            // Second hill peak (medium)
+            QuadCurveTo hill2 = new QuadCurveTo();
+            hill2.setControlX(anchorWidth * 0.4);
+            hill2.setControlY(anchorHeight - groundHeight - 25);
+            hill2.setX(anchorWidth * 0.3);
+            hill2.setY(anchorHeight - groundHeight);
+            groundPath.getElements().add(hill2);
+
+            // Left edge - complete the path
+            LineTo leftEdge = new LineTo(0, anchorHeight - groundHeight);
+            groundPath.getElements().add(leftEdge);
+
+            // Close the path
+            LineTo closePath = new LineTo(0, anchorHeight);
+            groundPath.getElements().add(closePath);
+
+            // Create a gradient for the ground (green to brown)
+            LinearGradient groundGradient = new LinearGradient(
+                    0, 0,           // startX, startY (top)
+                    0, 1,           // endX, endY   (bottom)
+                    true,           // proportional to shape size
+                    CycleMethod.NO_CYCLE,
+                    new Stop(0.0, Color.web("#C18F32")),   // Greenish-teal top
+                    new Stop(0.5, Color.web("#9c8b6a")),   // Lime-green middle
+                    new Stop(1.0, Color.web("#efe3cb"))    // Purple bottom
             );
 
-            // Apply the background
-            cell.setBackground(new Background(backgroundFill));
+            groundPath.setFill(groundGradient);
 
-            // Add a border
-            cell.setBorder(new Border(new BorderStroke(
-                    javafx.scene.paint.Color.rgb(76, 175, 80, 0.3),
-                    BorderStrokeStyle.SOLID,
-                    new CornerRadii(6),
-                    new BorderWidths(1)
+            // Add a thin border
+            groundPath.setStroke(Color.rgb(101, 67, 33, 0.5));
+            groundPath.setStrokeWidth(1);
+
+            // Add some depth with a drop shadow
+            DropShadow groundShadow = new DropShadow();
+            groundShadow.setColor(Color.rgb(0, 0, 0, 0.3));
+            groundShadow.setRadius(5);
+            groundShadow.setOffsetY(-2);
+            groundPath.setEffect(groundShadow);
+
+            // Add ground to the scene (behind other elements)
+            anchorPane.getChildren().add(groundPath);
+            groundPath.toBack();
+
+            // Only keep background image in front of ground
+            for (Node node : anchorPane.getChildren()) {
+                if (node instanceof ImageView && node.getLayoutX() == 0 && node.getLayoutY() == 0) {
+                    node.toBack();
+                    break;
+                }
+            }
+
+            // Add decorative elements to the ground
+            addGroundDecorations(groundPath, anchorWidth, anchorHeight, groundHeight);
+
+            // Create a fixed container for the PARASITE STATUS label on top left of land
+            HBox statusLabel = new HBox();
+            statusLabel.setAlignment(Pos.CENTER_LEFT);
+            statusLabel.setPadding(new Insets(5, 15, 5, 15));
+
+            // Position it on the top left of the land
+            double labelX = 20; // 20px from left edge
+            double labelY = anchorHeight - groundHeight - 30; // 30px above the land
+
+            // Configure the label layout
+            statusLabel.setLayoutX(labelX);
+            statusLabel.setLayoutY(labelY);
+
+            // Style the label panel with a semi-transparent background
+            statusLabel.setBackground(new Background(new BackgroundFill(
+                    Color.rgb(255, 255, 255, 0.85),
+                    new CornerRadii(20),
+                    Insets.EMPTY
             )));
 
-            // Add a drop shadow effect
-            javafx.scene.effect.DropShadow dropShadow = new javafx.scene.effect.DropShadow();
-            dropShadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.1));
-            dropShadow.setRadius(2);
-            dropShadow.setOffsetX(0);
-            dropShadow.setOffsetY(1);
-            cell.setEffect(dropShadow);
+            // Add border to label panel
+            statusLabel.setBorder(new Border(new BorderStroke(
+                    Color.rgb(0, 150, 0, 0.7),
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(20),
+                    new BorderWidths(2)
+            )));
 
-            gridPane.add(cell, col, row);
+            // Add shadow for depth
+            DropShadow shadow = new DropShadow();
+            shadow.setColor(Color.rgb(0, 0, 0, 0.5));
+            shadow.setRadius(8);
+            shadow.setOffsetX(2);
+            shadow.setOffsetY(2);
+            statusLabel.setEffect(shadow);
+
+            // Create title text
+            Text statusTitle = new Text("PARASITE STATUS");
+            statusTitle.setFont(Font.font("System", FontWeight.BOLD, 14));
+            statusTitle.setFill(Color.rgb(50, 50, 50));
+
+            // Add title to label container
+            statusLabel.getChildren().add(statusTitle);
+
+            // Add the status label to the scene
+            anchorPane.getChildren().add(statusLabel);
+
+            // Create a separate, animating label for the status value
+            Label parasiteValueLabel = new Label("No Parasites");
+
+            // Add initial image
+            Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+            ImageView parasiteImageView = new ImageView(noParasiteImage);
+            parasiteImageView.setFitHeight(24);
+            parasiteImageView.setFitWidth(24);
+            parasiteValueLabel.setGraphic(parasiteImageView);
+
+            // Style the label
+            parasiteValueLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
+            parasiteValueLabel.setTextFill(Color.rgb(0, 120, 0));
+            parasiteValueLabel.setContentDisplay(ContentDisplay.LEFT);
+            parasiteValueLabel.setPadding(new Insets(5, 15, 5, 15));
+
+            // Add background with rounded corners
+            parasiteValueLabel.setBackground(new Background(new BackgroundFill(
+                    Color.rgb(255, 255, 255, 0.85),
+                    new CornerRadii(20),
+                    Insets.EMPTY
+            )));
+
+            // Add border
+            parasiteValueLabel.setBorder(new Border(new BorderStroke(
+                    Color.rgb(0, 150, 0, 0.7),
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(20),
+                    new BorderWidths(2)
+            )));
+
+            // Add shadow
+            parasiteValueLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
+
+            // Position off-screen to start
+            parasiteValueLabel.setLayoutX(anchorWidth);
+            parasiteValueLabel.setLayoutY(anchorHeight - groundHeight - 30);
+
+            // Add to the scene
+            anchorPane.getChildren().add(parasiteValueLabel);
+
+            // Store reference for later updates - IMPORTANT: Store the Label directly
+            parasiteStatusContainer = new HBox();
+            parasiteStatusContainer.getChildren().add(parasiteValueLabel);
+
+            // Create and start the animation
+            animateParasiteStatusLabel(parasiteValueLabel, anchorWidth, anchorHeight, groundHeight);
+
+            logger.info("Enhanced ground with parasite status display created successfully");
+
+            // Set the initial status to "No Parasites"
+            showNoParasites();
+        } catch (Exception e) {
+            logger.error("Error creating parasite status: " + e.getMessage());
+            e.printStackTrace();
+        }
+    });
+}
+    @FXML
+    public void forceZigzagAnimation() {
+        Platform.runLater(() -> {
+            // Find the parasite status label
+            for (Node node : anchorPane.getChildren()) {
+                if (node instanceof Label) {
+                    Label label = (Label) node;
+                    if (label.getText() != null &&
+                            (label.getText().contains("No Parasites") ||
+                                    label.getText().contains("detected"))) {
+
+                        logger.info("Found parasite label, applying force animation");
+
+                        // Get anchor dimensions
+                        double width = anchorPane.getWidth() > 0 ? anchorPane.getWidth() : 1000;
+                        double height = anchorPane.getHeight() > 0 ? anchorPane.getHeight() : 600;
+
+                        // Apply animation directly
+                        animateParasiteStatusLabel(label, width, height, 80);
+                        return;
+                    }
+                }
+            }
+
+            logger.warn("No parasite label found for forced animation");
+        });
+    }
+
+    // Animate the parasite status label across the ground
+    private void animateParasiteStatusLabel(Label statusLabel, double anchorWidth, double anchorHeight, double groundHeight) {
+        try {
+            // For debugging, let's make the label visually distinctive
+            statusLabel.setStyle("-fx-background-color: rgba(255, 255, 255, 0.9); -fx-padding: 8px 15px; -fx-background-radius: 20px;");
+
+            // Stop any existing animations
+            if (parasitePathTransition != null) {
+                parasitePathTransition.stop();
+            }
+
+            // Create a completely new zigzag path with very obvious movement
+            Path zigzagPath = new Path();
+
+            // Start at the right edge
+            MoveTo startPoint = new MoveTo(anchorWidth, anchorHeight - groundHeight - 30);
+            zigzagPath.getElements().add(startPoint);
+
+            // Create obvious zigzag segments
+            double segmentWidth = 60;
+            double amplitude = 50; // Very large amplitude to be clearly visible
+
+            int numSegments = (int)(anchorWidth / segmentWidth) + 1;
+
+            for (int i = 0; i < numSegments; i++) {
+                double x = anchorWidth - (i * segmentWidth);
+                double baseY = anchorHeight - groundHeight - 30;
+
+                // Make a sharper zigzag
+                double midX = x - (segmentWidth / 2);
+                double downY = baseY + amplitude;
+
+                LineTo down = new LineTo(midX, downY);
+                zigzagPath.getElements().add(down);
+
+                LineTo up = new LineTo(x - segmentWidth, baseY);
+                zigzagPath.getElements().add(up);
+            }
+
+            // Create a new path transition with direct reference
+            PathTransition transition = new PathTransition();
+            transition.setDuration(Duration.seconds(10)); // Faster to see the effect
+            transition.setPath(zigzagPath);
+            transition.setNode(statusLabel);
+            transition.setOrientation(PathTransition.OrientationType.NONE);
+            transition.setCycleCount(Animation.INDEFINITE);
+            transition.setAutoReverse(true);
+
+            // For debugging, print when animation starts
+            logger.info("Starting zigzag animation for parasite label");
+
+            // Start the animation immediately
+            transition.play();
+
+            // Store reference
+            parasitePathTransition = transition;
+
+        } catch (Exception e) {
+            logger.error("Error in zigzag animation: " + e.getMessage(), e);
         }
     }
 
-    gridPane.setHgap(3);
-    gridPane.setVgap(3);
-    gridPane.setPadding(new Insets(5, 5, 5, 5));
+    // If you have existing animations that need to be stopped first,
+// add this helper method to stop them before starting new ones
+    private void stopExistingParasiteAnimations() {
+        if (parasiteStatusAnimation != null) {
+            parasiteStatusAnimation.stop();
+            parasiteStatusAnimation = null;
+        }
 
-    // Apply styling to the grid without using CSS strings (avoids errors)
-    gridPane.setBackground(new Background(new BackgroundFill(
-            javafx.scene.paint.Color.rgb(255, 255, 255, 0.4),
-            new CornerRadii(10),
-            Insets.EMPTY
-    )));
+        if (parasitePathTransition != null) {
+            parasitePathTransition.stop();
+            parasitePathTransition = null;
+        }
+    }
 
-    gridPane.setBorder(new Border(new BorderStroke(
-            javafx.scene.paint.Color.rgb(76, 175, 80, 0.5),
-            BorderStrokeStyle.SOLID,
-            new CornerRadii(10),
-            new BorderWidths(2)
-    )));
+    // Add this method to ensure the parasite status is displayed correctly
+// Call this when you need to create a new parasite status label
+    private void createZigzagParasiteStatus() {
+        try {
+            // Get window dimensions
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+            double groundHeight = 80;
 
-    javafx.scene.effect.DropShadow gridShadow = new javafx.scene.effect.DropShadow();
-    gridShadow.setColor(javafx.scene.paint.Color.rgb(0, 0, 0, 0.2));
-    gridShadow.setRadius(8);
-    gridShadow.setOffsetX(0);
-    gridShadow.setOffsetY(2);
-    gridPane.setEffect(gridShadow);
-}
-//    private void createEnhancedGrid(GridPane gridPane, int numRows, int numCols) {
-//        // Colors array without any CSS issues
-//        String[] baseColors = {
-//                "#e8f5e9", // Very light green
-//                "#c8e6c9", // Light green
-//                "#a5d6a7", // Medium light green
-//                "#81c784"  // Medium green
-//        };
+            // Use default values if dimensions aren't available
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // Create "No Parasites" status
+            Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+            ImageView parasiteImageView = new ImageView(noParasiteImage);
+            parasiteImageView.setFitHeight(24);
+            parasiteImageView.setFitWidth(24);
+
+            // Create label with proper styling
+            Label statusLabel = new Label("No Parasites");
+            statusLabel.setGraphic(parasiteImageView);
+            statusLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
+            statusLabel.setTextFill(Color.rgb(0, 120, 0));
+            statusLabel.setContentDisplay(ContentDisplay.LEFT);
+            statusLabel.setPadding(new Insets(5, 15, 5, 15));
+
+            // Add background and border
+            statusLabel.setBackground(new Background(new BackgroundFill(
+                    Color.rgb(255, 255, 255, 0.85),
+                    new CornerRadii(20),
+                    Insets.EMPTY
+            )));
+
+            statusLabel.setBorder(new Border(new BorderStroke(
+                    Color.rgb(0, 150, 0, 0.7),
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(20),
+                    new BorderWidths(2)
+            )));
+
+            // Add shadow effect
+            DropShadow shadow = new DropShadow(8, Color.rgb(0, 0, 0, 0.5));
+            statusLabel.setEffect(shadow);
+
+            // Position the label initially at the right edge of the screen
+            statusLabel.setLayoutX(anchorWidth);
+            statusLabel.setLayoutY(anchorHeight - groundHeight - 30);
+
+            // Add the label to the scene
+            anchorPane.getChildren().add(statusLabel);
+
+            // Save reference for later use
+            parasiteStatusLabel = statusLabel;
+
+            // Stop any existing animations
+            stopExistingParasiteAnimations();
+
+            // Start zigzag animation
+            animateParasiteStatusLabel(statusLabel, anchorWidth, anchorHeight, groundHeight);
+
+        } catch (Exception e) {
+            logger.error("Error creating zigzag parasite status: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+// For ground decorations
+// [Keep this method as is from your previous implementation]
+
+    // Update method for showing no parasites
+
+
+    // Method to create a new parasite status label if needed
+    private void createNewParasiteStatusLabel(String text, String imagePath, Color textColor) {
+        try {
+            // Get window dimensions
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+            double groundHeight = 80;
+
+            // Use default values if dimensions aren't available
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // Create the image
+            Image parasiteImage = new Image(getClass().getResourceAsStream(imagePath));
+            ImageView parasiteImageView = new ImageView(parasiteImage);
+            parasiteImageView.setFitHeight(24);
+            parasiteImageView.setFitWidth(24);
+
+            // Create a new Label
+            Label newStatusLabel = new Label(text);
+            newStatusLabel.setGraphic(parasiteImageView);
+            newStatusLabel.setContentDisplay(ContentDisplay.LEFT);
+            newStatusLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
+            newStatusLabel.setTextFill(textColor);
+            newStatusLabel.setPadding(new Insets(5, 15, 5, 15));
+
+            // Style the label
+            newStatusLabel.setBackground(new Background(new BackgroundFill(
+                    Color.rgb(255, 255, 255, 0.85),
+                    new CornerRadii(20),
+                    Insets.EMPTY
+            )));
+
+            newStatusLabel.setBorder(new Border(new BorderStroke(
+                    Color.rgb(0, 150, 0, 0.7),
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(20),
+                    new BorderWidths(2)
+            )));
+
+            // Add shadow
+            newStatusLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
+
+            // Position it
+            newStatusLabel.setLayoutX(300); // Middle of screen
+            newStatusLabel.setLayoutY(anchorHeight - groundHeight - 30);
+
+            // Add to scene
+            anchorPane.getChildren().add(newStatusLabel);
+
+            // Animate it
+            animateParasiteStatusLabel(newStatusLabel, anchorWidth, anchorHeight, groundHeight);
+
+            // Update the container reference
+            if (parasiteStatusContainer == null) {
+                parasiteStatusContainer = new HBox();
+            } else {
+                parasiteStatusContainer.getChildren().clear();
+            }
+            parasiteStatusContainer.getChildren().add(newStatusLabel);
+
+            logger.info("Created new parasite status label due to missing reference");
+        } catch (Exception e) {
+            logger.error("Error creating new parasite status label: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Update method for handling parasite events
+
+
+    // Add decorative elements to the ground
+    private Path createGroundArea() {
+        try {
+            // Get window dimensions
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+
+            // Use default values if dimensions aren't available yet
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // Define ground height - REDUCED from 80 to 60
+            double groundHeight = 60;
+
+            // Create the main ground as a path to allow for hill shape
+            Path groundPath = new Path();
+
+            // Starting point - bottom left
+            MoveTo start = new MoveTo(0, anchorHeight);
+            groundPath.getElements().add(start);
+
+            // Bottom edge - straight line to right side
+            LineTo bottomRight = new LineTo(anchorWidth, anchorHeight);
+            groundPath.getElements().add(bottomRight);
+
+            // Right edge - straight line up
+            LineTo rightEdge = new LineTo(anchorWidth, anchorHeight - groundHeight);
+            groundPath.getElements().add(rightEdge);
+
+            // Create hill contour with quadratic curves
+            // First hill peak (small)
+            QuadCurveTo hill1 = new QuadCurveTo();
+            hill1.setControlX(anchorWidth * 0.8);
+            hill1.setControlY(anchorHeight - groundHeight - 15);
+            hill1.setX(anchorWidth * 0.7);
+            hill1.setY(anchorHeight - groundHeight);
+            groundPath.getElements().add(hill1);
+
+            // Valley between hills
+            QuadCurveTo valley = new QuadCurveTo();
+            valley.setControlX(anchorWidth * 0.6);
+            valley.setControlY(anchorHeight - groundHeight + 5);
+            valley.setX(anchorWidth * 0.5);
+            valley.setY(anchorHeight - groundHeight);
+            groundPath.getElements().add(valley);
+
+            // Second hill peak (medium)
+            QuadCurveTo hill2 = new QuadCurveTo();
+            hill2.setControlX(anchorWidth * 0.4);
+            hill2.setControlY(anchorHeight - groundHeight - 25);
+            hill2.setX(anchorWidth * 0.3);
+            hill2.setY(anchorHeight - groundHeight);
+            groundPath.getElements().add(hill2);
+
+            // Left edge - complete the path
+            LineTo leftEdge = new LineTo(0, anchorHeight - groundHeight);
+            groundPath.getElements().add(leftEdge);
+
+            // Close the path
+            LineTo closePath = new LineTo(0, anchorHeight);
+            groundPath.getElements().add(closePath);
+
+            // Create a gradient for the ground (green to brown)
+            LinearGradient groundGradient = new LinearGradient(
+                    0, 0,           // startX, startY (top)
+                    0, 1,           // endX, endY   (bottom)
+                    true,           // proportional to shape size
+                    CycleMethod.NO_CYCLE,
+                    new Stop(0.0,Color.web("#3c4d35")),
+                    new Stop(0.2, Color.web("#006400")),   // Dark green at left
+                    new Stop(0.3, Color.web("#228B22")),   // Forest green
+                    new Stop(0.4, Color.web("#6B8E23")),   // Olive green
+                    new Stop(0.6, Color.web("#9ACD32")),   // Yellow-green
+                    new Stop(0.9, Color.web("#eedfaf"))  // Metallic gold
+
+            );
+
+            groundPath.setFill(groundGradient);
+
+            // Add a thin border
+            groundPath.setStroke(Color.rgb(101, 67, 33, 0.5));
+            groundPath.setStrokeWidth(1);
+
+            // Add some depth with a drop shadow
+            DropShadow groundShadow = new DropShadow();
+            groundShadow.setColor(Color.rgb(0, 0, 0, 0.3));
+            groundShadow.setRadius(5);
+            groundShadow.setOffsetY(-2);
+            groundPath.setEffect(groundShadow);
+
+            // Add decorative elements to the ground
+            addGroundDecorations(groundPath, anchorWidth, anchorHeight, groundHeight);
+
+            return groundPath;
+        } catch (Exception e) {
+            logger.error("Error creating ground: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Updated method to position sprinklers with second one touching ground
+//    private void addSprinklersToGround() {
+//        Platform.runLater(() -> {
+//            try {
+//                logger.info("Adding sprinklers to ground area");
 //
-//        for (int row = 0; row < numRows; row++) {
-//            for (int col = 0; col < numCols; col++) {
-//                int colorIndex = (row + col) % baseColors.length;
+//                // Get window dimensions
+//                double anchorWidth = anchorPane.getWidth();
+//                double anchorHeight = anchorPane.getHeight();
 //
-//                StackPane cell = new StackPane();
-//                cell.setPrefSize(80, 80);
+//                // Use default values if dimensions aren't available yet
+//                if (anchorWidth <= 0) anchorWidth = 1000;
+//                if (anchorHeight <= 0) anchorHeight = 700;
 //
-//                // Fixed style string - no quotes around color values within the style
-//                cell.setStyle(
-//                        "-fx-background-color: " + baseColors[colorIndex] + "; " +
-//                                "-fx-background-radius: 6px; " +
-//                                "-fx-border-color: rgba(76, 175, 80, 0.3); " +
-//                                "-fx-border-width: 1px; " +
-//                                "-fx-border-radius: 6px; " +
-//                                "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);"
-//                );
+//                // Define ground height and positions for sprinklers
+//                double groundHeight = 60; // REDUCED from 80 to 60
+//                double groundTop = anchorHeight - groundHeight;
 //
-//                gridPane.add(cell, col, row);
+//                // Create first sprinkler on left side (pop-up style)
+//                createPopUpSprinkler(120, groundTop - 15, true);
+//
+//                // Create second sprinkler further to the left (impact style)
+//                // Position adjusted to touch the ground - no y offset
+//                createImpactSprinkler(280, groundTop, true);
+//
+//                logger.info("Successfully added two different sprinklers to ground area");
+//            } catch (Exception e) {
+//                logger.error("Error adding sprinklers to ground: " + e.getMessage());
+//                e.printStackTrace();
 //            }
-//        }
-//
-//        // Rest of the method...
+//        });
 //    }
-    // Add this method to remove the orange Veg label from top left
-    private void removeTopLeftVeg() {
+
+    // Add decorative elements to the ground
+    private void addGroundDecorations(Path groundPath, double anchorWidth, double anchorHeight, double groundHeight) {
+        Random random = new Random();
+
+        // Add grass tufts along the top of the ground - FEWER tufts for shorter ground
+        for (int i = 0; i < 20; i++) { // Reduced from 25 to 20
+            // Random position along the ground
+            double posX = random.nextDouble() * anchorWidth;
+
+            // Determine if this should be on a hill
+            double posY = anchorHeight - groundHeight;
+
+            // Adjust Y position based on X to follow hill contours
+            if (posX > anchorWidth * 0.7 && posX < anchorWidth * 0.9) {
+                // Right hill
+                double hillFactor = 15 * Math.sin((posX - anchorWidth * 0.7) / (anchorWidth * 0.2) * Math.PI);
+                posY -= hillFactor;
+            } else if (posX > anchorWidth * 0.2 && posX < anchorWidth * 0.4) {
+                // Left hill
+                double hillFactor = 25 * Math.sin((posX - anchorWidth * 0.2) / (anchorWidth * 0.2) * Math.PI);
+                posY -= hillFactor;
+            }
+
+            // Create a grass blade group
+            Group grassTuft = new Group();
+
+            // Add 2-4 blades of grass per tuft
+            int numBlades = 2 + random.nextInt(3);
+            for (int j = 0; j < numBlades; j++) {
+                // Create a curved line for more natural grass
+                QuadCurve grassBlade = new QuadCurve();
+                grassBlade.setStartX(posX + random.nextDouble() * 4 - 2);
+                grassBlade.setStartY(posY);
+
+                double endX = posX + random.nextDouble() * 8 - 4;
+                double endY = posY - 4 - random.nextDouble() * 6; // SHORTER grass for shorter ground
+
+                grassBlade.setEndX(endX);
+                grassBlade.setEndY(endY);
+
+                // Control point for curve
+                grassBlade.setControlX(posX + (endX - posX) * 0.5 + (random.nextDouble() * 6 - 3));
+                grassBlade.setControlY(posY - (posY - endY) * 0.3);
+
+                // Vary the green color
+                grassBlade.setStroke(Color.rgb(
+                        30 + random.nextInt(50),
+                        120 + random.nextInt(80),
+                        30 + random.nextInt(50),
+                        0.7 + random.nextDouble() * 0.3
+                ));
+                grassBlade.setStrokeWidth(1 + random.nextDouble());
+                grassBlade.setFill(null);
+                grassBlade.setStrokeLineCap(StrokeLineCap.ROUND);
+
+                grassTuft.getChildren().add(grassBlade);
+            }
+
+            // Add to scene
+            anchorPane.getChildren().add(grassTuft);
+        }
+
+        // Add fewer flowers for a shorter ground
+        for (int i = 0; i < 6; i++) { // Reduced from 8 to 6
+            double posX = random.nextDouble() * anchorWidth;
+            double posY = anchorHeight - random.nextDouble() * (groundHeight * 0.7);
+
+            if (random.nextBoolean()) {
+                // Flower
+                Circle flowerCenter = new Circle(posX, posY, 2 + random.nextDouble() * 1.5); // Smaller flowers
+                flowerCenter.setFill(Color.YELLOW);
+
+                // Petals
+                String[] petalColors = {
+                        "#FF69B4", "#FF1493", "#FF6347", "#FFFF00", "#FFA500"
+                };
+                String petalColor = petalColors[random.nextInt(petalColors.length)];
+
+                Group flower = new Group(flowerCenter);
+
+                // Add 5-8 petals
+                int numPetals = 5 + random.nextInt(4);
+                for (int p = 0; p < numPetals; p++) {
+                    double angle = p * (360.0 / numPetals);
+                    double rads = Math.toRadians(angle);
+
+                    Circle petal = new Circle(
+                            posX + Math.cos(rads) * 2.5, // Smaller petals
+                            posY + Math.sin(rads) * 2.5,
+                            1.5 + random.nextDouble() * 1.5 // Smaller petals
+                    );
+                    petal.setFill(Color.web(petalColor));
+                    flower.getChildren().add(petal);
+                }
+
+                // Add stem
+                Line stem = new Line(posX, posY, posX, posY + 4 + random.nextDouble() * 5); // Shorter stem
+                stem.setStroke(Color.rgb(50, 120, 50));
+                stem.setStrokeWidth(1.5);
+
+                Group flowerWithStem = new Group(stem, flower);
+                anchorPane.getChildren().add(flowerWithStem);
+            }
+        }
+
+        // Add fewer small rocks for shorter ground
+        for (int i = 0; i < 8; i++) { // Reduced from 10 to 8
+            double posX = random.nextDouble() * anchorWidth;
+            double posY = anchorHeight - random.nextDouble() * groundHeight * 0.7;
+
+            double size = 1.5 + random.nextDouble() * 4; // Slightly smaller rocks
+
+            Ellipse rock = new Ellipse(posX, posY, size, size * 0.7);
+
+            // Vary the rock color
+            rock.setFill(Color.rgb(
+                    120 + random.nextInt(60),
+                    120 + random.nextInt(60),
+                    120 + random.nextInt(60),
+                    0.7 + random.nextDouble() * 0.3
+            ));
+
+            // Add highlight
+            Ellipse highlight = new Ellipse(posX - size * 0.3, posY - size * 0.2, size * 0.3, size * 0.2);
+            highlight.setFill(Color.rgb(255, 255, 255, 0.3));
+
+            Group rockWithHighlight = new Group(rock, highlight);
+            anchorPane.getChildren().add(rockWithHighlight);
+        }
+    }
+
+    // Method to initialize parasite status with ground
+    public void initializeParasiteStatusWithGround() {
         Platform.runLater(() -> {
-            // Find all labels or HBoxes in the top-left corner
-            for (Node node : anchorPane.getChildren()) {
-                // Check for direct labels
-                if (node instanceof Label) {
-                    Label label = (Label) node;
-                    // Check if it contains "Veg" text and is in the top-left corner
-                    if ("Veg".equals(label.getText()) &&
-                            node.getLayoutX() < 50 && node.getLayoutY() < 50) {
-                        anchorPane.getChildren().remove(node);
-                        log4jLogger.info("Found and removed top-left Veg label");
-                        break;
+            try {
+                logger.info("Initializing parasite status with ground");
+
+                // Create ground if it doesn't exist and add it to scene
+                Path groundPath = createGroundArea();
+                if (groundPath != null) {
+                    // Add ground to the scene (behind other elements)
+                    anchorPane.getChildren().add(groundPath);
+                    groundPath.toBack();
+
+                    // Ensure the background image stays behind ground
+                    for (Node node : anchorPane.getChildren()) {
+                        if (node instanceof ImageView && node.getLayoutX() == 0 && node.getLayoutY() == 0) {
+                            node.toBack();
+                            break;
+                        }
                     }
+                    addSprinklersToGround();
                 }
 
-                // Check for VBox that might contain the Veg label
-                if (node instanceof VBox && node.getLayoutY() < 100) {
-                    VBox vbox = (VBox) node;
-                    for (Node child : vbox.getChildren()) {
-                        if (child instanceof Label && "Veg".equals(((Label) child).getText())) {
-                            vbox.getChildren().remove(child);
-                            log4jLogger.info("Removed Veg label from VBox");
-                            break;
-                        }
-                        if (child instanceof Text && "Veg".equals(((Text) child).getText())) {
-                            vbox.getChildren().remove(child);
-                            log4jLogger.info("Removed Veg text from VBox");
-                            break;
-                        }
-                    }
-                }
+                // Create parasite status label
+                createParasiteStatusWithPathAnimation();
+                PauseTransition delay = new PauseTransition(Duration.millis(100));
+                delay.setOnFinished(e -> addSprinklersToGround());
+                delay.play();
 
-                // Check for HBox that might contain the Veg label
-                if (node instanceof HBox && node.getLayoutY() < 100) {
-                    HBox hbox = (HBox) node;
-                    for (Node child : hbox.getChildren()) {
-                        if (child instanceof Label && "Veg".equals(((Label) child).getText())) {
-                            hbox.getChildren().remove(child);
-                            log4jLogger.info("Removed Veg label from HBox");
-                            break;
-                        }
-                    }
-                }
+            } catch (Exception e) {
+                logger.error("Error initializing parasite status with ground: " + e.getMessage());
+                e.printStackTrace();
             }
-
-            // Also check for directly added Veg text (as seen in your FXML)
-            List<Node> toRemove = new ArrayList<>();
-            for (Node node : anchorPane.getChildren()) {
-                if (node instanceof Text) {
-                    Text text = (Text) node;
-                    if ("Veg".equals(text.getText()) || "WEATHER".equals(text.getText())) {
-                        if (node.getLayoutX() < 50 && node.getLayoutY() < 50) {
-                            toRemove.add(node);
-                        }
-                    }
-                }
-            }
-
-            anchorPane.getChildren().removeAll(toRemove);
         });
     }
+    // Updated method to create and animate sprinklers with different designs
+     // Updated method to position sprinklers directly on the wavy ground
+    private void addSprinklersToGround() {
+        Platform.runLater(() -> {
+            try {
+                logger.info("Adding sprinklers to ground area");
+
+                // Get window dimensions
+                double anchorWidth = anchorPane.getWidth();
+                double anchorHeight = anchorPane.getHeight();
+
+                // Use default values if dimensions aren't available yet
+                if (anchorWidth <= 0) anchorWidth = 1000;
+                if (anchorHeight <= 0) anchorHeight = 700;
+
+                // From your screenshot, we can see the ground is wavy
+                // We'll use fixed Y-positions that match the ground curve
+
+                // First sprinkler (left) - position on the ground curve
+                double sprinkler1X = 120;
+                // Notice that the ground is higher on the left side in your screenshot
+                double sprinkler1Y = anchorHeight - 50; // Position directly on the visible ground
+
+                // Second sprinkler (right) - positioned on another part of the ground
+                double sprinkler2X = 280;
+                // The ground curves down a bit here
+                double sprinkler2Y = anchorHeight - 45; // Position directly on the visible ground
+
+                // Create sprinklers at these precise positions
+                createSimpleSprinkler(sprinkler1X, sprinkler1Y, true);
+                createSimpleSprinkler(sprinkler2X, sprinkler2Y, true);
+
+                // Add roses and plants to the ground
+                addPlantsToGround(anchorWidth, anchorHeight);
+
+                logger.info("Successfully added sprinklers and plants to ground");
+            } catch (Exception e) {
+                logger.error("Error adding sprinklers to ground: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
+    }
+
+    // Simplified sprinkler design that's clearly visible against the ground
+    private void createSimpleSprinkler(double x, double y, boolean isActive) {
+        try {
+            // Create sprinkler group
+            Group sprinklerGroup = new Group();
+
+            // Create base directly ON the ground
+            Circle base = new Circle(x, y, 10);
+            base.setFill(Color.rgb(70, 70, 70)); // Dark gray
+            base.setStroke(Color.rgb(20, 20, 20));
+            base.setStrokeWidth(1.5);
+
+            // Create visible connection to the ground
+            Rectangle connector = new Rectangle(x - 8, y - 5, 16, 10);
+            connector.setFill(Color.rgb(60, 60, 60));
+            connector.setArcWidth(5);
+            connector.setArcHeight(5);
+
+            // Create sprinkler body
+            Rectangle body = new Rectangle(x - 5, y - 30, 10, 25);
+            body.setFill(Color.rgb(100, 100, 100)); // Medium gray
+            body.setArcWidth(3);
+            body.setArcHeight(3);
+            body.setStroke(Color.rgb(40, 40, 40));
+            body.setStrokeWidth(1);
+
+            // Create sprinkler head
+            Circle head = new Circle(x, y - 33, 6);
+            head.setFill(Color.rgb(130, 130, 130)); // Lighter gray for contrast
+            head.setStroke(Color.rgb(40, 40, 40));
+            head.setStrokeWidth(1);
+
+            // Create water nozzle
+            Circle nozzle = new Circle(x, y - 33, 2);
+            nozzle.setFill(Color.rgb(30, 30, 30)); // Very dark gray
+
+            // Add all parts to the group - order matters for layering
+            sprinklerGroup.getChildren().addAll(connector, base, body, head, nozzle);
+
+            // Add drop shadow for better visibility
+            DropShadow shadow = new DropShadow();
+            shadow.setColor(Color.rgb(0, 0, 0, 0.6));
+            shadow.setRadius(4);
+            shadow.setOffsetY(2);
+            sprinklerGroup.setEffect(shadow);
+
+            // Add to scene with high view order to ensure visibility
+            anchorPane.getChildren().add(sprinklerGroup);
+            sprinklerGroup.setViewOrder(-2000);
+
+            // Add water animation if active
+            if (isActive) {
+                animateSprinklerWater(sprinklerGroup, x, y - 33);
+            }
+
+            logger.info("Created sprinkler at exact position: x=" + x + ", y=" + y);
+
+        } catch (Exception e) {
+            logger.error("Error creating sprinkler: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Method to add roses and plants to the ground
+    private void addPlantsToGround(double anchorWidth, double anchorHeight) {
+        try {
+            // Add roses and other plants along the ground
+
+            // Create a rose on the left side
+            createRose(180, anchorHeight - 55);
+
+            // Create another rose on the right side
+            createRose(420, anchorHeight - 55);
+
+            // Create a small bush on the center-left
+            //createBush(240, anchorHeight - 50);
+
+            // Create some flowers
+            createFlowerPatch(340, anchorHeight - 60);
+
+            // Create a small decorative plant on the far right
+            createDecorativePlant(500, anchorHeight - 60);
+
+            logger.info("Added roses and plants to ground area");
+        } catch (Exception e) {
+            logger.error("Error adding plants to ground: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Create a rose with stem and flower
+    private void createRose(double x, double y) {
+        Group roseGroup = new Group();
+
+        // Create stem
+        Rectangle stem = new Rectangle(x - 1.5, y - 30, 3, 30);
+        stem.setFill(Color.rgb(40, 100, 40)); // Dark green
+
+        // Create leaves (2-3 small leaves on the stem)
+        for (int i = 0; i < 2; i++) {
+            double leafY = y - 10 - (i * 10);
+            double leafSide = (i % 2 == 0) ? -1 : 1; // Alternate sides
+
+            // Create a leaf using a polygon for a more natural shape
+            Polygon leaf = new Polygon();
+            leaf.getPoints().addAll(
+                    x, leafY,                        // Stem attachment point
+                    x + (leafSide * 10), leafY - 5,  // Tip of leaf
+                    x + (leafSide * 7), leafY - 2,   // Side point
+                    x + (leafSide * 3), leafY - 3    // Base curve
+            );
+            leaf.setFill(Color.rgb(50, 150, 50)); // Green
+
+            roseGroup.getChildren().add(leaf);
+        }
+
+        // Create rose flower (multiple petals in a circle)
+        double flowerSize = 7;
+        Color roseColor = Color.rgb(220, 50, 80); // Rose red
+
+        // Center bud
+        Circle centerBud = new Circle(x, y - 35, flowerSize - 2);
+        centerBud.setFill(roseColor.darker());
+
+        // Add to group
+        roseGroup.getChildren().addAll(stem, centerBud);
+
+        // Create petals around the center
+        int numPetals = 8;
+        for (int i = 0; i < numPetals; i++) {
+            double angle = i * (360.0 / numPetals);
+            double radian = Math.toRadians(angle);
+
+            double petalX = x + Math.cos(radian) * (flowerSize - 2);
+            double petalY = (y - 35) + Math.sin(radian) * (flowerSize - 2);
+
+            Circle petal = new Circle(petalX, petalY, flowerSize);
+            petal.setFill(roseColor);
+
+            roseGroup.getChildren().add(petal);
+        }
+
+        // Add drop shadow
+        DropShadow shadow = new DropShadow();
+        shadow.setColor(Color.rgb(0, 0, 0, 0.5));
+        shadow.setRadius(3);
+        shadow.setOffsetY(2);
+        roseGroup.setEffect(shadow);
+
+        // Add to scene with high view order to ensure visibility
+        anchorPane.getChildren().add(roseGroup);
+        roseGroup.setViewOrder(-1500);
+    }
+
+    // Create a small bush
+    private void createBush(double x, double y) {
+        Group bushGroup = new Group();
+
+        // Create several overlapping circular sections for the bush
+        int numSections = 6;
+        double bushWidth = 30;
+        double bushHeight = 25;
+
+        for (int i = 0; i < numSections; i++) {
+            double sectionX = x - (bushWidth/2) + (i * (bushWidth/(numSections-1)));
+            double sectionY = y - (bushHeight * 0.7);
+            double sectionSize = 8 + (Math.random() * 4);
+
+            // Vary the height a little
+            if (i % 2 == 0) {
+                sectionY -= 3;
+            }
+
+            Circle section = new Circle(sectionX, sectionY, sectionSize);
+
+            // Vary the green shade slightly
+            int greenVariation = (int)(Math.random() * 30);
+            section.setFill(Color.rgb(
+                    50 + greenVariation,
+                    120 + greenVariation,
+                    50 + (greenVariation/2)
+            ));
+
+            bushGroup.getChildren().add(section);
+        }
+
+        // Create a thin trunk/stem visible at the bottom
+        Rectangle trunk = new Rectangle(x - 2, y - 5, 4, 5);
+        trunk.setFill(Color.rgb(80, 60, 30));
+        bushGroup.getChildren().add(trunk);
+
+        // Add drop shadow
+        DropShadow shadow = new DropShadow();
+        shadow.setColor(Color.rgb(0, 0, 0, 0.5));
+        shadow.setRadius(3);
+        shadow.setOffsetY(2);
+        bushGroup.setEffect(shadow);
+
+        // Add to scene
+        anchorPane.getChildren().add(bushGroup);
+        bushGroup.setViewOrder(-1500);
+    }
+
+    // Create a patch of small flowers
+    private void createFlowerPatch(double x, double y) {
+        Group flowerGroup = new Group();
+
+        // Add several small flowers in a cluster
+        int numFlowers = 5;
+        double spreadX = 25;
+        double spreadY = 15;
+
+        for (int i = 0; i < numFlowers; i++) {
+            double flowerX = x - (spreadX/2) + (Math.random() * spreadX);
+            double flowerY = y - (Math.random() * spreadY);
+
+            // Choose flower color - mix of colors for variety
+            Color[] flowerColors = {
+                    Color.rgb(255, 255, 100), // Yellow
+                    Color.rgb(255, 100, 255), // Pink
+                    Color.rgb(100, 100, 255), // Blue
+                    Color.rgb(255, 150, 50)   // Orange
+            };
+            Color flowerColor = flowerColors[(int)(Math.random() * flowerColors.length)];
+
+            // Create flower stem
+            Line stem = new Line(flowerX, flowerY, flowerX, flowerY - 10 - (Math.random() * 5));
+            stem.setStroke(Color.rgb(50, 120, 50));
+            stem.setStrokeWidth(1.5);
+            flowerGroup.getChildren().add(stem);
+
+            // Create flower center
+            Circle center = new Circle(flowerX, stem.getEndY(), 2);
+            center.setFill(Color.rgb(200, 150, 0));
+            flowerGroup.getChildren().add(center);
+
+            // Create petals
+            int numPetals = 5 + (int)(Math.random() * 3);
+            for (int j = 0; j < numPetals; j++) {
+                double angle = j * (360.0 / numPetals);
+                double radian = Math.toRadians(angle);
+
+                double petalX = flowerX + Math.cos(radian) * 4;
+                double petalY = stem.getEndY() + Math.sin(radian) * 4;
+
+                Circle petal = new Circle(petalX, petalY, 3);
+                petal.setFill(flowerColor);
+
+                flowerGroup.getChildren().add(petal);
+            }
+        }
+
+        // Add drop shadow for depth
+        DropShadow shadow = new DropShadow();
+        shadow.setColor(Color.rgb(0, 0, 0, 0.4));
+        shadow.setRadius(2);
+        shadow.setOffsetY(1);
+        flowerGroup.setEffect(shadow);
+
+        // Add to scene
+        anchorPane.getChildren().add(flowerGroup);
+        flowerGroup.setViewOrder(-1500);
+    }
+
+    // Create a decorative plant (like a small fern or ornamental grass)
+    private void createDecorativePlant(double x, double y) {
+        Group plantGroup = new Group();
+
+        // Create a small base/soil mound
+        Circle soilMound = new Circle(x, y, 8);
+        soilMound.setFill(Color.rgb(100, 70, 40)); // Brown soil
+        plantGroup.getChildren().add(soilMound);
+
+        // Add plant stems/blades
+        int numStems = 7;
+        for (int i = 0; i < numStems; i++) {
+            double angle = -60 - (i * (60.0 / numStems)); // Spread from -60 to -120 degrees
+            double radian = Math.toRadians(angle);
+
+            double stemLength = 15 + (Math.random() * 10);
+
+            // Create a curved path for the stem
+            Path stemPath = new Path();
+
+            MoveTo start = new MoveTo(x, y);
+            stemPath.getElements().add(start);
+
+            double controlX = x + Math.cos(radian) * (stemLength * 0.5);
+            double controlY = y + Math.sin(radian) * (stemLength * 0.5);
+            double endX = x + Math.cos(radian) * stemLength;
+            double endY = y + Math.sin(radian) * stemLength;
+
+            QuadCurveTo curve = new QuadCurveTo(controlX, controlY, endX, endY);
+            stemPath.getElements().add(curve);
+
+            stemPath.setStroke(Color.rgb(50 + (int)(Math.random() * 30),
+                    120 + (int)(Math.random() * 30),
+                    50));
+            stemPath.setStrokeWidth(1 + Math.random());
+            stemPath.setStrokeLineCap(StrokeLineCap.ROUND);
+
+            plantGroup.getChildren().add(stemPath);
+        }
+
+        // Add shadow
+        DropShadow shadow = new DropShadow();
+        shadow.setColor(Color.rgb(0, 0, 0, 0.4));
+        shadow.setRadius(3);
+        shadow.setOffsetY(2);
+        plantGroup.setEffect(shadow);
+
+        // Add to scene
+        anchorPane.getChildren().add(plantGroup);
+        plantGroup.setViewOrder(-1500);
+    }
+
+    // Updated water animation for better visibility
+    private void animateSprinklerWater(Group sprinklerGroup, double x, double y) {
+        // Create a group for water particles
+        Group waterGroup = new Group();
+        sprinklerGroup.getChildren().add(waterGroup);
+
+        // Create a timeline for spraying water particles
+        Timeline waterAnimation = new Timeline(
+                new KeyFrame(Duration.millis(80), event -> {
+                    // Create a fan pattern of water
+                    for (int i = -4; i <= 4; i++) {
+                        double angle = -90 + (i * 15); // -150 to -30 degrees
+
+                        // Random chance to skip some drops for natural effect
+                        if (Math.random() < 0.7) {
+                            addWaterDroplet(waterGroup, x, y, angle);
+                        }
+                    }
+                })
+        );
+        waterAnimation.setCycleCount(Timeline.INDEFINITE);
+        waterAnimation.play();
+
+        // Add cycling behavior
+        Timeline cycleAnimation = new Timeline(
+                new KeyFrame(Duration.seconds(4), e -> {
+                    waterAnimation.pause();
+                    waterGroup.getChildren().clear();
+                }),
+                new KeyFrame(Duration.seconds(6), e -> {
+                    waterAnimation.play();
+                })
+        );
+        cycleAnimation.setCycleCount(Timeline.INDEFINITE);
+        cycleAnimation.play();
+    }
+
+    // Create water droplets with improved visibility
+    private void addWaterDroplet(Group waterGroup, double x, double y, double angle) {
+        // Convert angle to radians
+        double radian = Math.toRadians(angle);
+
+        // Create a water droplet
+        Circle droplet = new Circle(2.5 + Math.random());
+
+        // Use bright blue color with some transparency
+        droplet.setFill(Color.rgb(0, 160, 255, 0.7 + Math.random() * 0.3));
+
+        // Add a slight outline for better visibility
+        droplet.setStroke(Color.rgb(0, 100, 220, 0.5));
+        droplet.setStrokeWidth(0.5);
+
+        // Set initial position
+        droplet.setCenterX(x);
+        droplet.setCenterY(y);
+
+        // Add to group
+        waterGroup.getChildren().add(droplet);
+
+        // Set an extremely high view order
+        droplet.setViewOrder(-3000);
+
+        // Create arc path animation
+        double speed = 0.8 + Math.random() * 0.4; // Duration in seconds
+        double distance = 30 + Math.random() * 20; // Distance the droplet travels
+
+        // Create timeline animation with 15 steps
+        Timeline animation = new Timeline();
+        int steps = 15;
+
+        for (int i = 0; i <= steps; i++) {
+            double t = i / (double)steps;
+
+            // Calculate position along arc path with gravity
+            double pathX = x + (distance * t * Math.cos(radian));
+            double pathY = y + (distance * t * Math.sin(radian)) + (20 * t * t); // Add gravity
+
+            // Gradually reduce opacity near the end
+            double opacity = (i < steps * 0.7) ?
+                    (0.7 + Math.random() * 0.3) :
+                    ((1 - (i - steps * 0.7) / (steps * 0.3)) * 0.7);
+
+            // Add keyframe
+            animation.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(speed * t),
+                            new KeyValue(droplet.centerXProperty(), pathX),
+                            new KeyValue(droplet.centerYProperty(), pathY),
+                            new KeyValue(droplet.opacityProperty(), opacity)
+                    )
+            );
+        }
+
+        // Remove when done
+        animation.setOnFinished(e -> waterGroup.getChildren().remove(droplet));
+
+        // Play the animation
+        animation.play();
+    }
+    // Simplified water animation for visibility
+
+
+    // Create highly visible water droplets
+    private void addVisibleWaterDroplet(Group waterGroup, double x, double y, double angle) {
+        // Convert angle to radians
+        double radian = Math.toRadians(angle);
+
+        // Create a larger, more visible droplet
+        Circle droplet = new Circle(3);
+
+        // Use a bright blue color that's easy to see
+        droplet.setFill(Color.rgb(0, 150, 255, 0.8));
+
+        // Add a stroke for extra visibility
+        droplet.setStroke(Color.rgb(0, 100, 200, 0.5));
+        droplet.setStrokeWidth(1);
+
+        // Set initial position at the nozzle
+        droplet.setCenterX(x);
+        droplet.setCenterY(y);
+
+        // Add to the water group
+        waterGroup.getChildren().add(droplet);
+
+        // Set a high view order to ensure droplets are visible
+        droplet.setViewOrder(-2000);
+
+        // Calculate a simple arc path for the water
+        double speed = 1.0 + Math.random() * 0.5; // Consistent speed
+        double distance = 40 + Math.random() * 20; // Moderate distance
+
+        // Create animation timeline for the droplet
+        Timeline timeline = new Timeline();
+
+        // Add keyframes for the motion - 10 steps for smooth movement
+        int steps = 10;
+        for (int i = 0; i <= steps; i++) {
+            double t = i / (double) steps;
+
+            // Calculate position along the arc
+            double dx = distance * t * Math.cos(radian);
+            double dy = distance * t * Math.sin(radian) + (15 * t * t); // Add gravity
+
+            double newX = x + dx;
+            double newY = y + dy;
+
+            // Add keyframe
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(speed * t),
+                            new KeyValue(droplet.centerXProperty(), newX),
+                            new KeyValue(droplet.centerYProperty(), newY)
+                    )
+            );
+
+            // Add fade out toward the end
+            if (i > steps * 0.7) {
+                double opacity = 1 - ((i - steps * 0.7) / (steps * 0.3));
+                timeline.getKeyFrames().add(
+                        new KeyFrame(Duration.seconds(speed * t),
+                                new KeyValue(droplet.opacityProperty(), opacity)
+                        )
+                );
+            }
+        }
+
+        // Remove the droplet when animation completes
+        timeline.setOnFinished(e -> waterGroup.getChildren().remove(droplet));
+
+        // Play the animation
+        timeline.play();
+    }
+
+    // Create a pop-up style sprinkler (more modern, sleek design)
+    private void createPopUpSprinkler(double x, double y, boolean isActive) {
+        try {
+            // Create sprinkler group
+            Group sprinklerGroup = new Group();
+
+            // Create underground housing - slightly wider than the pop-up part
+            Rectangle housing = new Rectangle(x - 8, y + 5, 16, 20);
+            housing.setFill(Color.rgb(50, 50, 50)); // Dark gray
+            housing.setArcWidth(5);
+            housing.setArcHeight(5);
+
+            // Create pop-up riser - thinner tube that "pops up" from the housing
+            Rectangle riser = new Rectangle(x - 4, y - 15, 8, 20);
+            riser.setFill(Color.rgb(120, 120, 120)); // Light gray
+            riser.setArcWidth(8);
+            riser.setArcHeight(8);
+
+            // Create sprinkler head - flat nozzle on top
+            Rectangle head = new Rectangle(x - 7, y - 18, 14, 4);
+            head.setFill(Color.rgb(50, 50, 50)); // Dark gray
+            head.setArcWidth(4);
+            head.setArcHeight(4);
+
+            // Add water outlet slots
+            for (int i = 0; i < 3; i++) {
+                double slotX = x - 6 + (i * 5);
+                Rectangle slot = new Rectangle(slotX, y - 18, 2, 2);
+                slot.setFill(Color.rgb(30, 30, 30)); // Darker for contrast
+                sprinklerGroup.getChildren().add(slot);
+            }
+
+            // Add all parts to the group
+            sprinklerGroup.getChildren().addAll(housing, riser, head);
+
+            // Add drop shadow for better visibility
+            DropShadow shadow = new DropShadow();
+            shadow.setColor(Color.rgb(0, 0, 0, 0.5));
+            shadow.setRadius(3);
+            shadow.setOffsetY(2);
+            sprinklerGroup.setEffect(shadow);
+
+            // Add to scene
+            anchorPane.getChildren().add(sprinklerGroup);
+
+            // Add water particles if active
+            if (isActive) {
+                animatePopUpSprinkler(sprinklerGroup, x, y - 18); // Water comes from the top of the head
+            }
+
+        } catch (Exception e) {
+            logger.error("Error creating pop-up sprinkler: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Create an impact style sprinkler (traditional oscillating type)
+    private void createImpactSprinkler(double x, double y, boolean isActive) {
+        try {
+            // Create sprinkler group
+            Group sprinklerGroup = new Group();
+
+            // Create base that sits on the ground
+            Circle base = new Circle(x, y, 10);
+            base.setFill(Color.rgb(50, 50, 50)); // Dark gray
+
+            // Create main body/pipe coming out of base
+            Rectangle pipe = new Rectangle(x - 3, y - 25, 6, 25); // Shortened to connect with base
+            pipe.setFill(Color.rgb(100, 100, 100)); // Medium gray
+
+            // Create sprinkler head - impact style with distinctive hammer shape
+            Circle head = new Circle(x, y - 28, 7);
+            head.setFill(Color.rgb(80, 80, 80));
+            head.setStroke(Color.rgb(40, 40, 40));
+            head.setStrokeWidth(1.5);
+
+            // Add impact arm (the "hammer" part)
+            Rectangle arm = new Rectangle(x, y - 33, 15, 3);
+            arm.setFill(Color.rgb(70, 70, 70));
+            arm.setRotate(20); // Angled slightly
+
+            // Add nozzle
+            Polygon nozzle = new Polygon();
+            nozzle.getPoints().addAll(
+                    x - 4.0, y - 28.0,
+                    x - 10.0, y - 31.0,
+                    x - 10.0, y - 25.0
+            );
+            nozzle.setFill(Color.rgb(50, 50, 50));
+
+            // Add all parts to group
+            sprinklerGroup.getChildren().addAll(base, pipe, head, arm, nozzle);
+
+            // Add drop shadow
+            DropShadow shadow = new DropShadow();
+            shadow.setColor(Color.rgb(0, 0, 0, 0.5));
+            shadow.setRadius(3);
+            shadow.setOffsetY(2);
+            sprinklerGroup.setEffect(shadow);
+
+            // Add to scene
+            anchorPane.getChildren().add(sprinklerGroup);
+
+            // Add animation for the impact arm to rotate
+            if (isActive) {
+                // Rotate the arm back and forth
+                RotateTransition armRotation = new RotateTransition(Duration.seconds(0.8), arm);
+                armRotation.setFromAngle(20);  // Starting angle
+                armRotation.setToAngle(-40);   // Target angle
+                armRotation.setCycleCount(Timeline.INDEFINITE);
+                armRotation.setAutoReverse(true);
+                armRotation.play();
+
+                // Water animation comes from the nozzle
+                animateImpactSprinkler(sprinklerGroup, x - 10, y - 28);
+            }
+
+        } catch (Exception e) {
+            logger.error("Error creating impact sprinkler: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Animation for pop-up style sprinkler
+    private void animatePopUpSprinkler(Group sprinklerGroup, double x, double y) {
+        // Create a group for water particles
+        Group waterGroup = new Group();
+        sprinklerGroup.getChildren().add(waterGroup);
+
+        // Create a fan pattern with multiple angles
+        double[] angles = {-20, -40, -60, -80, -100, -120, -140};
+
+        // Create a timeline animation that adds water droplets in fan pattern
+        Timeline waterAnimation = new Timeline(
+                new KeyFrame(Duration.millis(100), event -> {
+                    // Add multiple droplets in fan pattern
+                    for (double angle : angles) {
+                        if (Math.random() > 0.3) { // Random chance to skip some angles for natural variation
+                            addWaterDroplet(waterGroup, x, y, angle, 2 + Math.random() * 1.5);
+                        }
+                    }
+                })
+        );
+        waterAnimation.setCycleCount(Timeline.INDEFINITE);
+        waterAnimation.play();
+
+        // Add a pause-resume cycle
+        Timeline cycleAnimation = new Timeline(
+                new KeyFrame(Duration.seconds(5), e -> {
+                    waterAnimation.pause();
+                    waterGroup.getChildren().clear();
+                }),
+                new KeyFrame(Duration.seconds(7), e -> {
+                    waterAnimation.play();
+                })
+        );
+        cycleAnimation.setCycleCount(Timeline.INDEFINITE);
+        cycleAnimation.play();
+    }
+
+    // Animation for impact style sprinkler
+    private void animateImpactSprinkler(Group sprinklerGroup, double x, double y) {
+        // Create a group for water particles
+        Group waterGroup = new Group();
+        sprinklerGroup.getChildren().add(waterGroup);
+
+        // Create a sweeping pattern that oscillates
+        final double[] currentAngle = {-30}; // Mutable holder
+        final double[] direction = {-2}; // Negative for decreasing angle (moving right to left)
+
+        // Create a timeline animation that adds water droplets in oscillating pattern
+        Timeline waterAnimation = new Timeline(
+                new KeyFrame(Duration.millis(50), event -> {
+                    // Update angle based on direction
+                    currentAngle[0] += direction[0];
+
+                    // Reverse direction at endpoints
+                    if (currentAngle[0] < -140) {
+                        direction[0] = 2; // Start moving left to right
+                    } else if (currentAngle[0] > -30) {
+                        direction[0] = -2; // Start moving right to left
+                    }
+
+                    // Add water droplets along current angle
+                    for (int i = 0; i < 3; i++) { // Multiple droplets for volume
+                        double angleVariation = currentAngle[0] + (Math.random() * 10 - 5); // Small variation
+                        addWaterDroplet(waterGroup, x, y, angleVariation, 2.5 + Math.random() * 2);
+                    }
+                })
+        );
+        waterAnimation.setCycleCount(Timeline.INDEFINITE);
+        waterAnimation.play();
+
+        // Add a pause-resume cycle with different timing than the pop-up sprinkler
+        Timeline cycleAnimation = new Timeline(
+                new KeyFrame(Duration.seconds(7), e -> {
+                    waterAnimation.pause();
+                    waterGroup.getChildren().clear();
+                }),
+                new KeyFrame(Duration.seconds(10), e -> {
+                    waterAnimation.play();
+                })
+        );
+        cycleAnimation.setCycleCount(Timeline.INDEFINITE);
+        cycleAnimation.play();
+    }
+
+    // Enhanced water droplet function with more parameters
+    private void addWaterDroplet(Group waterGroup, double x, double y, double angle, double speed) {
+        // Randomize droplet size slightly
+        double size = 2 + Math.random() * 2;
+
+        // Create a small circle for the water droplet
+        Circle droplet = new Circle(size);
+
+        // Vary water color slightly for natural look
+        double blueVariation = Math.random() * 0.2;
+        droplet.setFill(Color.rgb(
+                100,
+                180 + (int)(blueVariation * 75),
+                255,
+                0.6 + Math.random() * 0.3)); // Varying blue with transparency
+
+        // Set initial position at the sprinkler head
+        droplet.setCenterX(x);
+        droplet.setCenterY(y);
+
+        // Add to the water group
+        waterGroup.getChildren().add(droplet);
+
+        // Convert angle to radians
+        double radian = Math.toRadians(angle);
+
+        // Create a path for the water particle
+        Path path = new Path();
+
+        // Start point
+        MoveTo start = new MoveTo(x, y);
+        path.getElements().add(start);
+
+        // Create an arc path for natural water movement
+        double distance = 80 + (Math.random() * 40); // Varying distance
+        double controlX = x + Math.cos(radian) * (distance * 0.5);
+        double controlY = y + Math.sin(radian) * (distance * 0.5) + 10; // Add gravity effect
+        double endX = x + Math.cos(radian) * distance;
+        double endY = y + Math.sin(radian) * distance + 25; // Add more gravity at the end
+
+        QuadCurveTo curve = new QuadCurveTo(controlX, controlY, endX, endY);
+        path.getElements().add(curve);
+
+        // Create a path transition
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.seconds(speed));
+        pathTransition.setNode(droplet);
+        pathTransition.setPath(path);
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+
+        // Fade out the droplet toward the end
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(speed * 0.7), droplet);
+        fadeOut.setFromValue(0.7);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.seconds(speed * 0.3));
+
+        // Add scale transition to simulate droplet getting smaller
+        ScaleTransition scaleDown = new ScaleTransition(Duration.seconds(speed), droplet);
+        scaleDown.setFromX(1.0);
+        scaleDown.setFromY(1.0);
+        scaleDown.setToX(0.4);
+        scaleDown.setToY(0.4);
+
+        // Play the animations in parallel
+        ParallelTransition animation = new ParallelTransition(pathTransition, fadeOut, scaleDown);
+        animation.setOnFinished(e -> waterGroup.getChildren().remove(droplet));
+        animation.play();
+    }
+    // Create parasite status with path animation
+    private void createParasiteStatusWithPathAnimation() {
+        try {
+            // 1) Remove existing parasite status label and stop its animation if it exists
+            if (parasiteStatusLabel != null && anchorPane.getChildren().contains(parasiteStatusLabel)) {
+                anchorPane.getChildren().remove(parasiteStatusLabel);
+                if (parasitePathTransition != null) {
+                    parasitePathTransition.stop();
+                }
+            }
+
+            // 2) Get window dimensions (or use default if not yet rendered)
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // 3) Calculate Y-position in the middle of the ground
+            double groundHeight = 80;
+            double labelYPosition = anchorHeight - groundHeight / 2 - 10;
+
+            // 4) Create a larger label with purple background
+            Label statusLabel = new Label("No Parasites");
+            statusLabel.setFont(Font.font("System", FontWeight.BOLD, 20));  // Larger font
+            statusLabel.setTextFill(Color.BLACK);                            // White text
+            statusLabel.setPadding(new Insets(10, 20, 10, 20));             // Extra padding
+
+            // 5) Add icon
+            Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+            ImageView parasiteImageView = new ImageView(noParasiteImage);
+            parasiteImageView.setFitHeight(24);
+            parasiteImageView.setFitWidth(24);
+            statusLabel.setGraphic(parasiteImageView);
+            statusLabel.setContentDisplay(ContentDisplay.LEFT);
+
+            // 6) Purple background, white border, drop shadow
+            statusLabel.setBackground(new Background(new BackgroundFill(
+                    Color.LIGHTSTEELBLUE,
+                    new CornerRadii(20),
+                    Insets.EMPTY
+            )));
+            statusLabel.setBorder(new Border(new BorderStroke(
+                    Color.WHITE,
+                    BorderStrokeStyle.SOLID,
+                    new CornerRadii(20),
+                    new BorderWidths(2)
+            )));
+            statusLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
+
+            // 7) Create a path (right to left) along the ground area
+            Path horizontalPath = new Path();
+            MoveTo startPoint = new MoveTo(anchorWidth - 100, labelYPosition);
+            LineTo endPoint = new LineTo(350, labelYPosition);
+            horizontalPath.getElements().addAll(startPoint, endPoint);
+
+            // 8) Add the label to the scene and store it
+            anchorPane.getChildren().add(statusLabel);
+            parasiteStatusLabel = statusLabel;
+
+            // 9) Create a PathTransition for slower horizontal movement
+            PathTransition pathTransition = new PathTransition();
+            pathTransition.setDuration(Duration.seconds(40));               // Slower horizontal speed
+            pathTransition.setPath(horizontalPath);
+            pathTransition.setNode(statusLabel);
+            pathTransition.setOrientation(PathTransition.OrientationType.NONE);
+            pathTransition.setCycleCount(PathTransition.INDEFINITE);
+            pathTransition.setInterpolator(Interpolator.LINEAR);
+
+            // 10) Create a small vertical oscillation (up/down) while moving
+            TranslateTransition verticalOscillation = new TranslateTransition(Duration.seconds(2), statusLabel);
+            verticalOscillation.setFromY(-5);
+            verticalOscillation.setToY(5);
+            verticalOscillation.setCycleCount(TranslateTransition.INDEFINITE);
+            verticalOscillation.setAutoReverse(true);
+
+            // 11) Store reference to the path transition and start both animations
+            parasitePathTransition = pathTransition;
+            pathTransition.play();
+            verticalOscillation.play();
+
+            logger.info("Parasite status with path animation (ground area) created successfully");
+        } catch (Exception e) {
+            logger.error("Error creating parasite status with path animation: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // Animate the status value box across the entire ground with a zigzag path
+    private void animateStatusValueAcrossGround(HBox statusValue, double anchorWidth, double anchorHeight, double groundHeight) {
+        // Create a zigzag path that follows the contour of the ground
+        Path zigzagPath = new Path();
+
+        // Starting point at the right edge to enter from right
+        MoveTo startPoint = new MoveTo(anchorWidth, anchorHeight - groundHeight + 30);
+        zigzagPath.getElements().add(startPoint);
+
+        // Create a series of zigzag segments across the entire width
+        double amplitude = 15; // Height of zigzag
+        double segmentWidth = 40; // Width of each zigzag segment
+
+        // Calculate number of segments needed to cover the width
+        int numSegments = (int) (anchorWidth / segmentWidth) + 1;
+
+        for (int i = 0; i < numSegments; i++) {
+            // Calculate x position for this segment
+            double x = anchorWidth - (i * segmentWidth);
+
+            // Adjust y for ground contour at this position
+            double baseY = anchorHeight - groundHeight + 30;
+
+            // Apply hill adjustments similar to the grass tufts
+            if (x > anchorWidth * 0.7 && x < anchorWidth * 0.9) {
+                // Right hill adjustment
+                baseY -= 10 * Math.sin((x - anchorWidth * 0.7) / (anchorWidth * 0.2) * Math.PI);
+            } else if (x > anchorWidth * 0.2 && x < anchorWidth * 0.4) {
+                // Left hill adjustment
+                baseY -= 15 * Math.sin((x - anchorWidth * 0.2) / (anchorWidth * 0.2) * Math.PI);
+            }
+
+            // Calculate zigzag points
+            double downY = baseY + amplitude;
+            double midX = x - (segmentWidth / 2);
+
+            // Add zigzag points
+            LineTo down = new LineTo(midX, downY);
+            zigzagPath.getElements().add(down);
+
+            // Next horizontal point
+            LineTo up = new LineTo(x - segmentWidth, baseY);
+            zigzagPath.getElements().add(up);
+        }
+
+        // Create path transition
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.seconds(15)); // Slower movement
+        pathTransition.setPath(zigzagPath);
+        pathTransition.setNode(statusValue);
+        pathTransition.setOrientation(PathTransition.OrientationType.NONE);
+        pathTransition.setCycleCount(Timeline.INDEFINITE);
+        pathTransition.setAutoReverse(true);
+        pathTransition.setInterpolator(Interpolator.LINEAR);
+
+        // Start the animation
+        pathTransition.play();
+    }
+
+    // Create a zigzag animation for status content within the panel
+    private void animateStatusContentZigZag(HBox statusContent, double availableWidth) {
+        // Create a zigzag path for the animation
+        Path zigzagPath = new Path();
+
+        // Start at right edge (to make content scroll in from right)
+        MoveTo startPoint = new MoveTo(availableWidth, 0);
+        zigzagPath.getElements().add(startPoint);
+
+        // Create a series of zigzag segments
+        double amplitude = 8; // Height of zigzag
+        double segmentWidth = 30; // Width of each zigzag segment
+
+        // Calculate number of segments needed to cover twice the available width
+        // (so content moves completely off-screen to the left and back)
+        int numSegments = (int) (availableWidth * 2 / segmentWidth) + 1;
+
+        for (int i = 0; i < numSegments; i++) {
+            // Zigzag down
+            LineTo down = new LineTo(
+                    availableWidth - (i + 0.5) * segmentWidth,
+                    amplitude
+            );
+
+            // Zigzag up
+            LineTo up = new LineTo(
+                    availableWidth - (i + 1) * segmentWidth,
+                    0
+            );
+
+            zigzagPath.getElements().addAll(down, up);
+        }
+
+        // Create path transition
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.seconds(12)); // Slower movement
+        pathTransition.setPath(zigzagPath);
+        pathTransition.setNode(statusContent);
+        pathTransition.setOrientation(PathTransition.OrientationType.NONE);
+        pathTransition.setCycleCount(Timeline.INDEFINITE);
+        pathTransition.setAutoReverse(true);
+        pathTransition.setInterpolator(Interpolator.LINEAR);
+
+        // Start the animation
+        pathTransition.play();
+    }
+    // Updated method to show "No Parasites" status
+    private void setupParasiteZigzagAnimation() {
+        // Add a delay to ensure the anchor pane is fully initialized
+        PauseTransition delay = new PauseTransition(Duration.millis(500));
+        delay.setOnFinished(e -> createZigzagParasiteStatus());
+        delay.play();
+    }
+
+    // Updated method to handle parasite events
+
 }
