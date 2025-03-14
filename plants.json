@@ -4,8 +4,8 @@
       "name": "Oak",
       "waterRequirement": 20,
       "growthRate": "Medium",
-      "currentImage": "smallTree.png",
-      "allImages": ["smallTree.png", "mediumTree.png", "largeOak.png"],
+      "currentImage": "smallOak.png",
+      "allImages": ["smallOak.png", "mediumOak.png", "largeOak.png"],
       "temperatureRequirement": 65,
       "vulnerableTo": ["Aphids"],
       "healthSmall": 50,
@@ -16,8 +16,8 @@
       "name": "Maple",
       "waterRequirement": 15,
       "growthRate": "Medium",
-      "currentImage": "smallTree.png",
-      "allImages": ["smallTree.png", "mediumTree.png", "largeMaple.png"],
+      "currentImage": "smallMaple.png",
+      "allImages": ["smallMaple.png", "mediumMaple.png", "largeMaple.png"],
       "temperatureRequirement": 60,
       "vulnerableTo": ["Aphids"],
       "healthSmall": 50,
@@ -28,8 +28,8 @@
       "name": "Pine",
       "waterRequirement": 10,
       "growthRate": "Fast",
-      "currentImage": "smallTree.png",
-      "allImages": ["smallTree.png", "mediumTree.png", "largePine.png"],
+      "currentImage": "smallPine.png",
+      "allImages": ["smallPine.png", "mediumPine.png", "largePine.png"],
       "temperatureRequirement": 50,
       "vulnerableTo": ["Locust"],
       "healthSmall": 70,
@@ -39,16 +39,35 @@
   ],
   "vegetables": [
     {
-      "name": "Tomato",
-      "waterRequirement": 8,
+      "name": "Spinach",
+      "waterRequirement": 10,
       "growthRate": "Fast",
-      "currentImage": "smallVegetable.png",
-      "allImages": ["smallVegetable.png", "mediumTomato.png", "largeTomato.png"],
-      "temperatureRequirement": 75,
-      "vulnerableTo": ["Aphids"],
-      "healthSmall": 40,
+      "currentImage": "smallSpinach.png",
+      "allImages": [
+        "smallSpinach.png",
+        "mediumSpinach.png",
+        "largeSpinach.png"
+      ],
+      "temperatureRequirement": 50,
+      "vulnerableTo": [
+        "Slugs",
+        "Aphids"
+      ],
+      "healthSmall": 30,
       "healthMedium": 60,
       "healthFull": 90
+    },
+    {
+      "name": "Zucchini",
+      "waterRequirement": 12,
+      "growthRate": "Fast",
+      "currentImage": "smallZucchini.png",
+      "allImages": ["smallZucchini.png", "mediumZucchini.png", "largeZucchini.png"],
+      "temperatureRequirement": 65,
+      "vulnerableTo": ["Slugs", "Aphids"],
+      "healthSmall": 40,
+      "healthMedium": 80,
+      "healthFull": 120
     },
     {
       "name": "Carrot",
@@ -61,32 +80,33 @@
       "healthSmall": 40,
       "healthMedium": 50,
       "healthFull": 65
-    },
-    {
-      "name": "Lettuce",
-      "waterRequirement": 6,
-      "growthRate": "Fast",
-      "currentImage": "smallVegetable.png",
-      "allImages": ["smallVegetable.png", "mediumLettuce.png", "largeLettuce.png"],
-      "temperatureRequirement": 60,
-      "vulnerableTo": ["Rat", "Aphids", "Slugs"],
-      "healthSmall": 40,
-      "healthMedium": 50,
-      "healthFull": 70
     }
   ],
   "flowers": [
     {
-      "name": "Sunflower",
-      "waterRequirement": 6,
-      "growthRate": "Fast",
-      "currentImage": "smallSunflower.png",
-      "allImages": ["smallSunflower.png", "mediumSunflower.png", "largeSunflower.png"],
-      "temperatureRequirement": 70,
-      "vulnerableTo": ["Crow"],
-      "healthSmall": 25,
-      "healthMedium": 50,
-      "healthFull": 75
+      "name": "Tulip",
+      "waterRequirement": 8,
+      "growthRate": "Medium",
+      "currentImage": "smallTulip.png",
+      "allImages": ["smallTulip.png", "mediumTulip.png", "largeTulip.png"],
+      "temperatureRequirement": 55,
+      "vulnerableTo": ["Rats", "Aphids"],
+      "healthSmall": 35,
+      "healthMedium": 70,
+      "healthFull": 105
+    },
+
+    {
+      "name": "Lily",
+      "waterRequirement": 10,
+      "growthRate": "Medium",
+      "currentImage": "smallLily.png",
+      "allImages": ["smallLily.png", "mediumLily.png", "largeLily.png"],
+      "temperatureRequirement": 60,
+      "vulnerableTo": ["Aphids", "Slugs"],
+      "healthSmall": 40,
+      "healthMedium": 80,
+      "healthFull": 120
     },
     {
       "name": "Rose",
@@ -99,18 +119,7 @@
       "healthSmall": 35,
       "healthMedium": 70,
       "healthFull": 105
-    },
-    {
-      "name": "Jasmine",
-      "waterRequirement": 5,
-      "growthRate": "Medium",
-      "currentImage": "smallJasmine.png",
-      "allImages": ["smallJasmine.png", "mediumJasmine.png", "largeJasmine.png"],
-      "temperatureRequirement": 65,
-      "vulnerableTo": ["Aphids"],
-      "healthSmall": 30,
-      "healthMedium": 45,
-      "healthFull": 65
     }
+
   ]
 }
