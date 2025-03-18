@@ -5293,8 +5293,8 @@ public class GardenUIController {
             if (anchorHeight <= 0) anchorHeight = 700;
 
             // Calculate position - SHIFT LEFT BY 80px AND UP BY 30px
-            double xPos = anchorWidth - 150 - 230; // From right edge, shifted 80px left
-            double yPos = anchorHeight -108 - 80; // From bottom, shifted 30px up
+            double xPos = anchorWidth - 160 - 240; // From right edge, shifted 80px left
+            double yPos = anchorHeight -160 - 80; // From bottom, shifted 30px up
 
             // Position the pesticide box
             pesticideBox.setLayoutX(xPos);
@@ -5586,8 +5586,8 @@ public class GardenUIController {
                 // Create the main container - using VBox for vertical layout
                 VBox pesticideBox = new VBox(10); // Increased spacing for better layout
                 pesticideBox.setPadding(new Insets(12));
-                pesticideBox.setPrefWidth(120); // Slightly wider than before
-                pesticideBox.setPrefHeight(100); // Taller for vertical layout
+                pesticideBox.setPrefWidth(160); // Slightly wider than before
+                pesticideBox.setPrefHeight(50); // Taller for vertical layout
                 pesticideBox.setAlignment(Pos.CENTER);
 
                 // Style with light purple background and border (matching screenshot)

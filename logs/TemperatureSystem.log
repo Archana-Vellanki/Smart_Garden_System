@@ -17046,3 +17046,152 @@
 2025-03-18 16:18:52 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
 2025-03-18 16:19:40 INFO  TemperatureSystemLogger - Temperature System Initialized
 2025-03-18 16:19:40 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:25:49 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:25:49 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:26:09 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 8 All Levels are optimal
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 27
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 38 degrees F.
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 33 degrees F.
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Pine at position (0, 6) by 23 degrees F.
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 33 degrees F.
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 38 degrees F.
+2025-03-18 16:26:29 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 38 degrees F.
+2025-03-18 16:26:49 INFO  TemperatureSystemLogger - Day: 12 All Levels are optimal
+2025-03-18 16:27:08 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:27:08 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:27:28 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 All Levels are optimal
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 0
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 65 degrees F.
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 60 degrees F.
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Pine at position (0, 6) by 50 degrees F.
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 60 degrees F.
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 65 degrees F.
+2025-03-18 16:27:48 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 65 degrees F.
+2025-03-18 16:28:51 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:28:51 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:29:11 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 8 All Levels are optimal
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 22
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 43 degrees F.
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 38 degrees F.
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Pine at position (0, 6) by 28 degrees F.
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 38 degrees F.
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 43 degrees F.
+2025-03-18 16:29:31 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 43 degrees F.
+2025-03-18 16:29:51 INFO  TemperatureSystemLogger - Day: 12 All Levels are optimal
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 All Levels are optimal
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 API called temperature set to: 14
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (0, 1) by 51 degrees F.
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Maple at position (0, 5) by 46 degrees F.
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Pine at position (0, 6) by 36 degrees F.
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Carrot at position (2, 2) by 46 degrees F.
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Rose at position (4, 4) by 51 degrees F.
+2025-03-18 16:30:11 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (4, 6) by 51 degrees F.
+2025-03-18 16:30:48 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:30:48 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:31:08 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:31:39 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:31:39 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:32:00 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 8 All Levels are optimal
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 55
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 10 degrees F.
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 5 degrees F.
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Temperature system cooled Pine at position (0, 6) by 5 degrees F.
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Sprinklers started at position (0, 6) to cool down the plant.
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 5 degrees F.
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 10 degrees F.
+2025-03-18 16:32:20 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 10 degrees F.
+2025-03-18 16:32:40 INFO  TemperatureSystemLogger - Day: 12 All Levels are optimal
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 All Levels are optimal
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 API called temperature set to: 17
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (0, 1) by 48 degrees F.
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Maple at position (0, 5) by 43 degrees F.
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Pine at position (0, 6) by 33 degrees F.
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Carrot at position (2, 2) by 43 degrees F.
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Rose at position (4, 4) by 48 degrees F.
+2025-03-18 16:33:00 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (4, 6) by 48 degrees F.
+2025-03-18 16:33:20 INFO  TemperatureSystemLogger - Day: 20 All Levels are optimal
+2025-03-18 16:33:28 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:33:28 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:33:48 INFO  TemperatureSystemLogger - Day: 5 All Levels are optimal
+2025-03-18 16:34:24 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:34:24 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:34:44 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 8 All Levels are optimal
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 6
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 59 degrees F.
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 54 degrees F.
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Pine at position (0, 6) by 44 degrees F.
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 54 degrees F.
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 59 degrees F.
+2025-03-18 16:35:04 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 59 degrees F.
+2025-03-18 16:35:56 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:35:56 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:36:24 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:36:24 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:36:44 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:37:04 INFO  TemperatureSystemLogger - Day: 9 All Levels are optimal
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 64
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 1 degrees F.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Temperature system cooled Maple at position (0, 5) by 4 degrees F.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Sprinklers started at position (0, 5) to cool down the plant.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Temperature system cooled Pine at position (0, 6) by 14 degrees F.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Sprinklers started at position (0, 6) to cool down the plant.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Temperature system cooled Carrot at position (2, 2) by 4 degrees F.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Sprinklers started at position (2, 2) to cool down the plant.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 1 degrees F.
+2025-03-18 16:37:05 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 1 degrees F.
+2025-03-18 16:37:24 INFO  TemperatureSystemLogger - Day: 12 All Levels are optimal
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 All Levels are optimal
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 API called temperature set to: 6
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (0, 1) by 59 degrees F.
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Maple at position (0, 5) by 54 degrees F.
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Pine at position (0, 6) by 44 degrees F.
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Carrot at position (2, 2) by 54 degrees F.
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Rose at position (4, 4) by 59 degrees F.
+2025-03-18 16:37:44 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (4, 6) by 59 degrees F.
+2025-03-18 16:38:04 INFO  TemperatureSystemLogger - Day: 21 All Levels are optimal
+2025-03-18 16:38:12 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:38:12 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:38:32 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 8 All Levels are optimal
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 4
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 61 degrees F.
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 56 degrees F.
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Pine at position (0, 6) by 46 degrees F.
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 56 degrees F.
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 61 degrees F.
+2025-03-18 16:38:52 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 61 degrees F.
+2025-03-18 16:39:06 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:39:06 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:39:26 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 8 All Levels are optimal
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 API called temperature set to: 24
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (0, 1) by 41 degrees F.
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Maple at position (0, 5) by 36 degrees F.
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Pine at position (0, 6) by 26 degrees F.
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Carrot at position (2, 2) by 36 degrees F.
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Rose at position (4, 4) by 41 degrees F.
+2025-03-18 16:39:46 INFO  TemperatureSystemLogger - Day: 9 Temperature system heated Oak at position (4, 6) by 41 degrees F.
+2025-03-18 16:40:06 INFO  TemperatureSystemLogger - Day: 12 All Levels are optimal
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 All Levels are optimal
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 API called temperature set to: 28
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (0, 1) by 37 degrees F.
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Maple at position (0, 5) by 32 degrees F.
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Pine at position (0, 6) by 22 degrees F.
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Carrot at position (2, 2) by 32 degrees F.
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Rose at position (4, 4) by 37 degrees F.
+2025-03-18 16:40:26 INFO  TemperatureSystemLogger - Day: 17 Temperature system heated Oak at position (4, 6) by 37 degrees F.
+2025-03-18 16:40:49 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:40:49 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:41:20 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:41:20 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:41:40 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal
+2025-03-18 16:41:51 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:41:51 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:42:10 INFO  TemperatureSystemLogger - Temperature System Initialized
+2025-03-18 16:42:10 INFO  TemperatureSystemLogger - Day: 0 All Levels are optimal
+2025-03-18 16:42:30 INFO  TemperatureSystemLogger - Day: 4 All Levels are optimal

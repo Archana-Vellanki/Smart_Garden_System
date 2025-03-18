@@ -19,7 +19,7 @@
     <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1187.0">
         <children>
             <!-- VBox for centering the GridPane -->
-            <VBox alignment="CENTER" prefHeight="641.0" prefWidth="1187.0" spacing="10" AnchorPane.topAnchor="30.0">
+            <VBox alignment="CENTER" prefHeight="581.0" prefWidth="1107.0" spacing="10" AnchorPane.topAnchor="20.0">
                 <HBox alignment="CENTER" spacing="20">
                     <GridPane fx:id="gridPane" gridLinesVisible="true"
                               style=" -fx-background-color: rgba(144, 238, 144, 0.5);">
