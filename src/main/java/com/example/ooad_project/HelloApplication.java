@@ -28,7 +28,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
         scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
-        stage.setTitle("OOAD - Project!");
+        stage.setTitle("DIA Organics - Smart Garden");
         stage.setScene(scene) ;
         stage.show();
 
