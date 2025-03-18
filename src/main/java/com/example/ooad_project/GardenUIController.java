@@ -5587,7 +5587,7 @@ public class GardenUIController {
                 VBox pesticideBox = new VBox(10); // Increased spacing for better layout
                 pesticideBox.setPadding(new Insets(12));
                 pesticideBox.setPrefWidth(160); // Slightly wider than before
-                pesticideBox.setPrefHeight(50); // Taller for vertical layout
+                pesticideBox.setPrefHeight(60); // Taller for vertical layout
                 pesticideBox.setAlignment(Pos.CENTER);
 
                 // Style with light purple background and border (matching screenshot)

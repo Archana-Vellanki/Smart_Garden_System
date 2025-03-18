@@ -32733,3 +32733,137 @@
 2025-03-18 16:42:30 INFO  WateringSystemLogger - Day: 4 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
 2025-03-18 16:42:30 INFO  WateringSystemLogger - Day: 4 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
 2025-03-18 16:42:30 INFO  WateringSystemLogger - Day: 4 In total Sprinkled 6 plants
+2025-03-18 16:42:55 INFO  WateringSystemLogger - Watering System Initialized
+2025-03-18 16:42:55 INFO  WateringSystemLogger - Day: 0 Sprinklers activated!
+2025-03-18 16:42:55 INFO  WateringSystemLogger - Day: 0 In total Sprinkled 0 plants
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinklers activated!
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:00 INFO  WateringSystemLogger - Day: 1 In total Sprinkled 6 plants
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinklers activated!
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:05 INFO  WateringSystemLogger - Day: 2 In total Sprinkled 6 plants
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinklers activated!
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:10 INFO  WateringSystemLogger - Day: 3 In total Sprinkled 6 plants
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinklers activated!
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:15 INFO  WateringSystemLogger - Day: 4 In total Sprinkled 6 plants
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinklers activated!
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:20 INFO  WateringSystemLogger - Day: 5 In total Sprinkled 6 plants
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinklers activated!
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:25 INFO  WateringSystemLogger - Day: 6 In total Sprinkled 6 plants
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinklers activated!
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:30 INFO  WateringSystemLogger - Day: 7 In total Sprinkled 6 plants
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinklers activated!
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:35 INFO  WateringSystemLogger - Day: 8 In total Sprinkled 6 plants
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinklers activated!
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:40 INFO  WateringSystemLogger - Day: 9 In total Sprinkled 6 plants
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinklers activated!
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:43:45 INFO  WateringSystemLogger - Day: 10 In total Sprinkled 6 plants
+2025-03-18 16:44:04 INFO  WateringSystemLogger - Watering System Initialized
+2025-03-18 16:44:04 INFO  WateringSystemLogger - Day: 0 Sprinklers activated!
+2025-03-18 16:44:04 INFO  WateringSystemLogger - Day: 0 In total Sprinkled 0 plants
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinklers activated!
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:44:09 INFO  WateringSystemLogger - Day: 1 In total Sprinkled 6 plants
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinklers activated!
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:44:14 INFO  WateringSystemLogger - Day: 2 In total Sprinkled 6 plants
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinklers activated!
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:44:19 INFO  WateringSystemLogger - Day: 3 In total Sprinkled 6 plants
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinklers activated!
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:44:24 INFO  WateringSystemLogger - Day: 4 In total Sprinkled 6 plants
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinklers activated!
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:44:29 INFO  WateringSystemLogger - Day: 5 In total Sprinkled 6 plants
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinklers activated!
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinkled Oak at position (0, 1) with 20 water from sprinklers
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinkled Maple at position (0, 5) with 15 water from sprinklers
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinkled Pine at position (0, 6) with 10 water from sprinklers
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinkled Carrot at position (2, 2) with 70 water from sprinklers
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinkled Rose at position (4, 4) with 7 water from sprinklers
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 Sprinkled Oak at position (4, 6) with 20 water from sprinklers
+2025-03-18 16:44:34 INFO  WateringSystemLogger - Day: 6 In total Sprinkled 6 plants
