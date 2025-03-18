@@ -12,6 +12,8 @@ import com.example.ooad_project.Plant.PlantManager;
 import com.example.ooad_project.ThreadUtils.EventBus;
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.*;
 import javafx.scene.Node;
@@ -19,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
 import javafx.scene.control.*;
@@ -45,7 +48,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class GardenUIController {
-
 
 
     @FXML
@@ -124,6 +126,10 @@ public class GardenUIController {
     private TranslateTransition parasiteStatusAnimation;
 
     private PathTransition parasitePathTransition;
+    private Label pesticideStatusLabel;
+    private ProgressBar pesticideLevelBar;
+
+    private Timeline pesticideStatusAnimation;
 
 
     //    Same as above but for the parasites
@@ -135,7 +141,7 @@ public class GardenUIController {
 
     //    This is the method that will print the grid
     @FXML
-    public void printGrid(){
+    public void printGrid() {
         gardenGrid.printGrid();
     }
 
@@ -144,7 +150,6 @@ public class GardenUIController {
 //    private TextArea logTextArea;
 
     private static final Logger logger = LogManager.getLogger("GardenUIControllerLogger");
-
 
 
     @FXML
@@ -170,9 +175,19 @@ public class GardenUIController {
 
         showNoParasites();
         // Place this after showNoParasites()
-      //  Platform.runLater(this::animateParasiteStatus);
-      //  setupParasiteAnimation();
+        //  Platform.runLater(this::animateParasiteStatus);
+        //  setupParasiteAnimation();
         // Remove the unwanted Veg label in top left
+        PauseTransition delay1 = new PauseTransition(Duration.millis(500));
+        delay1.setOnFinished(e -> {
+            // Initialize any delayed elements
+            //  initializeParasiteStatusWithGround();
+
+            // Add our simple pesticide system box
+            createEnhancedVerticalPesticideBox();
+        });
+        delay1.play();
+
         Platform.runLater(() -> {
             // This is a drastic approach but should work to remove any top-left labels
             for (Node node : anchorPane.getChildren()) {
@@ -299,6 +314,19 @@ public class GardenUIController {
         PauseTransition delay = new PauseTransition(Duration.millis(500));
         delay.setOnFinished(e -> initializeParasiteStatusWithGround());
         delay.play();
+        EventBus.subscribe("PesticideApplicationEvent", event -> {
+            if (event instanceof PesticideApplicationEvent) {
+                PesticideApplicationEvent pestEvent = (PesticideApplicationEvent) event;
+                showSimplePesticideSpray(pestEvent.getRow(), pestEvent.getCol());
+
+                // Decrease pesticide level slightly with each use
+                if (pesticideLevelBar != null) {
+                    double currentLevel = pesticideLevelBar.getProgress();
+                    updatePesticideLevel(currentLevel - 0.05);
+                }
+            }
+        });
+
     }
 
     // Start rain animation
@@ -377,7 +405,7 @@ public class GardenUIController {
 //    }
 
 
-    private void handlePlantDeathUIChangeEvent(Plant plant){
+    private void handlePlantDeathUIChangeEvent(Plant plant) {
         Platform.runLater(() -> {
             int row = plant.getRow();
             int col = plant.getCol();
@@ -398,7 +426,7 @@ public class GardenUIController {
 
     }
 
-    private void handlePlantHealthUpdateEvent(PlantHealthUpdateEvent event){
+    private void handlePlantHealthUpdateEvent(PlantHealthUpdateEvent event) {
         logger.info("Day: " + logDay + " Plant health updated at row " + event.getRow() + " and column " + event.getCol() + " from " + event.getOldHealth() + " to " + event.getNewHealth());
 //        System.out.println("Plant health updated at row " + event.getRow() + " and column " + event.getCol() + " from " + event.getOldHealth() + " to " + event.getNewHealth());
     }
@@ -772,6 +800,7 @@ public class GardenUIController {
             pause.play();
         });
     }
+
     //  Function that is called when the sprinkler event is published
     private void handleSprinklerEvent(SprinklerEvent event) {
 
@@ -880,91 +909,6 @@ public class GardenUIController {
             gridPane.add(pane, col, row);
         });
     }
-
-    private void handleDisplayParasiteEvent(ParasiteDisplayEvent event) {
-
-        logger.info("Day: " + logDay + " Parasite displayed at row " + event.getRow() + " and column " + event.getColumn() + " with name " + event.getParasite().getName());
-
-        // Load the image for the rat
-        String imageName = "/images/" + event.getParasite().getImageName();
-        Image ratImage = new Image(getClass().getResourceAsStream(imageName));
-        ImageView parasiteImageView = new ImageView(ratImage);
-
-//
-        parasiteImageView.setFitHeight(50);  // Match the cell size in the grid
-        parasiteImageView.setFitWidth(50);
-
-        // Use the row and column from the event
-        int row = event.getRow();
-        int col = event.getColumn();
-
-        // Place the rat image on the grid
-//        gridPane.add(parasiteImageView, col, row);
-//        System.out.println("Rat placed at row " + row + " and column " + col);
-
-        // Place the parasite image on the grid in the same cell but with offset
-        GridPane.setRowIndex(parasiteImageView, row);
-        GridPane.setColumnIndex(parasiteImageView, col);
-        GridPane.setHalignment(parasiteImageView, HPos.RIGHT);  // Align to right
-        GridPane.setValignment(parasiteImageView, VPos.BOTTOM); // Align to bottom
-        gridPane.getChildren().add(parasiteImageView);
-
-        // Create a pause transition of 5 seconds before removing the rat image
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
-
-        String imagePestControlName = "/images/pControl.png";
-
-        pause.setOnFinished(_ -> {
-            pestControl(imagePestControlName, row, col);
-            gridPane.getChildren().remove(parasiteImageView);  // Remove the rat image from the grid
-//            System.out.println("Rat removed from row " + row + " and column " + col);
-            //gridPane.getChildren().remove(pestControlImageView);
-        });
-
-        pause.play();
-    }
-
-    private void pestControl(String imagePestControlName, int row, int col) {
-        Image pestControlImage = new Image(getClass().getResourceAsStream(imagePestControlName));
-        ImageView pestControlImageView = new ImageView(pestControlImage);
-
-//
-        pestControlImageView.setFitHeight(70);  // Match the cell size in the grid
-        pestControlImageView.setFitWidth(70);
-
-        GridPane.setRowIndex(pestControlImageView, row);
-        GridPane.setColumnIndex(pestControlImageView, col);
-        GridPane.setHalignment(pestControlImageView, HPos.RIGHT);  // Align to right
-        GridPane.setValignment(pestControlImageView, VPos.BOTTOM); // Align to bottom
-        gridPane.getChildren().add(pestControlImageView);
-
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-
-        pause.setOnFinished(_ -> {
-            gridPane.getChildren().remove(pestControlImageView);  // Remove the rat image from the grid
-//            System.out.println("Rat removed from row " + row + " and column " + col);
-            //gridPane.getChildren().remove(pestControlImageView);
-        });
-
-        pause.play();
-    }
-
-
-//    private void loadParasitesData() {
-//        for (Parasite parasite : parasiteManager.getParasites()) {
-//            MenuItem menuItem = new MenuItem(parasite.getName());
-//            menuItem.setOnAction(e -> handleParasiteSelection(parasite));
-//            parasiteMenuButton.getItems().add(menuItem);
-//        }
-//    }
-
-    private void handleParasiteSelection(Parasite parasite) {
-        // Implement what happens when a parasite is selected
-        // For example, display details or apply effects to the garden
-//        System.out.println("Selected parasite: " + parasite.getName() + " with damage: " + parasite.getDamage());
-    }
-
-    //
 
 
 //    private void changeRainUI(RainEvent event) {
@@ -1490,7 +1434,7 @@ public class GardenUIController {
     }
 
     private void showOptimalTemperature() {
-        logger.info("Day: " + logDay +" Displayed optimal temperature");
+        logger.info("Day: " + logDay + " Displayed optimal temperature");
 
         Platform.runLater(() -> {
             // Create a VBox to hold the temperature elements
@@ -1622,8 +1566,6 @@ public class GardenUIController {
             }
         });
     }
-
-
 
 
     private void setupMenuEventHandlers() {
@@ -1782,6 +1724,7 @@ public class GardenUIController {
             }
         });
     }
+
     private void createSimpleMovingParasiteStatus() {
         Platform.runLater(() -> {
             try {
@@ -1859,6 +1802,7 @@ public class GardenUIController {
             }
         });
     }
+
     private void fixParasiteStatus() {
         Platform.runLater(() -> {
             try {
@@ -2123,7 +2067,6 @@ public class GardenUIController {
     }
 
 
-
     private Image createTreeTrunkImage() {
         // Create a simple tree trunk with branches using JavaFX canvas
         javafx.scene.canvas.Canvas canvas = new javafx.scene.canvas.Canvas(100, 250);
@@ -2257,7 +2200,7 @@ public class GardenUIController {
                     0, 1,  // endX, endY   (bottom)
                     true,  // proportional to shape size
                     CycleMethod.NO_CYCLE,
-                    new Stop(0.0, Color.web("#5F3813")) , // Light purple
+                    new Stop(0.0, Color.web("#5F3813")), // Light purple
                     new Stop(0.5, Color.web("#D2B48C")), // Light brown
                     new Stop(1.0, Color.web("#5F3813")) // Dark brown
 
@@ -3027,227 +2970,229 @@ public class GardenUIController {
         gridShadow.setOffsetY(3);
         gridPane.setEffect(gridShadow);
     }
+
     // Add this method to remove the orange Veg label from top left
-private void animateParasiteStatus() {
-    // Hide original static parasite display if it exists
-    Platform.runLater(() -> {
-        try {
-            // Find and hide the original parasite VBox
-            for (Node node : anchorPane.getChildren()) {
-                if (node instanceof VBox) {
-                    VBox vbox = (VBox) node;
-                    for (Node child : vbox.getChildren()) {
-                        if (child instanceof Text && "PARASITE".equals(((Text) child).getText())) {
-                            vbox.setVisible(false);
-                            break;
+    private void animateParasiteStatus() {
+        // Hide original static parasite display if it exists
+        Platform.runLater(() -> {
+            try {
+                // Find and hide the original parasite VBox
+                for (Node node : anchorPane.getChildren()) {
+                    if (node instanceof VBox) {
+                        VBox vbox = (VBox) node;
+                        for (Node child : vbox.getChildren()) {
+                            if (child instanceof Text && "PARASITE".equals(((Text) child).getText())) {
+                                vbox.setVisible(false);
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            // Get window dimensions
-            double anchorWidth = anchorPane.getWidth();
-            double anchorHeight = anchorPane.getHeight();
+                // Get window dimensions
+                double anchorWidth = anchorPane.getWidth();
+                double anchorHeight = anchorPane.getHeight();
 
-            // Use default values if dimensions aren't available yet
-            if (anchorWidth <= 0) anchorWidth = 1000;
-            if (anchorHeight <= 0) anchorHeight = 700;
+                // Use default values if dimensions aren't available yet
+                if (anchorWidth <= 0) anchorWidth = 1000;
+                if (anchorHeight <= 0) anchorHeight = 700;
 
-            // Create a taller ground/hill area
-            double groundHeight = 80; // Increased height
+                // Create a taller ground/hill area
+                double groundHeight = 80; // Increased height
 
-            // Create the main ground as a path to allow for hill shape
-            Path groundPath = new Path();
+                // Create the main ground as a path to allow for hill shape
+                Path groundPath = new Path();
 
-            // Starting point - bottom left
-            MoveTo start = new MoveTo(0, anchorHeight);
-            groundPath.getElements().add(start);
+                // Starting point - bottom left
+                MoveTo start = new MoveTo(0, anchorHeight);
+                groundPath.getElements().add(start);
 
-            // Bottom edge - straight line to right side
-            LineTo bottomRight = new LineTo(anchorWidth, anchorHeight);
-            groundPath.getElements().add(bottomRight);
+                // Bottom edge - straight line to right side
+                LineTo bottomRight = new LineTo(anchorWidth, anchorHeight);
+                groundPath.getElements().add(bottomRight);
 
-            // Right edge - straight line up
-            LineTo rightEdge = new LineTo(anchorWidth, anchorHeight - groundHeight);
-            groundPath.getElements().add(rightEdge);
+                // Right edge - straight line up
+                LineTo rightEdge = new LineTo(anchorWidth, anchorHeight - groundHeight);
+                groundPath.getElements().add(rightEdge);
 
-            // Create hill contour with quadratic curves
-            // First hill peak (small)
-            QuadCurveTo hill1 = new QuadCurveTo();
-            hill1.setControlX(anchorWidth * 0.8);
-            hill1.setControlY(anchorHeight - groundHeight - 15);
-            hill1.setX(anchorWidth * 0.7);
-            hill1.setY(anchorHeight - groundHeight);
-            groundPath.getElements().add(hill1);
+                // Create hill contour with quadratic curves
+                // First hill peak (small)
+                QuadCurveTo hill1 = new QuadCurveTo();
+                hill1.setControlX(anchorWidth * 0.8);
+                hill1.setControlY(anchorHeight - groundHeight - 15);
+                hill1.setX(anchorWidth * 0.7);
+                hill1.setY(anchorHeight - groundHeight);
+                groundPath.getElements().add(hill1);
 
-            // Valley between hills
-            QuadCurveTo valley = new QuadCurveTo();
-            valley.setControlX(anchorWidth * 0.6);
-            valley.setControlY(anchorHeight - groundHeight + 5);
-            valley.setX(anchorWidth * 0.5);
-            valley.setY(anchorHeight - groundHeight);
-            groundPath.getElements().add(valley);
+                // Valley between hills
+                QuadCurveTo valley = new QuadCurveTo();
+                valley.setControlX(anchorWidth * 0.6);
+                valley.setControlY(anchorHeight - groundHeight + 5);
+                valley.setX(anchorWidth * 0.5);
+                valley.setY(anchorHeight - groundHeight);
+                groundPath.getElements().add(valley);
 
-            // Second hill peak (medium)
-            QuadCurveTo hill2 = new QuadCurveTo();
-            hill2.setControlX(anchorWidth * 0.4);
-            hill2.setControlY(anchorHeight - groundHeight - 25);
-            hill2.setX(anchorWidth * 0.3);
-            hill2.setY(anchorHeight - groundHeight);
-            groundPath.getElements().add(hill2);
+                // Second hill peak (medium)
+                QuadCurveTo hill2 = new QuadCurveTo();
+                hill2.setControlX(anchorWidth * 0.4);
+                hill2.setControlY(anchorHeight - groundHeight - 25);
+                hill2.setX(anchorWidth * 0.3);
+                hill2.setY(anchorHeight - groundHeight);
+                groundPath.getElements().add(hill2);
 
-            // Left edge - complete the path
-            LineTo leftEdge = new LineTo(0, anchorHeight - groundHeight);
-            groundPath.getElements().add(leftEdge);
+                // Left edge - complete the path
+                LineTo leftEdge = new LineTo(0, anchorHeight - groundHeight);
+                groundPath.getElements().add(leftEdge);
 
-            // Close the path
-            LineTo closePath = new LineTo(0, anchorHeight);
-            groundPath.getElements().add(closePath);
+                // Close the path
+                LineTo closePath = new LineTo(0, anchorHeight);
+                groundPath.getElements().add(closePath);
 
-            // Create a gradient for the ground (green to brown)
-            LinearGradient groundGradient = new LinearGradient(
-                    0, 0,           // startX, startY (top)
-                    0, 1,           // endX, endY   (bottom)
-                    true,           // proportional to shape size
-                    CycleMethod.NO_CYCLE,
-                    new Stop(0.0, Color.web("#C18F32")),   // Greenish-teal top
-                    new Stop(0.5, Color.web("#9c8b6a")),   // Lime-green middle
-                    new Stop(1.0, Color.web("#efe3cb"))    // Purple bottom
-            );
+                // Create a gradient for the ground (green to brown)
+                LinearGradient groundGradient = new LinearGradient(
+                        0, 0,           // startX, startY (top)
+                        0, 1,           // endX, endY   (bottom)
+                        true,           // proportional to shape size
+                        CycleMethod.NO_CYCLE,
+                        new Stop(0.0, Color.web("#C18F32")),   // Greenish-teal top
+                        new Stop(0.5, Color.web("#9c8b6a")),   // Lime-green middle
+                        new Stop(1.0, Color.web("#efe3cb"))    // Purple bottom
+                );
 
-            groundPath.setFill(groundGradient);
+                groundPath.setFill(groundGradient);
 
-            // Add a thin border
-            groundPath.setStroke(Color.rgb(101, 67, 33, 0.5));
-            groundPath.setStrokeWidth(1);
+                // Add a thin border
+                groundPath.setStroke(Color.rgb(101, 67, 33, 0.5));
+                groundPath.setStrokeWidth(1);
 
-            // Add some depth with a drop shadow
-            DropShadow groundShadow = new DropShadow();
-            groundShadow.setColor(Color.rgb(0, 0, 0, 0.3));
-            groundShadow.setRadius(5);
-            groundShadow.setOffsetY(-2);
-            groundPath.setEffect(groundShadow);
+                // Add some depth with a drop shadow
+                DropShadow groundShadow = new DropShadow();
+                groundShadow.setColor(Color.rgb(0, 0, 0, 0.3));
+                groundShadow.setRadius(5);
+                groundShadow.setOffsetY(-2);
+                groundPath.setEffect(groundShadow);
 
-            // Add ground to the scene (behind other elements)
-            anchorPane.getChildren().add(groundPath);
-            groundPath.toBack();
+                // Add ground to the scene (behind other elements)
+                anchorPane.getChildren().add(groundPath);
+                groundPath.toBack();
 
-            // Only keep background image in front of ground
-            for (Node node : anchorPane.getChildren()) {
-                if (node instanceof ImageView && node.getLayoutX() == 0 && node.getLayoutY() == 0) {
-                    node.toBack();
-                    break;
+                // Only keep background image in front of ground
+                for (Node node : anchorPane.getChildren()) {
+                    if (node instanceof ImageView && node.getLayoutX() == 0 && node.getLayoutY() == 0) {
+                        node.toBack();
+                        break;
+                    }
                 }
+
+                // Add decorative elements to the ground
+                addGroundDecorations(groundPath, anchorWidth, anchorHeight, groundHeight);
+
+                // Create a fixed container for the PARASITE STATUS label on top left of land
+                HBox statusLabel = new HBox();
+                statusLabel.setAlignment(Pos.CENTER_LEFT);
+                statusLabel.setPadding(new Insets(5, 15, 5, 15));
+
+                // Position it on the top left of the land
+                double labelX = 20; // 20px from left edge
+                double labelY = anchorHeight - groundHeight - 30; // 30px above the land
+
+                // Configure the label layout
+                statusLabel.setLayoutX(labelX);
+                statusLabel.setLayoutY(labelY);
+
+                // Style the label panel with a semi-transparent background
+                statusLabel.setBackground(new Background(new BackgroundFill(
+                        Color.rgb(255, 255, 255, 0.85),
+                        new CornerRadii(20),
+                        Insets.EMPTY
+                )));
+
+                // Add border to label panel
+                statusLabel.setBorder(new Border(new BorderStroke(
+                        Color.rgb(0, 150, 0, 0.7),
+                        BorderStrokeStyle.SOLID,
+                        new CornerRadii(20),
+                        new BorderWidths(2)
+                )));
+
+                // Add shadow for depth
+                DropShadow shadow = new DropShadow();
+                shadow.setColor(Color.rgb(0, 0, 0, 0.5));
+                shadow.setRadius(8);
+                shadow.setOffsetX(2);
+                shadow.setOffsetY(2);
+                statusLabel.setEffect(shadow);
+
+                // Create title text
+                Text statusTitle = new Text("PARASITE STATUS");
+                statusTitle.setFont(Font.font("System", FontWeight.BOLD, 14));
+                statusTitle.setFill(Color.rgb(50, 50, 50));
+
+                // Add title to label container
+                statusLabel.getChildren().add(statusTitle);
+
+                // Add the status label to the scene
+                anchorPane.getChildren().add(statusLabel);
+
+                // Create a separate, animating label for the status value
+                Label parasiteValueLabel = new Label("No Parasites");
+
+                // Add initial image
+                Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
+                ImageView parasiteImageView = new ImageView(noParasiteImage);
+                parasiteImageView.setFitHeight(24);
+                parasiteImageView.setFitWidth(24);
+                parasiteValueLabel.setGraphic(parasiteImageView);
+
+                // Style the label
+                parasiteValueLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
+                parasiteValueLabel.setTextFill(Color.rgb(0, 120, 0));
+                parasiteValueLabel.setContentDisplay(ContentDisplay.LEFT);
+                parasiteValueLabel.setPadding(new Insets(5, 15, 5, 15));
+
+                // Add background with rounded corners
+                parasiteValueLabel.setBackground(new Background(new BackgroundFill(
+                        Color.rgb(255, 255, 255, 0.85),
+                        new CornerRadii(20),
+                        Insets.EMPTY
+                )));
+
+                // Add border
+                parasiteValueLabel.setBorder(new Border(new BorderStroke(
+                        Color.rgb(0, 150, 0, 0.7),
+                        BorderStrokeStyle.SOLID,
+                        new CornerRadii(20),
+                        new BorderWidths(2)
+                )));
+
+                // Add shadow
+                parasiteValueLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
+
+                // Position off-screen to start
+                parasiteValueLabel.setLayoutX(anchorWidth);
+                parasiteValueLabel.setLayoutY(anchorHeight - groundHeight - 30);
+
+                // Add to the scene
+                anchorPane.getChildren().add(parasiteValueLabel);
+
+                // Store reference for later updates - IMPORTANT: Store the Label directly
+                parasiteStatusContainer = new HBox();
+                parasiteStatusContainer.getChildren().add(parasiteValueLabel);
+
+                // Create and start the animation
+                animateParasiteStatusLabel(parasiteValueLabel, anchorWidth, anchorHeight, groundHeight);
+
+                logger.info("Enhanced ground with parasite status display created successfully");
+
+                // Set the initial status to "No Parasites"
+                showNoParasites();
+            } catch (Exception e) {
+                logger.error("Error creating parasite status: " + e.getMessage());
+                e.printStackTrace();
             }
+        });
+    }
 
-            // Add decorative elements to the ground
-            addGroundDecorations(groundPath, anchorWidth, anchorHeight, groundHeight);
-
-            // Create a fixed container for the PARASITE STATUS label on top left of land
-            HBox statusLabel = new HBox();
-            statusLabel.setAlignment(Pos.CENTER_LEFT);
-            statusLabel.setPadding(new Insets(5, 15, 5, 15));
-
-            // Position it on the top left of the land
-            double labelX = 20; // 20px from left edge
-            double labelY = anchorHeight - groundHeight - 30; // 30px above the land
-
-            // Configure the label layout
-            statusLabel.setLayoutX(labelX);
-            statusLabel.setLayoutY(labelY);
-
-            // Style the label panel with a semi-transparent background
-            statusLabel.setBackground(new Background(new BackgroundFill(
-                    Color.rgb(255, 255, 255, 0.85),
-                    new CornerRadii(20),
-                    Insets.EMPTY
-            )));
-
-            // Add border to label panel
-            statusLabel.setBorder(new Border(new BorderStroke(
-                    Color.rgb(0, 150, 0, 0.7),
-                    BorderStrokeStyle.SOLID,
-                    new CornerRadii(20),
-                    new BorderWidths(2)
-            )));
-
-            // Add shadow for depth
-            DropShadow shadow = new DropShadow();
-            shadow.setColor(Color.rgb(0, 0, 0, 0.5));
-            shadow.setRadius(8);
-            shadow.setOffsetX(2);
-            shadow.setOffsetY(2);
-            statusLabel.setEffect(shadow);
-
-            // Create title text
-            Text statusTitle = new Text("PARASITE STATUS");
-            statusTitle.setFont(Font.font("System", FontWeight.BOLD, 14));
-            statusTitle.setFill(Color.rgb(50, 50, 50));
-
-            // Add title to label container
-            statusLabel.getChildren().add(statusTitle);
-
-            // Add the status label to the scene
-            anchorPane.getChildren().add(statusLabel);
-
-            // Create a separate, animating label for the status value
-            Label parasiteValueLabel = new Label("No Parasites");
-
-            // Add initial image
-            Image noParasiteImage = new Image(getClass().getResourceAsStream("/images/Parasites/noParasite.png"));
-            ImageView parasiteImageView = new ImageView(noParasiteImage);
-            parasiteImageView.setFitHeight(24);
-            parasiteImageView.setFitWidth(24);
-            parasiteValueLabel.setGraphic(parasiteImageView);
-
-            // Style the label
-            parasiteValueLabel.setFont(Font.font("System", FontWeight.NORMAL, 14));
-            parasiteValueLabel.setTextFill(Color.rgb(0, 120, 0));
-            parasiteValueLabel.setContentDisplay(ContentDisplay.LEFT);
-            parasiteValueLabel.setPadding(new Insets(5, 15, 5, 15));
-
-            // Add background with rounded corners
-            parasiteValueLabel.setBackground(new Background(new BackgroundFill(
-                    Color.rgb(255, 255, 255, 0.85),
-                    new CornerRadii(20),
-                    Insets.EMPTY
-            )));
-
-            // Add border
-            parasiteValueLabel.setBorder(new Border(new BorderStroke(
-                    Color.rgb(0, 150, 0, 0.7),
-                    BorderStrokeStyle.SOLID,
-                    new CornerRadii(20),
-                    new BorderWidths(2)
-            )));
-
-            // Add shadow
-            parasiteValueLabel.setEffect(new DropShadow(8, Color.rgb(0, 0, 0, 0.5)));
-
-            // Position off-screen to start
-            parasiteValueLabel.setLayoutX(anchorWidth);
-            parasiteValueLabel.setLayoutY(anchorHeight - groundHeight - 30);
-
-            // Add to the scene
-            anchorPane.getChildren().add(parasiteValueLabel);
-
-            // Store reference for later updates - IMPORTANT: Store the Label directly
-            parasiteStatusContainer = new HBox();
-            parasiteStatusContainer.getChildren().add(parasiteValueLabel);
-
-            // Create and start the animation
-            animateParasiteStatusLabel(parasiteValueLabel, anchorWidth, anchorHeight, groundHeight);
-
-            logger.info("Enhanced ground with parasite status display created successfully");
-
-            // Set the initial status to "No Parasites"
-            showNoParasites();
-        } catch (Exception e) {
-            logger.error("Error creating parasite status: " + e.getMessage());
-            e.printStackTrace();
-        }
-    });
-}
     @FXML
     public void forceZigzagAnimation() {
         Platform.runLater(() -> {
@@ -3298,7 +3243,7 @@ private void animateParasiteStatus() {
             double segmentWidth = 60;
             double amplitude = 50; // Very large amplitude to be clearly visible
 
-            int numSegments = (int)(anchorWidth / segmentWidth) + 1;
+            int numSegments = (int) (anchorWidth / segmentWidth) + 1;
 
             for (int i = 0; i < numSegments; i++) {
                 double x = anchorWidth - (i * segmentWidth);
@@ -3564,7 +3509,7 @@ private void animateParasiteStatus() {
                     0, 1,           // endX, endY   (bottom)
                     true,           // proportional to shape size
                     CycleMethod.NO_CYCLE,
-                    new Stop(0.0,Color.web("#3c4d35")),
+                    new Stop(0.0, Color.web("#3c4d35")),
                     new Stop(0.2, Color.web("#006400")),   // Dark green at left
                     new Stop(0.3, Color.web("#228B22")),   // Forest green
                     new Stop(0.4, Color.web("#6B8E23")),   // Olive green
@@ -3796,8 +3741,9 @@ private void animateParasiteStatus() {
             }
         });
     }
+
     // Updated method to create and animate sprinklers with different designs
-     // Updated method to position sprinklers directly on the wavy ground
+    // Updated method to position sprinklers directly on the wavy ground
     private void addSprinklersToGround() {
         Platform.runLater(() -> {
             try {
@@ -4003,7 +3949,7 @@ private void animateParasiteStatus() {
         double bushHeight = 25;
 
         for (int i = 0; i < numSections; i++) {
-            double sectionX = x - (bushWidth/2) + (i * (bushWidth/(numSections-1)));
+            double sectionX = x - (bushWidth / 2) + (i * (bushWidth / (numSections - 1)));
             double sectionY = y - (bushHeight * 0.7);
             double sectionSize = 8 + (Math.random() * 4);
 
@@ -4015,11 +3961,11 @@ private void animateParasiteStatus() {
             Circle section = new Circle(sectionX, sectionY, sectionSize);
 
             // Vary the green shade slightly
-            int greenVariation = (int)(Math.random() * 30);
+            int greenVariation = (int) (Math.random() * 30);
             section.setFill(Color.rgb(
                     50 + greenVariation,
                     120 + greenVariation,
-                    50 + (greenVariation/2)
+                    50 + (greenVariation / 2)
             ));
 
             bushGroup.getChildren().add(section);
@@ -4052,7 +3998,7 @@ private void animateParasiteStatus() {
         double spreadY = 15;
 
         for (int i = 0; i < numFlowers; i++) {
-            double flowerX = x - (spreadX/2) + (Math.random() * spreadX);
+            double flowerX = x - (spreadX / 2) + (Math.random() * spreadX);
             double flowerY = y - (Math.random() * spreadY);
 
             // Choose flower color - mix of colors for variety
@@ -4062,7 +4008,7 @@ private void animateParasiteStatus() {
                     Color.rgb(100, 100, 255), // Blue
                     Color.rgb(255, 150, 50)   // Orange
             };
-            Color flowerColor = flowerColors[(int)(Math.random() * flowerColors.length)];
+            Color flowerColor = flowerColors[(int) (Math.random() * flowerColors.length)];
 
             // Create flower stem
             Line stem = new Line(flowerX, flowerY, flowerX, flowerY - 10 - (Math.random() * 5));
@@ -4076,7 +4022,7 @@ private void animateParasiteStatus() {
             flowerGroup.getChildren().add(center);
 
             // Create petals
-            int numPetals = 5 + (int)(Math.random() * 3);
+            int numPetals = 5 + (int) (Math.random() * 3);
             for (int j = 0; j < numPetals; j++) {
                 double angle = j * (360.0 / numPetals);
                 double radian = Math.toRadians(angle);
@@ -4134,8 +4080,8 @@ private void animateParasiteStatus() {
             QuadCurveTo curve = new QuadCurveTo(controlX, controlY, endX, endY);
             stemPath.getElements().add(curve);
 
-            stemPath.setStroke(Color.rgb(50 + (int)(Math.random() * 30),
-                    120 + (int)(Math.random() * 30),
+            stemPath.setStroke(Color.rgb(50 + (int) (Math.random() * 30),
+                    120 + (int) (Math.random() * 30),
                     50));
             stemPath.setStrokeWidth(1 + Math.random());
             stemPath.setStrokeLineCap(StrokeLineCap.ROUND);
@@ -4226,7 +4172,7 @@ private void animateParasiteStatus() {
         int steps = 15;
 
         for (int i = 0; i <= steps; i++) {
-            double t = i / (double)steps;
+            double t = i / (double) steps;
 
             // Calculate position along arc path with gravity
             double pathX = x + (distance * t * Math.cos(radian));
@@ -4545,7 +4491,7 @@ private void animateParasiteStatus() {
         double blueVariation = Math.random() * 0.2;
         droplet.setFill(Color.rgb(
                 100,
-                180 + (int)(blueVariation * 75),
+                180 + (int) (blueVariation * 75),
                 255,
                 0.6 + Math.random() * 0.3)); // Varying blue with transparency
 
@@ -4601,6 +4547,7 @@ private void animateParasiteStatus() {
         animation.setOnFinished(e -> waterGroup.getChildren().remove(droplet));
         animation.play();
     }
+
     // Create parasite status with path animation
     private void createParasiteStatusWithPathAnimation() {
         try {
@@ -4793,6 +4740,7 @@ private void animateParasiteStatus() {
         // Start the animation
         pathTransition.play();
     }
+
     // Updated method to show "No Parasites" status
     private void setupParasiteZigzagAnimation() {
         // Add a delay to ensure the anchor pane is fully initialized
@@ -4801,6 +4749,1477 @@ private void animateParasiteStatus() {
         delay.play();
     }
 
+    private void positionPesticideBoxAtBottomRight(HBox pesticideBox) {
+        try {
+            // Get the width and height of the anchor pane
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+
+            // Use default values if dimensions aren't available yet
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // Calculate position - position it more to the right and up by 50px
+            double xPos = anchorWidth / 2 + 150; // Further to the right
+            double yPos = anchorHeight - 130;    // Up by 50px from previous position
+
+            // Position the pesticide box
+            pesticideBox.setLayoutX(xPos);
+            pesticideBox.setLayoutY(yPos);
+
+            logger.info("Pesticide box positioned at adjusted position: " + xPos + ", " + yPos);
+        } catch (Exception e) {
+            logger.error("Error positioning pesticide box: " + e.getMessage());
+
+            // Fallback position - still on the right side and higher up
+            pesticideBox.setLayoutX(700);
+            pesticideBox.setLayoutY(630);
+        }
+    }
+
+
+
+    /**
+     * Shows a cell bouncing and blurring effect for 30 seconds instead of spray.
+     *
+     * @param row Row where the pesticide is being applied
+     * @param col Column where the pesticide is being applied
+     */
+    private void showCellBounceAndBlurEffect(int row, int col) {
+        Platform.runLater(() -> {
+            try {
+                // Update the status to active
+                updatePesticideStatus("ACTIVE", true);
+
+                // Decrease the pesticide level
+                if (pesticideLevelBar != null) {
+                    double currentLevel = pesticideLevelBar.getProgress();
+                    updatePesticideLevel(currentLevel - 0.05);
+                }
+
+                // Find the cell at this position
+                StackPane cellPane = null;
+
+                // Search for the cell in the grid
+                for (Node node : gridPane.getChildren()) {
+                    if (node instanceof StackPane) {
+                        Integer nodeRow = GridPane.getRowIndex(node);
+                        Integer nodeCol = GridPane.getColumnIndex(node);
+
+                        if (nodeRow != null && nodeCol != null &&
+                                nodeRow == row && nodeCol == col) {
+                            cellPane = (StackPane) node;
+                            break;
+                        }
+                    }
+                }
+
+                // If cell not found, create a new one
+                if (cellPane == null) {
+                    cellPane = new StackPane();
+                    cellPane.setPrefSize(80, 80); // Adjust size as needed
+
+                    // Add light green background
+                    cellPane.setStyle("-fx-background-color: rgba(150, 230, 150, 0.4); -fx-background-radius: 5;");
+
+                    gridPane.add(cellPane, col, row);
+
+                    // Make sure it doesn't replace any existing content
+                    cellPane.toBack();
+                }
+
+                // Make final copy of cellPane for use in lambdas
+                final StackPane finalCellPane = cellPane;
+
+                // Store original style if any
+                final String originalStyle = finalCellPane.getStyle();
+
+                // Apply initial blur and glow effect
+                GaussianBlur blur = new GaussianBlur(0);
+                finalCellPane.setEffect(blur);
+
+                // Create a glowing border
+                finalCellPane.setStyle(
+                        originalStyle +
+                                "-fx-border-color: rgba(0, 200, 0, 0.7);" +
+                                "-fx-border-width: 2;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-background-color: rgba(150, 230, 150, 0.3);" +
+                                "-fx-background-radius: 5;"
+                );
+
+                // Create the bounce animation
+                TranslateTransition bounce = new TranslateTransition(Duration.millis(200), finalCellPane);
+                bounce.setFromY(0);
+                bounce.setToY(-5);
+                bounce.setCycleCount(6); // 3 full bounces
+                bounce.setAutoReverse(true);
+                bounce.play();
+
+                // Create the blur animation for pulsing effect
+                Timeline blurAnimation = new Timeline();
+
+                // Add blur pulsing effect with keyframes
+                for (int i = 0; i < 30; i++) { // 30 second duration
+                    double time = i * 1.0; // 1 second per pulse
+
+                    // Blur increases
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 0.5),
+                                    new KeyValue(blur.radiusProperty(), 5.0)
+                            )
+                    );
+
+                    // Blur decreases
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 1.0),
+                                    new KeyValue(blur.radiusProperty(), 2.0)
+                            )
+                    );
+
+                    // Border glow increases - using final variables for lambda
+                    final int currentIndex = i; // Create a final copy for the lambda
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 0.5),
+                                    event -> {
+                                        finalCellPane.setStyle(
+                                                originalStyle +
+                                                        "-fx-border-color: rgba(0, 220, 0, 0.9);" +
+                                                        "-fx-border-width: 2;" +
+                                                        "-fx-border-radius: 5;" +
+                                                        "-fx-background-color: rgba(150, 230, 150, 0.5);" +
+                                                        "-fx-background-radius: 5;"
+                                        );
+                                    }
+                            )
+                    );
+
+                    // Border glow decreases - using final variables for lambda
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 1.0),
+                                    event -> {
+                                        finalCellPane.setStyle(
+                                                originalStyle +
+                                                        "-fx-border-color: rgba(0, 180, 0, 0.7);" +
+                                                        "-fx-border-width: 2;" +
+                                                        "-fx-border-radius: 5;" +
+                                                        "-fx-background-color: rgba(150, 230, 150, 0.3);" +
+                                                        "-fx-background-radius: 5;"
+                                        );
+                                    }
+                            )
+                    );
+                }
+
+                // Set a final keyframe to remove the effect
+                blurAnimation.getKeyFrames().add(
+                        new KeyFrame(Duration.seconds(30),
+                                new KeyValue(blur.radiusProperty(), 0.0)
+                        )
+                );
+
+                // Play the animations
+                blurAnimation.play();
+
+                // Remove effects after 30 seconds
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(30));
+                pauseTransition.setOnFinished(event -> {
+                    // Reset cell style
+                    finalCellPane.setStyle(originalStyle);
+                    finalCellPane.setEffect(null);
+
+                    // Update status back to ready
+                    updatePesticideStatus("READY", false);
+                });
+                pauseTransition.play();
+
+                logger.info("Applied cell bounce and blur effect at row " + row + ", column " + col);
+            } catch (Exception e) {
+                logger.error("Error showing cell effect: " + e.getMessage());
+                e.printStackTrace();
+
+                // Reset status if there was an error
+                updatePesticideStatus("READY", false);
+            }
+        });
+    }
+
+
+    /**
+     * Shows a simple, lightweight pesticide spray animation at the specified cell for 20 seconds.
+     *
+     * @param row Row where the pesticide is being applied
+     * @param col Column where the pesticide is being applied
+     */
+    private void showSimplePesticideSpray(int row, int col) {
+        Platform.runLater(() -> {
+            try {
+                // Update the status to active
+                updatePesticideStatus("ACTIVE", true);
+
+                // Decrease the pesticide level by a small amount
+                if (pesticideLevelBar != null) {
+                    double currentLevel = pesticideLevelBar.getProgress();
+                    updatePesticideLevel(currentLevel - 0.05);
+                }
+
+                // Create a group for spray particles
+                Group sprayGroup = new Group();
+                gridPane.add(sprayGroup, col, row);
+                GridPane.setHalignment(sprayGroup, HPos.CENTER);
+                GridPane.setValignment(sprayGroup, VPos.CENTER);
+
+                // Create a light green mist effect
+                for (int i = 0; i < 8; i++) {
+                    // Create a circle for the mist
+                    Circle mist = new Circle(5 + random.nextDouble() * 12);
+
+                    // Light green with high transparency
+                    mist.setFill(Color.rgb(
+                            150 + random.nextInt(50),
+                            220 + random.nextInt(35),
+                            150 + random.nextInt(50),
+                            0.15 + random.nextDouble() * 0.15
+                    ));
+
+                    // Position randomly around the center
+                    double offsetX = -15 + random.nextDouble() * 30;
+                    double offsetY = -15 + random.nextDouble() * 30;
+                    mist.setCenterX(offsetX);
+                    mist.setCenterY(offsetY);
+
+                    // Add to spray group
+                    sprayGroup.getChildren().add(mist);
+
+                    // Animate the mist expanding and fading - slower for longer duration
+                    ScaleTransition st = new ScaleTransition(Duration.seconds(3), mist);
+                    st.setFromX(0.7);
+                    st.setFromY(0.7);
+                    st.setToX(2.0);
+                    st.setToY(2.0);
+
+                    FadeTransition ft = new FadeTransition(Duration.seconds(3), mist);
+                    ft.setFromValue(0.3);
+                    ft.setToValue(0.1); // Don't fade completely, just to low opacity
+
+                    // Play animations together
+                    ParallelTransition pt = new ParallelTransition(st, ft);
+                    pt.setOnFinished(e -> {
+                        // Create a new mist particle to replace this one - maintains effect for longer
+                        Circle newMist = new Circle(10 + random.nextDouble() * 10);
+                        newMist.setFill(Color.rgb(
+                                150 + random.nextInt(50),
+                                220 + random.nextInt(35),
+                                150 + random.nextInt(50),
+                                0.1 + random.nextDouble() * 0.1
+                        ));
+
+                        // Position randomly
+                        newMist.setCenterX(-15 + random.nextDouble() * 30);
+                        newMist.setCenterY(-15 + random.nextDouble() * 30);
+
+                        // Add to spray group
+                        sprayGroup.getChildren().add(newMist);
+
+                        // Animate with fade only
+                        FadeTransition fade = new FadeTransition(Duration.seconds(3), newMist);
+                        fade.setFromValue(0.2);
+                        fade.setToValue(0);
+                        fade.play();
+                    });
+                    pt.play();
+                }
+
+                // Remove after 20 seconds as requested
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(20));
+                pauseTransition.setOnFinished(event -> {
+                    gridPane.getChildren().remove(sprayGroup);
+
+                    // Update status back to ready
+                    updatePesticideStatus("READY", false);
+                });
+                pauseTransition.play();
+
+            } catch (Exception e) {
+                logger.error("Error showing pesticide spray: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
+    }
+
+
+
+
+    // Update the display parasite event handler
+    private void handleDisplayParasiteEvent(ParasiteDisplayEvent event) {
+        logger.info("Day: " + logDay + " Parasite displayed at row " + event.getRow() +
+                " and column " + event.getColumn() + " with name " +
+                event.getParasite().getName());
+
+        // Load the image for the parasite
+        String imageName = "/images/" + event.getParasite().getImageName();
+        Image parasiteImage = new Image(getClass().getResourceAsStream(imageName));
+        ImageView parasiteImageView = new ImageView(parasiteImage);
+
+        parasiteImageView.setFitHeight(50);
+        parasiteImageView.setFitWidth(50);
+
+        // Use the row and column from the event
+        int row = event.getRow();
+        int col = event.getColumn();
+
+        // Place the parasite image on the grid with offset
+        GridPane.setRowIndex(parasiteImageView, row);
+        GridPane.setColumnIndex(parasiteImageView, col);
+        GridPane.setHalignment(parasiteImageView, HPos.RIGHT);
+        GridPane.setValignment(parasiteImageView, VPos.BOTTOM);
+        gridPane.getChildren().add(parasiteImageView);
+
+        // Create a pause transition before applying pesticide
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+        pause.setOnFinished(_ -> {
+            // Remove the parasite image
+            gridPane.getChildren().remove(parasiteImageView);
+
+            // Show simple pesticide spray
+            showSimplePesticideSpray(row, col);
+        });
+
+        pause.play();
+    }
     // Updated method to handle parasite events
+
+    /**
+     * Shows a cell bouncing with yellow dots and light purple effect for 30 seconds.
+     *
+     * @param row Row where the pesticide is being applied
+     * @param col Column where the pesticide is being applied
+     */
+    private void showCellBounceAndPurpleEffect(int row, int col) {
+        Platform.runLater(() -> {
+            try {
+                // Update the status to active
+                updatePesticideStatus("ACTIVE", true);
+
+                // Decrease the pesticide level
+                if (pesticideLevelBar != null) {
+                    double currentLevel = pesticideLevelBar.getProgress();
+                    updatePesticideLevel(currentLevel - 0.05);
+                }
+
+                // Find the cell at this position
+                StackPane cellPane = null;
+
+                // Search for the cell in the grid
+                for (Node node : gridPane.getChildren()) {
+                    if (node instanceof StackPane) {
+                        Integer nodeRow = GridPane.getRowIndex(node);
+                        Integer nodeCol = GridPane.getColumnIndex(node);
+
+                        if (nodeRow != null && nodeCol != null &&
+                                nodeRow == row && nodeCol == col) {
+                            cellPane = (StackPane) node;
+                            break;
+                        }
+                    }
+                }
+
+                // If cell not found, create a new one
+                if (cellPane == null) {
+                    cellPane = new StackPane();
+                    cellPane.setPrefSize(80, 80); // Adjust size as needed
+
+                    // Add light purple background
+                    cellPane.setStyle("-fx-background-color: rgba(220, 200, 255, 0.4); -fx-background-radius: 5;");
+
+                    gridPane.add(cellPane, col, row);
+
+                    // Make sure it doesn't replace any existing content
+                    cellPane.toBack();
+                }
+
+                // Make final copy of cellPane for use in lambdas
+                final StackPane finalCellPane = cellPane;
+
+                // Store original style if any
+                final String originalStyle = finalCellPane.getStyle();
+
+                // Apply initial blur and glow effect
+                GaussianBlur blur = new GaussianBlur(0);
+                finalCellPane.setEffect(blur);
+
+                // Create a glowing border with light purple
+                finalCellPane.setStyle(
+                        originalStyle +
+                                "-fx-border-color: rgba(180, 120, 220, 0.7);" +
+                                "-fx-border-width: 2;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-background-color: rgba(220, 200, 255, 0.3);" +
+                                "-fx-background-radius: 5;"
+                );
+
+                // Create a more noticeable bounce animation
+                TranslateTransition bounce = new TranslateTransition(Duration.millis(150), finalCellPane);
+                bounce.setFromY(0);
+                bounce.setToY(-10); // More pronounced bounce
+                bounce.setCycleCount(10); // More bounces
+                bounce.setAutoReverse(true);
+                bounce.setInterpolator(Interpolator.EASE_BOTH); // Smoother bounce
+                bounce.play();
+
+                // Create group for yellow dots
+                Group dotsGroup = new Group();
+                finalCellPane.getChildren().add(dotsGroup);
+
+                // Add initial yellow dots
+                addYellowDots(dotsGroup, 10);
+
+                // Animation to continuously add and fade dots
+                Timeline dotsAnimation = new Timeline(
+                        new KeyFrame(Duration.millis(800), event -> {
+                            // Add new dots periodically
+                            addYellowDots(dotsGroup, 5);
+                        })
+                );
+                dotsAnimation.setCycleCount(36); // 36 cycles × 800ms = ~29 seconds
+                dotsAnimation.play();
+
+                // Create the blur animation for pulsing effect
+                Timeline blurAnimation = new Timeline();
+
+                // Add blur pulsing effect with keyframes
+                for (int i = 0; i < 30; i++) { // 30 second duration
+                    double time = i * 1.0; // 1 second per pulse
+
+                    // Blur increases
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 0.5),
+                                    new KeyValue(blur.radiusProperty(), 5.0)
+                            )
+                    );
+
+                    // Blur decreases
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 1.0),
+                                    new KeyValue(blur.radiusProperty(), 2.0)
+                            )
+                    );
+
+                    // Border glow increases - using final variables for lambda
+                    final int currentIndex = i; // Create a final copy for the lambda
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 0.5),
+                                    event -> {
+                                        finalCellPane.setStyle(
+                                                originalStyle +
+                                                        "-fx-border-color: rgba(200, 120, 255, 0.9);" +
+                                                        "-fx-border-width: 2;" +
+                                                        "-fx-border-radius: 5;" +
+                                                        "-fx-background-color: rgba(220, 200, 255, 0.5);" +
+                                                        "-fx-background-radius: 5;"
+                                        );
+                                    }
+                            )
+                    );
+
+                    // Border glow decreases - using final variables for lambda
+                    blurAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 1.0),
+                                    event -> {
+                                        finalCellPane.setStyle(
+                                                originalStyle +
+                                                        "-fx-border-color: rgba(160, 100, 200, 0.7);" +
+                                                        "-fx-border-width: 2;" +
+                                                        "-fx-border-radius: 5;" +
+                                                        "-fx-background-color: rgba(220, 200, 255, 0.3);" +
+                                                        "-fx-background-radius: 5;"
+                                        );
+                                    }
+                            )
+                    );
+                }
+
+                // Set a final keyframe to remove the effect
+                blurAnimation.getKeyFrames().add(
+                        new KeyFrame(Duration.seconds(30),
+                                new KeyValue(blur.radiusProperty(), 0.0)
+                        )
+                );
+
+                // Play the animations
+                blurAnimation.play();
+
+                // Remove effects after 30 seconds
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(30));
+                pauseTransition.setOnFinished(event -> {
+                    // Reset cell style
+                    finalCellPane.setStyle(originalStyle);
+                    finalCellPane.setEffect(null);
+
+                    // Remove the dots group
+                    finalCellPane.getChildren().remove(dotsGroup);
+
+                    // Update status back to ready
+                    updatePesticideStatus("READY", false);
+                });
+                pauseTransition.play();
+
+                logger.info("Applied cell bounce and purple effect at row " + row + ", column " + col);
+            } catch (Exception e) {
+                logger.error("Error showing cell effect: " + e.getMessage());
+                e.printStackTrace();
+
+                // Reset status if there was an error
+                updatePesticideStatus("READY", false);
+            }
+        });
+    }
+
+
+
+
+
+
+
+    private void positionPesticideBoxExactLocation(Pane pesticideBox) {
+        try {
+            // Get the width and height of the anchor pane
+            double anchorWidth = anchorPane.getWidth();
+            double anchorHeight = anchorPane.getHeight();
+
+            // Use default values if dimensions aren't available yet
+            if (anchorWidth <= 0) anchorWidth = 1000;
+            if (anchorHeight <= 0) anchorHeight = 700;
+
+            // Calculate position - SHIFT LEFT BY 80px AND UP BY 30px
+            double xPos = anchorWidth - 150 - 230; // From right edge, shifted 80px left
+            double yPos = anchorHeight -108 - 80; // From bottom, shifted 30px up
+
+            // Position the pesticide box
+            pesticideBox.setLayoutX(xPos);
+            pesticideBox.setLayoutY(yPos);
+
+            logger.info("Pesticide box positioned at adjusted location: " + xPos + ", " + yPos);
+        } catch (Exception e) {
+            logger.error("Error positioning pesticide box: " + e.getMessage());
+
+            // Fallback position - also adjusted
+            pesticideBox.setLayoutX(770); // 850 - 80
+            pesticideBox.setLayoutY(550); // 580 - 30
+        }
+    }
+
+    /**
+     * Shows a particle burst effect when refilling the pesticide.
+     */
+    private void showRefillParticles() {
+        // Find the position of the pesticide box
+        double pestX = 0;
+        double pestY = 0;
+
+        // Try to find the box by looking for the level bar
+        if (pesticideLevelBar != null) {
+            try {
+                Bounds bounds = pesticideLevelBar.localToScene(pesticideLevelBar.getBoundsInLocal());
+                pestX = bounds.getMinX() + bounds.getWidth() / 2;
+                pestY = bounds.getMinY() + bounds.getHeight() / 2;
+            } catch (Exception e) {
+                // Use fallback position
+                pestX = anchorPane.getWidth() - 100;
+                pestY = anchorPane.getHeight() - 1200;
+            }
+        }
+
+        // Create a group for particles
+        Group particleGroup = new Group();
+        anchorPane.getChildren().add(particleGroup);
+
+        // Generate particles
+        final double centerX = pestX;
+        final double centerY = pestY;
+
+        // Create particles
+        for (int i = 0; i < 20; i++) {
+            // Create a small circle for the particle
+            Circle particle = new Circle(2 + random.nextDouble() * 3);
+
+            // Random color between blue and purple
+            Color color = Color.rgb(
+                    100 + random.nextInt(100), // R
+                    100 + random.nextInt(100), // G
+                    200 + random.nextInt(55),  // B
+                    0.7 + random.nextDouble() * 0.3 // Alpha
+            );
+
+            particle.setFill(color);
+
+            // Position at the center
+            particle.setCenterX(centerX);
+            particle.setCenterY(centerY);
+
+            // Add to the group
+            particleGroup.getChildren().add(particle);
+
+            // Calculate random direction
+            double angle = random.nextDouble() * 360;
+            double distance = 30 + random.nextDouble() * 50;
+
+            // Calculate end position
+            double endX = centerX + distance * Math.cos(Math.toRadians(angle));
+            double endY = centerY + distance * Math.sin(Math.toRadians(angle));
+
+            // Create movement animation
+            Timeline timeline = new Timeline();
+
+            // Add keyframes for movement and fading
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.ZERO,
+                            new KeyValue(particle.centerXProperty(), centerX),
+                            new KeyValue(particle.centerYProperty(), centerY),
+                            new KeyValue(particle.opacityProperty(), 1.0)
+                    )
+            );
+
+            // Move in an arc rather than straight line
+            // Add more keyframes for curved motion
+            for (int j = 1; j < 10; j++) {
+                double t = j / 10.0;
+                double arcX = centerX + (endX - centerX) * t;
+                double arcY = centerY + (endY - centerY) * t - Math.sin(Math.PI * t) * 20; // Arc upward
+
+                timeline.getKeyFrames().add(
+                        new KeyFrame(Duration.millis(800 * t),
+                                new KeyValue(particle.centerXProperty(), arcX),
+                                new KeyValue(particle.centerYProperty(), arcY)
+                        )
+                );
+            }
+
+            // Final position with fade out
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.millis(800),
+                            new KeyValue(particle.centerXProperty(), endX),
+                            new KeyValue(particle.centerYProperty(), endY),
+                            new KeyValue(particle.opacityProperty(), 0.0)
+                    )
+            );
+
+            // Play the animation
+            timeline.play();
+
+            // Remove particle and group when done
+            timeline.setOnFinished(e -> {
+                particleGroup.getChildren().remove(particle);
+                if (particleGroup.getChildren().isEmpty()) {
+                    anchorPane.getChildren().remove(particleGroup);
+                }
+            });
+        }
+    }
+
+
+
+    private void addYellowDots(Group dotsGroup, int count) {
+        Random random = new Random();
+
+        for (int i = 0; i < count; i++) {
+            // Create a small yellow dot with varied sizes
+            Circle dot = new Circle(1.5 + random.nextDouble() * 2.5);
+
+            // Light yellow color with transparency
+            dot.setFill(Color.rgb(
+                    255,
+                    255,
+                    150 + random.nextInt(105), // From light yellow to almost white
+                    0.7 + random.nextDouble() * 0.3
+            ));
+
+            // Position randomly within the cell
+            dot.setCenterX(-30 + random.nextDouble() * 60);
+            dot.setCenterY(-30 + random.nextDouble() * 60);
+
+            // Add dot to the group
+            dotsGroup.getChildren().add(dot);
+
+            // Create fade animation
+            FadeTransition fade = new FadeTransition(Duration.seconds(2 + random.nextDouble() * 3), dot);
+            fade.setFromValue(0.9);
+            fade.setToValue(0);
+            fade.setOnFinished(e -> dotsGroup.getChildren().remove(dot));
+
+            // Add slight drift upward with more natural movement
+            TranslateTransition drift = new TranslateTransition(Duration.seconds(2 + random.nextDouble() * 3), dot);
+            drift.setByY(-15 - random.nextDouble() * 20); // More upward movement
+            drift.setByX(-5 + random.nextDouble() * 10);
+            drift.setInterpolator(Interpolator.SPLINE(0.1, 0.9, 0.3, 0.7)); // Custom interpolator for smoother motion
+
+            // Play animations together
+            ParallelTransition pt = new ParallelTransition(fade, drift);
+            pt.play();
+        }
+    }
+
+    // Modified pestControl method to use the enhanced cell effect
+    private void pestControl(String imagePestControlName, int row, int col) {
+        // Use the enhanced cell effect with yellow dots and application trail
+        showEnhancedCellEffect(row, col);
+    }
+
+    /**
+     * Updates the pesticide system status.
+     *
+     * @param status   The new status text (e.g., "READY" or "ACTIVE")
+     * @param isActive Whether the system is currently active
+     */
+    public void updatePesticideStatus(String status, boolean isActive) {
+        if (pesticideStatusLabel != null) {
+            Platform.runLater(() -> {
+                // Update the text
+                pesticideStatusLabel.setText(status);
+
+                // Update color based on status
+                if (isActive) {
+                    pesticideStatusLabel.setTextFill(Color.rgb(200, 0, 0)); // Red for ACTIVE
+
+                    // Add a pulsing animation when active
+                    Timeline pulse = new Timeline(
+                            new KeyFrame(Duration.ZERO,
+                                    new KeyValue(pesticideStatusLabel.scaleXProperty(), 1)),
+                            new KeyFrame(Duration.ZERO,
+                                    new KeyValue(pesticideStatusLabel.scaleYProperty(), 1)),
+                            new KeyFrame(Duration.millis(500),
+                                    new KeyValue(pesticideStatusLabel.scaleXProperty(), 1.1)),
+                            new KeyFrame(Duration.millis(500),
+                                    new KeyValue(pesticideStatusLabel.scaleYProperty(), 1.1)),
+                            new KeyFrame(Duration.millis(1000),
+                                    new KeyValue(pesticideStatusLabel.scaleXProperty(), 1)),
+                            new KeyFrame(Duration.millis(1000),
+                                    new KeyValue(pesticideStatusLabel.scaleYProperty(), 1))
+                    );
+                    pulse.setCycleCount(Timeline.INDEFINITE);
+
+                    // Store the animation for stopping later
+                    pesticideStatusAnimation = pulse;
+                    pulse.play();
+
+                } else {
+                    pesticideStatusLabel.setTextFill(Color.rgb(0, 100, 0)); // Green for READY
+
+                    // Stop any existing animation
+                    if (pesticideStatusAnimation != null) {
+                        pesticideStatusAnimation.stop();
+                        pesticideStatusAnimation = null;
+
+                        // Reset the scale
+                        pesticideStatusLabel.setScaleX(1.0);
+                        pesticideStatusLabel.setScaleY(1.0);
+                    }
+                }
+            });
+        }
+    }
+
+    /**
+     * Updates the pesticide level indicator with improved visual feedback.
+     *
+     * @param level The new level value (0.0 to 1.0)
+     */
+    public void updatePesticideLevel(double level) {
+        if (pesticideLevelBar != null) {
+            Platform.runLater(() -> {
+                // Get current level for animation
+                double currentLevel = pesticideLevelBar.getProgress();
+                double targetLevel = Math.max(0.0, Math.min(1.0, level)); // Ensure within range
+
+                // Create animation to transition to new level
+                Timeline levelAnimation = new Timeline();
+
+                // Add keyframes for smooth transition
+                for (int i = 0; i <= 10; i++) {
+                    double progress = i / 10.0;
+                    double intermediateLevel = currentLevel + (targetLevel - currentLevel) * progress;
+
+                    levelAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.millis(i * 30),
+                                    new KeyValue(pesticideLevelBar.progressProperty(), intermediateLevel)
+                            )
+                    );
+                }
+
+                // Change color based on level with purple theme
+                if (targetLevel < 0.3) {
+                    // Red-pink for low level
+                    levelAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.millis(300),
+                                    new KeyValue(pesticideLevelBar.styleProperty(), "-fx-accent: #FF6EB4;")
+                            )
+                    );
+                } else if (targetLevel < 0.6) {
+                    // Medium purple for medium level
+                    levelAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.millis(300),
+                                    new KeyValue(pesticideLevelBar.styleProperty(), "-fx-accent: #BA55D3;")
+                            )
+                    );
+                } else {
+                    // Darker purple for high level
+                    levelAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.millis(300),
+                                    new KeyValue(pesticideLevelBar.styleProperty(), "-fx-accent: #9370DB;")
+                            )
+                    );
+                }
+
+                // Play the animation
+                levelAnimation.play();
+            });
+        }
+    }
+    /**
+     * Creates an enhanced vertical pesticide system status box with
+     * better styling to match the screenshot.
+     */
+    private void createEnhancedVerticalPesticideBox() {
+        Platform.runLater(() -> {
+            try {
+                // Create the main container - using VBox for vertical layout
+                VBox pesticideBox = new VBox(10); // Increased spacing for better layout
+                pesticideBox.setPadding(new Insets(12));
+                pesticideBox.setPrefWidth(120); // Slightly wider than before
+                pesticideBox.setPrefHeight(100); // Taller for vertical layout
+                pesticideBox.setAlignment(Pos.CENTER);
+
+                // Style with light purple background and border (matching screenshot)
+                pesticideBox.setBackground(new Background(new BackgroundFill(
+                        Color.rgb(240, 220, 235, 0.9), // Slightly more opaque to match screenshot
+                        new CornerRadii(10),
+                        Insets.EMPTY
+                )));
+
+                pesticideBox.setBorder(new Border(new BorderStroke(
+                        Color.rgb(160, 120, 200, 0.7), // Purple border
+                        BorderStrokeStyle.SOLID,
+                        new CornerRadii(10),
+                        new BorderWidths(2)
+                )));
+
+                // Add icon at the top
+
+
+                ImageView pesticideIcon = new ImageView(new Image(getClass().getResourceAsStream("/images/pControl1.png")));
+                pesticideIcon.setFitHeight(32);
+                pesticideIcon.setFitWidth(28);
+
+                // Add title - "PESTICIDE" (shortened from "PESTICIDE SYSTEM")
+                Label titleLabel = new Label("PESTICIDE");
+                titleLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
+                titleLabel.setTextFill(Color.rgb(80, 40, 120)); // Darker purple text
+                HBox titleContainer = new HBox(5);
+                titleContainer.setAlignment(Pos.CENTER);
+                titleContainer.getChildren().addAll(pesticideIcon, titleLabel);
+                // Add status label
+                Label statusLabel = new Label("READY");
+                statusLabel.setFont(Font.font("System", FontWeight.BOLD, 14));
+                statusLabel.setTextFill(Color.rgb(0, 100, 0)); // Green for READY state
+                statusLabel.setPadding(new Insets(5, 0, 5, 0)); // Add padding above and below
+
+                // Add level label
+                Label levelLabel = new Label("LEVEL");
+                levelLabel.setFont(Font.font("System", FontWeight.BOLD, 10));
+                levelLabel.setTextFill(Color.rgb(80, 40, 120)); // Purple text
+
+                VBox progressContainer = new VBox(2);
+                progressContainer.setPadding(new Insets(2, 0, 8, 0)); // Spacing above and below
+                progressContainer.setAlignment(Pos.CENTER); // Center align the level bar
+
+// Add level indicator (progress bar)
+                ProgressBar levelBar = new ProgressBar(0.8); // Start at 80%
+                levelBar.setPrefWidth(90); // Slightly narrower to fit better
+                levelBar.setPrefHeight(10); // Smaller height
+                levelBar.setMinHeight(10); // Ensure minimum height is set
+                levelBar.setMaxHeight(10); // Ensure maximum height is set
+                levelBar.setStyle("-fx-accent: #9370DB;"); // Medium purple progress color
+
+// Make progress bar visible
+                levelBar.setVisible(true);
+                levelBar.setManaged(true);
+
+                progressContainer.getChildren().add(levelBar);
+                // Add a refill button with improved styling
+                Button refillButton = new Button("Refill");
+                refillButton.setPrefWidth(80);
+                refillButton.setStyle(
+                        "-fx-background-color: linear-gradient(to bottom, #f0e6ff, #d8c6ff);" +
+                                "-fx-border-color: #9370DB;" +
+                                "-fx-border-width: 1;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-text-fill: #4B0082;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 12px;" +
+                                "-fx-padding: 5 10 5 10;" +
+                                "-fx-cursor: hand;"
+                );
+
+                // Define styles as constants to avoid lambda issues
+                final String normalStyle =
+                        "-fx-background-color: linear-gradient(to bottom, #f0e6ff, #d8c6ff);" +
+                                "-fx-border-color: #9370DB;" +
+                                "-fx-border-width: 1;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-text-fill: #4B0082;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 12px;" +
+                                "-fx-padding: 5 10 5 10;" +
+                                "-fx-cursor: hand;";
+
+                final String hoverStyle =
+                        "-fx-background-color: linear-gradient(to bottom, #e0d0ff, #c0a0ff);" +
+                                "-fx-border-color: #9370DB;" +
+                                "-fx-border-width: 1;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-text-fill: #4B0082;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-font-size: 12px;" +
+                                "-fx-padding: 5 10 5 10;" +
+                                "-fx-cursor: hand;";
+
+                // Add hover effect using the constant styles
+                refillButton.setOnMouseEntered(e -> {
+                    refillButton.setStyle(hoverStyle);
+                });
+
+                refillButton.setOnMouseExited(e -> {
+                    refillButton.setStyle(normalStyle);
+                });
+
+                // Store references for the lambda expressions
+                final Label finalStatusLabel = statusLabel;
+                final ProgressBar finalLevelBar = levelBar;
+
+                // Handle refill button click - improved with animation
+                refillButton.setOnAction(e -> {
+                    // Create a filling animation
+                    Timeline fillAnimation = new Timeline();
+
+                    // Current progress value - must be effectively final
+                    final double currentValue = finalLevelBar.getProgress();
+
+                    // Add keyframes for smooth filling animation
+                    for (int i = 0; i <= 20; i++) { // More steps for smoother animation
+                        // Need to make i effectively final for use in lambda
+                        final int index = i;
+
+                        double newValue = currentValue + ((1.0 - currentValue) * index / 20.0);
+                        fillAnimation.getKeyFrames().add(
+                                new KeyFrame(Duration.millis(index * 30),
+                                        new KeyValue(finalLevelBar.progressProperty(), newValue)
+                                )
+                        );
+
+                        // Change color during animation - avoiding lambda issues
+                        if (index < 10) {
+                            final String colorStyle = "-fx-accent: #" + String.format("%02x", 147 + index * 5) + "70DB;";
+                            fillAnimation.getKeyFrames().add(
+                                    new KeyFrame(Duration.millis(index * 30),
+                                            new KeyValue(finalLevelBar.styleProperty(), colorStyle)
+                                    )
+                            );
+                        } else {
+                            final String colorStyle = "-fx-accent: #9370" + String.format("%02x", 219 - (index-10) * 5) + ";";
+                            fillAnimation.getKeyFrames().add(
+                                    new KeyFrame(Duration.millis(index * 30),
+                                            new KeyValue(finalLevelBar.styleProperty(), colorStyle)
+                                    )
+                            );
+                        }
+                    }
+
+                    // Final color
+                    fillAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.millis(600),
+                                    new KeyValue(finalLevelBar.styleProperty(), "-fx-accent: #9370DB;")
+                            )
+                    );
+
+                    // Add a slight scaling animation for feedback
+                    ScaleTransition scale = new ScaleTransition(Duration.millis(200), refillButton);
+                    scale.setFromX(1.0);
+                    scale.setFromY(1.0);
+                    scale.setToX(0.95);
+                    scale.setToY(0.95);
+                    scale.setCycleCount(2);
+                    scale.setAutoReverse(true);
+
+                    // Play the animations
+                    fillAnimation.play();
+                    scale.play();
+
+                    // Update status temporarily - need to use a final copy
+                    final String oldStatus = finalStatusLabel.getText();
+                    finalStatusLabel.setText("REFILLING");
+                    finalStatusLabel.setTextFill(Color.rgb(0, 100, 200)); // Blue during refill
+
+                    // Add visual feedback with a particle burst
+                    showRefillParticles();
+
+                    // Reset status after a short delay
+                    PauseTransition statusReset = new PauseTransition(Duration.millis(700));
+                    statusReset.setOnFinished(event -> {
+                        finalStatusLabel.setText(oldStatus);
+                        finalStatusLabel.setTextFill(Color.rgb(0, 100, 0)); // Back to green
+                    });
+                    statusReset.play();
+
+                    logger.info("Pesticide refilled to 100%");
+                });
+
+                // Add all components to the vertical box
+                pesticideBox.getChildren().addAll(
+                       titleContainer,
+                        statusLabel,
+                        levelLabel,
+                        progressContainer,
+                        refillButton
+                );
+
+                // Add drop shadow
+                DropShadow shadow = new DropShadow();
+                shadow.setColor(Color.rgb(0, 0, 0, 0.3));
+                shadow.setRadius(8);
+                shadow.setOffsetY(3);
+                pesticideBox.setEffect(shadow);
+
+                // Add to the scene
+                anchorPane.getChildren().add(pesticideBox);
+
+                // Position it at the adjusted position - exactly where shown in screenshot
+                // Using exact coordinates from the screenshot
+                positionPesticideBoxExactLocation(pesticideBox);
+
+                // Store references for later updates
+                this.pesticideStatusLabel = statusLabel;
+                this.pesticideLevelBar = levelBar;
+
+                logger.info("Enhanced vertical pesticide system box created");
+            } catch (Exception e) {
+                logger.error("Error creating pesticide status box: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * Shows a cell bouncing with yellow dots and light purple effect for 30 seconds,
+     * with enhanced visual feedback.
+     * @param row Row where the pesticide is being applied
+     * @param col Column where the pesticide is being applied
+     */
+    private void showEnhancedCellEffect(int row, int col) {
+        Platform.runLater(() -> {
+            try {
+                // Show "ACTIVE" status
+                updatePesticideStatus("ACTIVE", true);
+
+                // Decrease the pesticide level
+                if (pesticideLevelBar != null) {
+                    double currentLevel = pesticideLevelBar.getProgress();
+                    updatePesticideLevel(currentLevel - 0.1); // Larger decrease for more visual feedback
+                }
+
+                // Display application particles from pesticide box to cell
+                showApplicationTrail(row, col);
+
+                // Find the cell at this position
+                StackPane cellPane = null;
+
+                // Search for the cell in the grid
+                for (Node node : gridPane.getChildren()) {
+                    if (node instanceof StackPane) {
+                        Integer nodeRow = GridPane.getRowIndex(node);
+                        Integer nodeCol = GridPane.getColumnIndex(node);
+
+                        if (nodeRow != null && nodeCol != null &&
+                                nodeRow == row && nodeCol == col) {
+                            cellPane = (StackPane) node;
+                            break;
+                        }
+                    }
+                }
+
+                // If cell not found, create a new one
+                if (cellPane == null) {
+                    cellPane = new StackPane();
+                    cellPane.setPrefSize(80, 80);
+
+                    // Add light purple background
+                    cellPane.setStyle("-fx-background-color: rgba(220, 200, 255, 0.4); -fx-background-radius: 5;");
+
+                    gridPane.add(cellPane, col, row);
+
+                    // Make sure it doesn't replace any existing content
+                    cellPane.toBack();
+                }
+
+                // Make final copy of cellPane for use in lambdas
+                final StackPane finalCellPane = cellPane;
+
+                // Store original style if any
+                final String originalStyle = finalCellPane.getStyle();
+
+                // Apply initial blur and glow effect
+                GaussianBlur blur = new GaussianBlur(0);
+                finalCellPane.setEffect(blur);
+
+                // Create a glowing border with initial flash
+                // Use string constants to avoid lambda issues
+                final String flashStyle =
+                        "-fx-border-color: rgba(255, 255, 255, 0.9);" +
+                                "-fx-border-width: 3;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-background-color: rgba(255, 255, 255, 0.5);" +
+                                "-fx-background-radius: 5;";
+
+                final String purpleGlowStyle =
+                        originalStyle +
+                                "-fx-border-color: rgba(180, 120, 220, 0.8);" +
+                                "-fx-border-width: 2;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-background-color: rgba(220, 200, 255, 0.3);" +
+                                "-fx-background-radius: 5;";
+
+                // Apply initial style
+                finalCellPane.setStyle(flashStyle);
+
+                // Transition to purple glow
+                PauseTransition initialFlash = new PauseTransition(Duration.millis(150));
+                initialFlash.setOnFinished(e -> {
+                    finalCellPane.setStyle(purpleGlowStyle);
+                });
+                initialFlash.play();
+
+                // Create a more pronounced bounce animation
+                TranslateTransition bounce = new TranslateTransition(Duration.millis(120), finalCellPane);
+                bounce.setFromY(0);
+                bounce.setToY(-12); // More pronounced bounce
+                bounce.setCycleCount(8); // Fewer but more noticeable bounces
+                bounce.setAutoReverse(true);
+                bounce.setInterpolator(Interpolator.SPLINE(0.1, 0.9, 0.2, 0.8)); // Custom interpolator for better bounce
+                bounce.play();
+
+                // Create group for yellow dots
+                Group dotsGroup = new Group();
+                finalCellPane.getChildren().add(dotsGroup);
+
+                // Add initial yellow dots
+                addYellowDots(dotsGroup, 15); // More initial dots
+
+                // Create a dots timeline for periodic additions of dots
+                // Using KeyFrame without lambda expressions
+                EventHandler<ActionEvent> dotsHandler = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        addYellowDots(dotsGroup, 5);
+                    }
+                };
+
+                Timeline dotsAnimation = new Timeline(
+                        new KeyFrame(Duration.millis(600), dotsHandler)
+                );
+                dotsAnimation.setCycleCount(45); // 45 cycles × 600ms = ~27 seconds
+                dotsAnimation.play();
+
+                // Create style strings for the glow animation to avoid lambda issues
+                final String glowStyleBright =
+                        originalStyle +
+                                "-fx-border-color: rgba(220, 120, 255, 0.9);" +
+                                "-fx-border-width: 2;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-background-color: rgba(220, 200, 255, 0.4);" +
+                                "-fx-background-radius: 5;";
+
+                final String glowStyleDim =
+                        originalStyle +
+                                "-fx-border-color: rgba(160, 100, 200, 0.7);" +
+                                "-fx-border-width: 2;" +
+                                "-fx-border-radius: 5;" +
+                                "-fx-background-color: rgba(220, 200, 255, 0.3);" +
+                                "-fx-background-radius: 5;";
+
+                // Create a purple pulsing glow animation using safely constructed timelines
+                Timeline glowAnimation = new Timeline();
+
+                // Add blur pulsing effect with keyframes
+                for (int i = 0; i < 15; i++) { // 15 pulses over 30 seconds
+                    double time = i * 2.0; // 2 seconds per pulse
+
+                    // Blur increases
+                    glowAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 0.5),
+                                    new KeyValue(blur.radiusProperty(), 5.0)
+                            )
+                    );
+
+                    // Blur decreases
+                    glowAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(time + 1.0),
+                                    new KeyValue(blur.radiusProperty(), 2.0)
+                            )
+                    );
+
+                    // Glow increases - using frames not lambdas
+                    final double brightTime = time + 1.0;
+                    glowAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(brightTime),
+                                    new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            finalCellPane.setStyle(glowStyleBright);
+                                        }
+                                    }
+                            )
+                    );
+
+                    // Glow decreases - using frames not lambdas
+                    final double dimTime = time + 2.0;
+                    glowAnimation.getKeyFrames().add(
+                            new KeyFrame(Duration.seconds(dimTime),
+                                    new EventHandler<ActionEvent>() {
+                                        @Override
+                                        public void handle(ActionEvent event) {
+                                            finalCellPane.setStyle(glowStyleDim);
+                                        }
+                                    }
+                            )
+                    );
+                }
+
+                // Create a final fade out animation
+                FadeTransition fadeOut = new FadeTransition(Duration.seconds(1.0), dotsGroup);
+                fadeOut.setFromValue(1.0);
+                fadeOut.setToValue(0.0);
+
+                KeyValue blurEnd = new KeyValue(blur.radiusProperty(), 0.0);
+                Timeline blurRemoval = new Timeline(new KeyFrame(Duration.seconds(1.0), blurEnd));
+
+                // Add all animations to a sequential transition
+                SequentialTransition sequence = new SequentialTransition(
+                        glowAnimation,
+                        new ParallelTransition(fadeOut, blurRemoval)
+                );
+
+                // Play the sequence
+                sequence.play();
+
+                // Remove effects after 30 seconds
+                PauseTransition pauseTransition = new PauseTransition(Duration.seconds(30));
+                pauseTransition.setOnFinished(event -> {
+                    // Reset cell style
+                    finalCellPane.setStyle(originalStyle);
+                    finalCellPane.setEffect(null);
+
+                    // Remove the dots group
+                    finalCellPane.getChildren().remove(dotsGroup);
+
+                    // Update status back to ready
+                    updatePesticideStatus("READY", false);
+                });
+                pauseTransition.play();
+
+                logger.info("Applied enhanced cell effect at row " + row + ", column " + col);
+            } catch (Exception e) {
+                logger.error("Error showing cell effect: " + e.getMessage());
+                e.printStackTrace();
+
+                // Reset status if there was an error
+                updatePesticideStatus("READY", false);
+            }
+        });
+    }
+
+    /**
+     * Shows an animation trail from pesticide box to the target cell.
+     * Uses proper final variables to avoid lambda issues.
+     */
+    private void showApplicationTrail(final int targetRow, final int targetCol) {
+        try {
+            // Get pesticide box position (approximated from level bar)
+            double startX = 0;
+            double startY = 0;
+
+            if (pesticideLevelBar != null) {
+                try {
+                    Bounds bounds = pesticideLevelBar.localToScene(pesticideLevelBar.getBoundsInLocal());
+                    startX = bounds.getMinX() + bounds.getWidth() / 2;
+                    startY = bounds.getMinY() + bounds.getHeight() / 2;
+                } catch (Exception e) {
+                    // Fallback to approximate position
+                    startX = anchorPane.getWidth() - 100;
+                    startY = anchorPane.getHeight() - 150;
+                }
+            } else {
+                // Fallback to approximate position
+                startX = anchorPane.getWidth() - 100;
+                startY = anchorPane.getHeight() - 150;
+            }
+
+            // Get target cell position
+            double endX = 0;
+            double endY = 0;
+
+            // Find the node at the target position in the grid
+            for (Node node : gridPane.getChildren()) {
+                if (node instanceof StackPane) {
+                    Integer nodeRow = GridPane.getRowIndex(node);
+                    Integer nodeCol = GridPane.getColumnIndex(node);
+
+                    if (nodeRow != null && nodeCol != null &&
+                            nodeRow == targetRow && nodeCol == targetCol) {
+                        // Get the target cell's position
+                        Bounds bounds = node.localToScene(node.getBoundsInLocal());
+                        endX = bounds.getMinX() + bounds.getWidth() / 2;
+                        endY = bounds.getMinY() + bounds.getHeight() / 2;
+                        break;
+                    }
+                }
+            }
+
+            // If we couldn't find the cell, use an approximation
+            if (endX == 0 && endY == 0) {
+                // Approximated grid position
+                endX = gridPane.getLayoutX() + targetCol * 80 + 40;
+                endY = gridPane.getLayoutY() + targetRow * 80 + 40;
+            }
+
+            // Make variables effectively final
+            final double finalStartX = startX;
+            final double finalStartY = startY;
+            final double finalEndX = endX;
+            final double finalEndY = endY;
+
+            // Determine a curved path between the points
+            // (using a quadratic curve for natural arc)
+            final double controlX = (finalStartX + finalEndX) / 2 - (finalEndY - finalStartY) * 0.3; // Offset for curve
+            final double controlY = (finalStartY + finalEndY) / 2 - (finalStartX - finalEndX) * 0.3; // Offset for curve
+
+            // Now create the particle trail
+            final Group trailGroup = new Group();
+            anchorPane.getChildren().add(trailGroup);
+
+            // Create multiple particles that follow this path
+            for (int i = 0; i < 40; i++) { // 40 particles for a dense trail
+                final int particleIndex = i; // Make i effectively final
+
+                // Delayed start for each particle
+                PauseTransition delay = new PauseTransition(Duration.millis(particleIndex * 15));
+
+                delay.setOnFinished(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                        createTrailParticle(
+                                trailGroup,
+                                finalStartX,
+                                finalStartY,
+                                finalEndX,
+                                finalEndY,
+                                controlX,
+                                controlY,
+                                particleIndex
+                        );
+                    }
+                });
+
+                delay.play();
+            }
+
+        } catch (Exception e) {
+            logger.error("Error showing application trail: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Creates a single particle for the application trail.
+     * Extracted to separate method to avoid lambda issues.
+     */
+    private void createTrailParticle(
+            final Group trailGroup,
+            final double startX,
+            final double startY,
+            final double endX,
+            final double endY,
+            final double controlX,
+            final double controlY,
+            final int index
+    ) {
+        // Create a particle
+        Circle particle = new Circle(2 + random.nextDouble() * 2);
+
+        // Vary colors between purple and yellow
+        Color color;
+        if (index % 3 == 0) {
+            // Yellow
+            color = Color.rgb(
+                    255,
+                    255,
+                    150 + random.nextInt(105),
+                    0.7 + random.nextDouble() * 0.3
+            );
+        } else {
+            // Purple
+            color = Color.rgb(
+                    180 + random.nextInt(75),
+                    120 + random.nextInt(80),
+                    220 + random.nextInt(35),
+                    0.7 + random.nextDouble() * 0.3
+            );
+        }
+
+        particle.setFill(color);
+
+        // Add to the group
+        trailGroup.getChildren().add(particle);
+
+        // Create a path using quadratic curve
+        Path path = new Path();
+        MoveTo moveTo = new MoveTo(startX, startY);
+        QuadCurveTo quadTo = new QuadCurveTo(controlX, controlY, endX, endY);
+        path.getElements().addAll(moveTo, quadTo);
+
+        // Set up the path transition
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.millis(600));
+        pathTransition.setPath(path);
+        pathTransition.setNode(particle);
+
+        // Add a fade out toward the end
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), particle);
+        fadeOut.setFromValue(0.8);
+        fadeOut.setToValue(0);
+        fadeOut.setDelay(Duration.millis(400));
+
+        // Add slight growth animation
+        ScaleTransition scale = new ScaleTransition(Duration.millis(600), particle);
+        scale.setFromX(0.5);
+        scale.setFromY(0.5);
+        scale.setToX(1.5);
+        scale.setToY(1.5);
+
+        // Use a final reference to the group for the cleanup handler
+        final Group finalGroup = trailGroup;
+
+        // Play the animations with an event handler instead of a lambda
+        ParallelTransition pt = new ParallelTransition(pathTransition, fadeOut, scale);
+        pt.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                finalGroup.getChildren().remove(particle);
+                if (finalGroup.getChildren().isEmpty()) {
+                    anchorPane.getChildren().remove(finalGroup);
+                }
+            }
+        });
+        pt.play();
+    }
 
 }

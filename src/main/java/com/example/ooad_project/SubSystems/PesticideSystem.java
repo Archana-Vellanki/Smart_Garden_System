@@ -2,6 +2,7 @@ package com.example.ooad_project.SubSystems;
 
 import com.example.ooad_project.Events.DayUpdateEvent;
 import com.example.ooad_project.Events.ParasiteDisplayEvent;
+import com.example.ooad_project.Events.PesticideApplicationEvent;
 import com.example.ooad_project.Events.ParasiteEvent;
 import com.example.ooad_project.GardenGrid;
 import com.example.ooad_project.Parasite.Parasite;
@@ -31,23 +32,25 @@ public class PesticideSystem implements Runnable{
 
     private void handlePesticideEvent(ParasiteEvent event) {
         Parasite parasite = event.getParasite();
-//        System.out.println("Parasite attack on plant: " + parasite.getName() + " with damage: " + parasite.getDamage());
-
         // Loop through all the plants in the garden grid
         for (int i = 0; i < gardenGrid.getNumRows(); i++) {
             for (int j = 0; j < gardenGrid.getNumCols(); j++) {
                 Plant plant = gardenGrid.getPlant(i, j);
                 if (plant != null && parasite.getAffectedPlants().contains(plant.getName())) {
+                    // Publish an event to display the parasite on the plant
+                    EventBus.publish("DisplayParasiteEvent", new ParasiteDisplayEvent(parasite, i, j));
 
-//                    Publish an event to display the parasite on the plant
-//                    This is for the JavaFX GUI
-                    EventBus.publish("Day: " + currentDay + " ParasiteDisplayEvent", new ParasiteDisplayEvent(parasite, i, j));
-
-//                    Apply the parasite to the plant
+                    // Apply the parasite to the plant
                     parasite.affectPlant(plant);
-                    logger.info("Day: " + currentDay + " Pesticide system applied {} to {} at position ({}, {})", parasite.getName(), plant.getName(), i, j);
-//                    Heal the plant by half the damage of the parasite
-                    //plant.healPlant(parasite.getDamage()/2);
+                    logger.info("Day: " + currentDay + " Pesticide system applied {} to {} at position ({}, {})",
+                            parasite.getName(), plant.getName(), i, j);
+
+                    // Publish a new event for pesticide application
+                    EventBus.publish("PesticideApplicationEvent",
+                            new PesticideApplicationEvent(i, j, "standard"));
+
+                    // Heal the plant by half the damage of the parasite
+                    plant.healPlant(parasite.getDamage()/2);
                 }
             }
         }
