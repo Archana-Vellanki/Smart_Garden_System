@@ -178,15 +178,15 @@ public class GardenUIController {
         //  Platform.runLater(this::animateParasiteStatus);
         //  setupParasiteAnimation();
         // Remove the unwanted Veg label in top left
-        PauseTransition delay1 = new PauseTransition(Duration.millis(500));
-        delay1.setOnFinished(e -> {
+        //PauseTransition delay1 = new PauseTransition(Duration.millis(200));
+      //  delay1.setOnFinished(e -> {
             // Initialize any delayed elements
             //  initializeParasiteStatusWithGround();
 
             // Add our simple pesticide system box
             createEnhancedVerticalPesticideBox();
-        });
-        delay1.play();
+      //  });
+       // delay1.play();
 
         Platform.runLater(() -> {
             // This is a drastic approach but should work to remove any top-left labels
@@ -5294,7 +5294,7 @@ public class GardenUIController {
 
             // Calculate position - SHIFT LEFT BY 80px AND UP BY 30px
             double xPos = anchorWidth - 160 - 240; // From right edge, shifted 80px left
-            double yPos = anchorHeight -160 - 80; // From bottom, shifted 30px up
+            double yPos = anchorHeight -165 - 80; // From bottom, shifted 30px up
 
             // Position the pesticide box
             pesticideBox.setLayoutX(xPos);
@@ -5588,11 +5588,11 @@ public class GardenUIController {
                 pesticideBox.setPadding(new Insets(12));
                 pesticideBox.setPrefWidth(160); // Slightly wider than before
                 pesticideBox.setPrefHeight(60); // Taller for vertical layout
-                pesticideBox.setAlignment(Pos.CENTER);
+                pesticideBox.setAlignment(Pos.TOP_CENTER);
 
                 // Style with light purple background and border (matching screenshot)
                 pesticideBox.setBackground(new Background(new BackgroundFill(
-                        Color.rgb(240, 220, 235, 0.9), // Slightly more opaque to match screenshot
+                        Color.rgb(230, 220, 255, 0.9), // Slightly more opaque to match screenshot
                         new CornerRadii(10),
                         Insets.EMPTY
                 )));
@@ -5603,6 +5603,7 @@ public class GardenUIController {
                         new CornerRadii(10),
                         new BorderWidths(2)
                 )));
+
 
                 // Add icon at the top
 
