@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 import javafx.animation.KeyFrame;
@@ -92,11 +95,69 @@ public class HelloApplication extends Application {
 
     }
 
+    private void runAPIScheduledTasksWithoutJavaFX() {
+        SmartGardenAPI api = new SmartGardenAPI();
+        api.initializeGarden();
+        Random rand = new Random();
+
+        // This is for testing the parasites thread
+        ParasiteManager parasiteManager = ParasiteManager.getInstance();
+
+        // Create a scheduled executor service
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
+
+        // Schedule rain every 60 seconds
+        scheduler.scheduleAtFixedRate(() -> {
+            int rainAmount = rand.nextInt(40);
+            System.out.println("Triggering rain with amount: " + rainAmount);
+            api.rain(rainAmount);
+        }, 0, 60, TimeUnit.SECONDS);
+
+        // Schedule temperature every 40 seconds
+        scheduler.scheduleAtFixedRate(() -> {
+            int temperature = rand.nextInt(70);
+            System.out.println("Changing temperature to: " + temperature);
+            api.temperature(temperature);
+        }, 0, 40, TimeUnit.SECONDS);
+
+        // Schedule parasite every 10 seconds
+        scheduler.scheduleAtFixedRate(() -> {
+            List<Parasite> parasites = parasiteManager.getParasites();
+            if (!parasites.isEmpty()) {
+                Parasite randomParasite = parasites.get(rand.nextInt(parasites.size()));
+                System.out.println("Sending parasite: " + randomParasite.getName());
+                api.parasite(randomParasite.getName());
+            }
+        }, 0, 10, TimeUnit.SECONDS);
+
+        // Check garden state every 30 seconds
+        scheduler.scheduleAtFixedRate(() -> {
+            System.out.println("\n------ GARDEN STATE ------");
+            api.getState();
+            System.out.println("-------------------------\n");
+        }, 30, 30, TimeUnit.SECONDS);
+    }
 
     public static void main(String[] args) {
-        launch();
+        if (args.length > 0 && args[0].equals("--no-ui")) {
+            // Run without JavaFX UI
+            HelloApplication app = new HelloApplication();
+            app.initializeBackgroundServices();
+            app.runAPIScheduledTasksWithoutJavaFX();
+
+            // Keep the main thread alive
+            try {
+                Thread.sleep(Long.MAX_VALUE);
+            } catch (InterruptedException e) {
+                System.out.println("Main thread interrupted: " + e.getMessage());
+            }
+        } else {
+            // Regular JavaFX launch
+            launch(args);
+        }
     }
 }
+
 
 
 

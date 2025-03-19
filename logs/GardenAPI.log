@@ -7185,3 +7185,234 @@
 2025-03-18 17:11:42 INFO  GardenSimulationAPILogger - API called temperature set to: 47
 2025-03-18 17:11:42 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
 2025-03-18 17:11:52 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 17:22:25 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 17:22:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 17:22:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 17:22:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 17:23:05 INFO  GardenSimulationAPILogger - API called temperature set to: 32
+2025-03-18 17:23:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 17:23:21 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 17:23:31 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 17:23:41 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 17:23:51 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 17:23:57 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 17:24:07 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 17:24:17 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 17:24:27 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 17:24:37 INFO  GardenSimulationAPILogger - API called temperature set to: 66
+2025-03-18 17:24:37 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 17:24:47 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 17:24:58 INFO  GardenSimulationAPILogger - API called rain with amount: 11
+2025-03-18 17:24:58 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 17:25:08 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 17:25:18 INFO  GardenSimulationAPILogger - API called temperature set to: 43
+2025-03-18 17:25:18 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 17:25:28 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 17:25:38 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 17:25:48 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 17:32:59 INFO  GardenSimulationAPILogger - API called rain with amount: 5
+2025-03-18 17:32:59 INFO  GardenSimulationAPILogger - API called temperature set to: 43
+2025-03-18 17:32:59 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 17:43:06 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 17:43:16 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:08:32 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 18:08:42 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:27:13 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 18:27:23 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:27:33 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:27:43 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:27:53 INFO  GardenSimulationAPILogger - API called temperature set to: 31
+2025-03-18 18:27:53 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:28:03 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:28:13 INFO  GardenSimulationAPILogger - API called rain with amount: 18
+2025-03-18 18:28:13 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:28:23 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:28:33 INFO  GardenSimulationAPILogger - API called temperature set to: 1
+2025-03-18 18:28:33 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:28:43 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:28:53 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:29:03 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:29:13 INFO  GardenSimulationAPILogger - API called rain with amount: 28
+2025-03-18 18:29:13 INFO  GardenSimulationAPILogger - API called temperature set to: 40
+2025-03-18 18:29:13 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:29:23 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:29:33 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:29:43 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:29:53 INFO  GardenSimulationAPILogger - API called temperature set to: 69
+2025-03-18 18:29:53 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:30:03 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:30:13 INFO  GardenSimulationAPILogger - API called rain with amount: 6
+2025-03-18 18:30:13 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:30:23 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:30:33 INFO  GardenSimulationAPILogger - API called temperature set to: 56
+2025-03-18 18:30:33 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:30:43 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:30:53 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:31:03 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:31:13 INFO  GardenSimulationAPILogger - API called rain with amount: 9
+2025-03-18 18:31:13 INFO  GardenSimulationAPILogger - API called temperature set to: 34
+2025-03-18 18:31:13 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:31:23 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:32:11 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:32:19 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:32:29 INFO  GardenSimulationAPILogger - API called temperature set to: 69
+2025-03-18 18:32:29 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:32:39 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:44:25 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 18:44:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:44:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:44:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:45:05 INFO  GardenSimulationAPILogger - API called temperature set to: 16
+2025-03-18 18:45:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:45:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:45:25 INFO  GardenSimulationAPILogger - API called rain with amount: 33
+2025-03-18 18:45:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:45:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:45:45 INFO  GardenSimulationAPILogger - API called temperature set to: 60
+2025-03-18 18:45:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:45:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:46:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:46:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:46:25 INFO  GardenSimulationAPILogger - API called rain with amount: 5
+2025-03-18 18:46:25 INFO  GardenSimulationAPILogger - API called temperature set to: 19
+2025-03-18 18:46:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:46:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:46:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:46:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:47:05 INFO  GardenSimulationAPILogger - API called temperature set to: 21
+2025-03-18 18:47:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:47:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:47:25 INFO  GardenSimulationAPILogger - API called rain with amount: 10
+2025-03-18 18:47:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:47:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:47:45 INFO  GardenSimulationAPILogger - API called temperature set to: 66
+2025-03-18 18:47:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:47:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:48:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:48:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:48:25 INFO  GardenSimulationAPILogger - API called rain with amount: 26
+2025-03-18 18:48:25 INFO  GardenSimulationAPILogger - API called temperature set to: 24
+2025-03-18 18:48:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:48:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:48:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:48:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:49:05 INFO  GardenSimulationAPILogger - API called temperature set to: 67
+2025-03-18 18:49:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:49:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:49:25 INFO  GardenSimulationAPILogger - API called rain with amount: 18
+2025-03-18 18:49:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:49:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:49:45 INFO  GardenSimulationAPILogger - API called temperature set to: 17
+2025-03-18 18:49:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:49:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:50:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:50:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:50:25 INFO  GardenSimulationAPILogger - API called rain with amount: 26
+2025-03-18 18:50:25 INFO  GardenSimulationAPILogger - API called temperature set to: 69
+2025-03-18 18:50:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:50:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:50:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:50:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:51:05 INFO  GardenSimulationAPILogger - API called temperature set to: 25
+2025-03-18 18:51:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:51:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:51:25 INFO  GardenSimulationAPILogger - API called rain with amount: 38
+2025-03-18 18:51:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:51:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:51:45 INFO  GardenSimulationAPILogger - API called temperature set to: 18
+2025-03-18 18:51:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:51:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:52:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:52:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:52:25 INFO  GardenSimulationAPILogger - API called rain with amount: 36
+2025-03-18 18:52:25 INFO  GardenSimulationAPILogger - API called temperature set to: 58
+2025-03-18 18:52:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:52:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:52:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:52:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:53:05 INFO  GardenSimulationAPILogger - API called temperature set to: 50
+2025-03-18 18:53:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:53:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:53:25 INFO  GardenSimulationAPILogger - API called rain with amount: 24
+2025-03-18 18:53:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:53:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 18:53:45 INFO  GardenSimulationAPILogger - API called temperature set to: 4
+2025-03-18 18:53:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:53:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:54:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 18:54:15 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:54:25 INFO  GardenSimulationAPILogger - API called rain with amount: 4
+2025-03-18 18:54:25 INFO  GardenSimulationAPILogger - API called temperature set to: 14
+2025-03-18 18:54:25 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:54:35 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:54:45 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 18:54:55 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 18:55:05 INFO  GardenSimulationAPILogger - API called temperature set to: 29
+2025-03-18 18:55:05 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 18:56:09 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 19:20:50 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 19:21:00 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 19:30:56 INFO  GardenSimulationAPILogger - Initializing Garden
+2025-03-18 19:30:56 INFO  GardenSimulationAPILogger - API called rain with amount: 13
+2025-03-18 19:30:56 INFO  GardenSimulationAPILogger - API called temperature set to: 53
+2025-03-18 19:30:56 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 19:31:06 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 19:31:16 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 19:31:26 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 19:31:26 INFO  GardenSimulationAPILogger - Day: 7API called to get current state of the garden.
+2025-03-18 19:31:26 INFO  GardenSimulationAPILogger - Current Garden State as of Day 7:
+No plants are currently in the garden.
+
+2025-03-18 19:31:36 INFO  GardenSimulationAPILogger - API called temperature set to: 5
+2025-03-18 19:31:36 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 19:31:46 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:31:56 INFO  GardenSimulationAPILogger - API called rain with amount: 0
+2025-03-18 19:31:56 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:31:56 INFO  GardenSimulationAPILogger - Day: 13API called to get current state of the garden.
+2025-03-18 19:31:56 INFO  GardenSimulationAPILogger - Current Garden State as of Day 13:
+No plants are currently in the garden.
+
+2025-03-18 19:32:06 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 19:32:16 INFO  GardenSimulationAPILogger - API called temperature set to: 3
+2025-03-18 19:32:16 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:32:26 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 19:32:26 INFO  GardenSimulationAPILogger - Day: 19API called to get current state of the garden.
+2025-03-18 19:32:26 INFO  GardenSimulationAPILogger - Current Garden State as of Day 19:
+No plants are currently in the garden.
+
+2025-03-18 19:32:36 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:32:46 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 19:32:56 INFO  GardenSimulationAPILogger - API called rain with amount: 30
+2025-03-18 19:32:56 INFO  GardenSimulationAPILogger - API called temperature set to: 42
+2025-03-18 19:32:56 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 19:32:56 INFO  GardenSimulationAPILogger - Day: 25API called to get current state of the garden.
+2025-03-18 19:32:56 INFO  GardenSimulationAPILogger - Current Garden State as of Day 25:
+No plants are currently in the garden.
+
+2025-03-18 19:33:06 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 19:33:16 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 19:33:26 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 19:33:26 INFO  GardenSimulationAPILogger - Day: 31API called to get current state of the garden.
+2025-03-18 19:33:26 INFO  GardenSimulationAPILogger - Current Garden State as of Day 31:
+No plants are currently in the garden.
+
+2025-03-18 19:33:36 INFO  GardenSimulationAPILogger - API called temperature set to: 25
+2025-03-18 19:33:36 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:33:46 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 19:33:56 INFO  GardenSimulationAPILogger - API called rain with amount: 23
+2025-03-18 19:33:56 INFO  GardenSimulationAPILogger - API called to handle parasite: Locust
+2025-03-18 19:33:56 INFO  GardenSimulationAPILogger - Day: 37API called to get current state of the garden.
+2025-03-18 19:33:56 INFO  GardenSimulationAPILogger - Current Garden State as of Day 37:
+No plants are currently in the garden.
+
+2025-03-18 19:34:06 INFO  GardenSimulationAPILogger - API called to handle parasite: Slugs
+2025-03-18 19:34:16 INFO  GardenSimulationAPILogger - API called temperature set to: 21
+2025-03-18 19:34:16 INFO  GardenSimulationAPILogger - API called to handle parasite: Rat
+2025-03-18 19:34:26 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:34:26 INFO  GardenSimulationAPILogger - Day: 43API called to get current state of the garden.
+2025-03-18 19:34:26 INFO  GardenSimulationAPILogger - Current Garden State as of Day 43:
+No plants are currently in the garden.
+
+2025-03-18 19:34:36 INFO  GardenSimulationAPILogger - API called to handle parasite: Aphids
+2025-03-18 19:34:46 INFO  GardenSimulationAPILogger - API called to handle parasite: Crow
+2025-03-18 19:35:38 INFO  GardenSimulationAPILogger - Initializing Garden
